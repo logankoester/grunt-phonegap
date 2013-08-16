@@ -1,0 +1,3 @@
+[submodule "src/test/fixtures/org.apache.cordova.core.device"]
+	path = src/test/fixtures/org.apache.cordova.core.device
+	url = https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git

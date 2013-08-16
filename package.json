@@ -1,0 +1,54 @@
+{
+  "name": "grunt-phonegap",
+  "description": "Local build tasks for Phonegap applications",
+  "version": "0.1.0",
+  "homepage": "https://github.com/logankoester/grunt-phonegap",
+  "author": {
+    "name": "Logan Koester",
+    "email": "logan@logankoester.com",
+    "url": "http://logankoester.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/logankoester/grunt-phonegap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/logankoester/grunt-phonegap/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/logankoester/grunt-phonegap/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "build": "grunt build"
+    "prepublish": "grunt build"
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-contrib-copy": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin",
+    "phonegap",
+    "cordova"
+  ],
+  "dependencies": {
+    "phonegap": "~3.0.0-0.14.3",
+    "directory-copy": "0.0.4",
+    "async": "~0.2.9"
+  }
+}
