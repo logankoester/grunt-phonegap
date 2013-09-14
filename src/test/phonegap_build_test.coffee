@@ -26,3 +26,8 @@ exports.phonegap =
     test.expect 1
     test.ok grunt.file.isFile('test/phonegap/platforms/android/bin/HelloWorld-debug.apk'), 'debug apk should be created'
     test.done()
+
+  'custom config location should be copied': (test) ->
+    test.expect 1
+    test.ok grunt.file.isFile('test/phonegap/www/config.xml'), 'custom_config.xml should be copied to config.xml'
+    test.done()

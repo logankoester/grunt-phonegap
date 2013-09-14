@@ -19,6 +19,7 @@ module.exports = (grunt) ->
         releases: 'test/releases'
         plugins: ['../fixtures/org.apache.cordova.core.device']
         platforms: ['android']
+        config: 'test/fixtures/www/custom_config.xml'
         verbose: false
 
     # Before generating any new files, remove any previously-created files.

@@ -39,6 +39,7 @@ grunt.initConfig({
   phonegap: {
     config: {
       root: 'www',
+      config: 'www/config.xml',
       cordova: '.cordova',
       path: 'phonegap',
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
@@ -83,6 +84,10 @@ Fork the repo on Github and open a pull request. Note that the files in `tasks/`
 CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 
 ## Release History
+
+#### 0.2.0
+
+  * Adds 'config' option for specifying a custom path to 'config.xml'.
 
 #### 0.1.0
 

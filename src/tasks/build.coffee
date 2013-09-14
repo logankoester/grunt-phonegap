@@ -1,7 +1,8 @@
 class module.exports.Build
   copy: require 'directory-copy'
+  cp: require 'cp'
+  path: require 'path'
   exec: require('child_process').exec
-  path: require('path')
 
   constructor: (@grunt, @config) ->
     @file = @grunt.file
@@ -30,6 +31,9 @@ class module.exports.Build
     @copy src: @config.root, dest: @path.join(@config.path, 'www'), (err) =>
       @warn(err) if err
       fn(err) if fn
+
+  copyConfig: (fn) =>
+    @cp @config.config, @path.join(@config.path, 'www', 'config.xml'), -> fn()
 
   addPlugin: (plugin, fn) =>
     cmd = "phonegap local plugin add #{plugin} #{@_setVerbosity()}"

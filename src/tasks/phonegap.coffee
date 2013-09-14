@@ -16,6 +16,7 @@ module.exports = (grunt) ->
 
   defaults =
     root: 'www'
+    config: 'www/config.xml'
     path: 'build'
     cordova: '.cordova'
     releases: 'releases'
@@ -33,7 +34,8 @@ module.exports = (grunt) ->
 
     async.series [
       build.cloneRoot,
-      build.cloneCordova
+      build.cloneCordova,
+      build.copyConfig
     ], ->
       async.eachSeries config.plugins, build.addPlugin, (err) ->
         async.eachSeries config.platforms, build.buildPlatform, (err) ->
