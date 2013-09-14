@@ -92,3 +92,7 @@ CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 #### 0.1.0
 
   * Initial release
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/logankoester/grunt-phonegap/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
