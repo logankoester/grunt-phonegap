@@ -46,7 +46,7 @@ module.exports = (grunt) ->
     config = _.defaults grunt.config.get('phonegap.config'), defaults
 
     platform = @args[0] || _.first(config.platforms)
-    device  = @args[1] || 'device'
+    device  = @args[1] || ''
 
     done = @async()
     build = new Run(grunt, config).run platform, device, -> done()
