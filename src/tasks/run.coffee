@@ -4,7 +4,8 @@ class module.exports.Run
   constructor: (@grunt, @config) ->
 
   run: (platform, device, fn) =>
-    cmd = "phonegap local run #{platform} --device #{device} #{@_setVerbosity()}"
+    cmd = "phonegap local run #{platform} #{@_setVerbosity()}"
+    cmd += " --device #{device}" if device
     childProcess = @exec cmd, cwd: @config.path, (err, stdout, stderr) =>
       @grunt.fatal err if err
       fn(err) if fn
