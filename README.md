@@ -78,10 +78,20 @@ The device argument will default to "device", the default name for the first And
 
 * Creating signed releases (`phonegap:release`)
 
+## Running the test suite
+
+    git clone https://github.com/logankoester/grunt-phonegap.git
+    cd grunt-phonegap
+    npm install
+    git submodule update
+    grunt
+
 ## Contributing
 
 Fork the repo on Github and open a pull request. Note that the files in `tasks/` and `test/` are the output of
 CoffeeScript files in `src/`, and will be overwritten if edited by hand.
+
+Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
 
 ## Release History
 
