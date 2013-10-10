@@ -71,12 +71,22 @@ module.exports = (grunt) ->
         files: ['src/**/*.coffee', 'Gruntfile.coffee']
         tasks: ['default']
 
+    bump:
+      options:
+        commit: true
+        commitMessage: 'Release v%VERSION%'
+        commitFiles: ['package.json']
+        createTag: true
+        tagName: 'v%VERSION%'
+        tagMessage: 'Version %VERSION%'
+
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-nodeunit'
+  grunt.loadNpmTasks 'grunt-bump'
 
   # Load this plugin's tasks (deferred until build is ready)
   grunt.registerTask 'test', ->
