@@ -1,11 +1,3 @@
-#
-# * grunt-phonegap
-# * https://github.com/logankoester/grunt-phonegap
-# *
-# * Copyright (c) 2013 Logan Koester
-# * Licensed under the MIT license.
-#
-
 module.exports = (grunt) ->
   Build = require('./build').Build
   Run = require('./run').Run
