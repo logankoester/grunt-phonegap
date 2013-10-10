@@ -95,6 +95,11 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.3.0
+
+  * Fixes [issue #2](https://github.com/logankoester/grunt-phonegap/issues/2) "Test not completing" (thanks @skarjalainen and @jrvidal)
+  * Removed default 'device' flag (thanks @robwalch)
+
 #### 0.2.0
 
   * Adds 'config' option for specifying a custom path to 'config.xml'.
