@@ -103,6 +103,11 @@ Before running the included test suite, you must first run `git submodule update
 
   * Initial release
 
+## License
+
+Copyright (c) 2013 Logan Koester.
+Released under the MIT license. See `LICENSE-MIT` for details.
+
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/logankoester/grunt-phonegap/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
