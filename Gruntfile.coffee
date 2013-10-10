@@ -79,6 +79,7 @@ module.exports = (grunt) ->
         createTag: true
         tagName: 'v%VERSION%'
         tagMessage: 'Version %VERSION%'
+        push: false
 
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks 'grunt-contrib-clean'
