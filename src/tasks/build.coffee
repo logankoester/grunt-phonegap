@@ -20,6 +20,7 @@ class module.exports.Build
     @file.mkdir @path.join(path, 'platforms')
     @file.mkdir @path.join(path, 'merges', 'android')
     @file.mkdir @path.join(path, 'www')
+    @file.mkdir @path.join(path, '.cordova')
     @
 
   cloneCordova: (fn) =>
