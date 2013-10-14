@@ -42,8 +42,19 @@ grunt.initConfig({
       config: 'www/config.xml',
       cordova: '.cordova',
       path: 'phonegap',
-      plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
+      plugins: [
+        '/local/path/to/plugin',
+         'http://example.com/path/to/plugin.git',
+         {
+            plugin: 'http://example.com/path/to/plugin.git',
+            variables: [{
+                name: 'API_KEY',
+                value: '0118 999 881 999 119 7253'
+            }]
+         }
+      ],
       platforms: ['android'],
+      maxBuffer: 200,
       verbose: false
     }
   }

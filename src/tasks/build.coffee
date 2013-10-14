@@ -37,8 +37,13 @@ class module.exports.Build
     @cp @config.config, @path.join(@config.path, 'www', 'config.xml'), -> fn()
 
   addPlugin: (plugin, fn) =>
-    cmd = "phonegap local plugin add #{plugin} #{@_setVerbosity()}"
-    proc = @exec cmd, cwd: @config.path, (err, stdout, stderr) =>
+    if typeof plugin is 'object'
+      cmd = "phonegap local plugin add #{plugin.plugin}"
+      cmd += " --variable #{variable.name}=\"#{variable.value}\"" for variable in plugin.variables
+      cmd += " #{@_setVerbosity()}"
+    else
+      cmd = "phonegap local plugin add #{plugin} #{@_setVerbosity()}"
+    proc = @exec cmd, {cwd: @config.path, maxBuffer: @config.maxBuffer * 1024}, (err, stdout, stderr) =>
       @fatal err if err
       fn(err) if fn
 
@@ -47,7 +52,7 @@ class module.exports.Build
 
   buildPlatform: (platform, fn) =>
     cmd = "phonegap local build #{platform} #{@_setVerbosity()}"
-    childProcess = @exec cmd, cwd: @config.path, (err, stdout, stderr) =>
+    childProcess = @exec cmd, {cwd: @config.path, maxBuffer: @config.maxBuffer * 1024}, (err, stdout, stderr) =>
       @fatal err if err
       fn(err) if fn
 

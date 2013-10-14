@@ -22,6 +22,11 @@ exports.phonegap =
     test.ok grunt.file.isDir('test/phonegap/plugins/org.apache.cordova.core.device'), 'should add a local plugin'
     test.done()
 
+  'plugins can accept variables': (test) ->
+    test.expect 2
+    test.ok phonegap.config.plugins.length
+    test.done()
+
   'android platform should be built': (test) ->
     test.expect 1
     test.ok grunt.file.isFile('test/phonegap/platforms/android/bin/HelloWorld-debug.apk'), 'debug apk should be created'
