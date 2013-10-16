@@ -14,6 +14,7 @@ module.exports = (grunt) ->
     releases: 'releases'
     plugins: []
     platforms: []
+    maxBuffer: 200
     verbose: false
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
