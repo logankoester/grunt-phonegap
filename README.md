@@ -77,6 +77,14 @@ grunt.initConfig({
           // Prompt, read an environment variable, or just embed as a string literal
           return('');
         }
+      },
+
+      // Set an app icon at various sizes (optional)
+      icon: {
+        ldpi: 'icon-36-ldpi.png',
+        mdpi: 'icon-48-mdpi.png',
+        hdpi: 'icon-72-hdpi.png',
+        xhdpi: 'icon-96-xhdpi.png'
       }
     }
   }
@@ -208,6 +216,9 @@ CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
 
 ## Release History
+
+#### 0.5.0
+  * Adds app icon management for Android
 
 #### 0.4.2
   * Fixes a regression in 0.4.1 that causes the apk copied into the release directory to contain 0 bytes
