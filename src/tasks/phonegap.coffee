@@ -34,7 +34,7 @@ module.exports = (grunt) ->
     async.series [
       build.cloneRoot,
       build.cloneCordova,
-      build.copyConfig
+      build.compileConfig
     ], ->
       async.eachSeries config.plugins, build.addPlugin, (err) ->
         async.eachSeries config.platforms, build.buildPlatform, (err) ->

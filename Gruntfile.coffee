@@ -18,7 +18,19 @@ module.exports = (grunt) ->
         path: 'test/phonegap'
         plugins: ['../fixtures/org.apache.cordova.core.device']
         platforms: ['android']
-        config: 'test/fixtures/www/custom_config.xml'
+
+        config:
+          template: 'test/fixtures/www/custom_config.xml'
+          data:
+            id: 'com.phonegap.test'
+            version: '1.0.0'
+            name: 'TestFixtureApp'
+            description: 'A text fixture app'
+            author:
+              email: 'logan@logankoester.com'
+              href: 'http://logankoester.com'
+              text: 'Logan Koester'
+
         verbose: false
         releases: 'test/releases'
         key:
