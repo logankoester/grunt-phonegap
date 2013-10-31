@@ -1,7 +1,6 @@
 module.exports = (grunt) ->
   Build = require('./build').Build
   Run = require('./run').Run
-  Release = require('./release').Release
 
   _ = grunt.util._
   async = grunt.util.async
@@ -58,4 +57,4 @@ module.exports = (grunt) ->
     platform = @args[0] || _.first(config.platforms)
 
     done = @async()
-    build = new Release(grunt, config).release platform, -> done()
+    require('./release') grunt, config, platform, -> done()
