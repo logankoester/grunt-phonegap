@@ -17,9 +17,11 @@ module.exports = exports = class ReleaseAndroid
         fn()
 
   copyApk: (fn) ->
-    src = @path.join @config.path, 'platforms', 'android', 'bin', '*-release.apk'
+    srcDir = @path.join @config.path, 'platforms', 'android', 'bin'
+    src = @file.expand("#{srcDir}/*-release.apk")[0]
     dest = @path.join @config.releases, 'android', "#{@config.releaseName()}.apk"
-    @cp src, dest, -> fn() if fn
+    @file.copy src, dest, encoding: null
+    fn() if fn
 
   setAntProperties: (includePasswords) ->
     keyStorePath = @path.relative @_platformPath('android'), @config.key.store

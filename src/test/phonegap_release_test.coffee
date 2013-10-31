@@ -1,4 +1,7 @@
 grunt = require 'grunt'
+pkg = grunt.file.readJSON 'package.json'
+path = require 'path'
+fs = require 'fs'
 
 exports.phonegap =
   'tree should be created': (test) ->
@@ -8,8 +11,9 @@ exports.phonegap =
     test.done()
 
   'signed apk should be created': (test) ->
-    test.expect 1
-    pkg = grunt.file.readJSON 'package.json'
-    filename = "#{pkg.name}-#{pkg.version}.apk"
-    test.ok grunt.file.isFile("test/releases/android/#{filename}"), "should create #{filename}"
-    test.done()
+    test.expect 2
+    apk = path.join 'test', 'releases', 'android', "#{pkg.name}-#{pkg.version}.apk"
+    test.ok grunt.file.isFile(apk), "#{apk} does not exist"
+    fs.stat apk, (err, stats) =>
+      test.notEqual stats.size, 0, "#{apk} is an empty file"
+      test.done()

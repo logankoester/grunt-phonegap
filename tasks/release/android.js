@@ -29,14 +29,16 @@
     };
 
     ReleaseAndroid.prototype.copyApk = function(fn) {
-      var dest, src;
-      src = this.path.join(this.config.path, 'platforms', 'android', 'bin', '*-release.apk');
+      var dest, src, srcDir;
+      srcDir = this.path.join(this.config.path, 'platforms', 'android', 'bin');
+      src = this.file.expand("" + srcDir + "/*-release.apk")[0];
       dest = this.path.join(this.config.releases, 'android', "" + (this.config.releaseName()) + ".apk");
-      return this.cp(src, dest, function() {
-        if (fn) {
-          return fn();
-        }
+      this.file.copy(src, dest, {
+        encoding: null
       });
+      if (fn) {
+        return fn();
+      }
     };
 
     ReleaseAndroid.prototype.setAntProperties = function(includePasswords) {
