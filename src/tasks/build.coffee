@@ -33,8 +33,17 @@ class module.exports.Build
       @warn(err) if err
       fn(err) if fn
 
-  copyConfig: (fn) =>
-    @cp @config.config, @path.join(@config.path, 'www', 'config.xml'), -> fn()
+  compileConfig: (fn) =>
+    dest = @path.join(@config.path, 'www', 'config.xml')
+    if @grunt.util.kindOf(@config.config) == 'string'
+      @log.writeln "Copying static #{@config.config}"
+      @cp @config.config, dest, -> fn()
+    else
+      @log.writeln "Compiling template #{@config.config.template}"
+      template = @grunt.file.read @config.config.template
+      compiled = @grunt.template.process template, data: @config.config.data
+      @grunt.file.write dest, compiled
+      fn()
 
   addPlugin: (plugin, fn) =>
     cmd = "phonegap local plugin add #{plugin} #{@_setVerbosity()}"

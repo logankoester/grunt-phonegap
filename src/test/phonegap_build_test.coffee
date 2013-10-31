@@ -1,4 +1,5 @@
-grunt = require('grunt')
+grunt = require 'grunt'
+xmlParser = require 'xml2json'
 
 exports.phonegap =
   'tree should be created': (test) ->
@@ -24,10 +25,20 @@ exports.phonegap =
 
   'android platform should be built': (test) ->
     test.expect 1
-    test.ok grunt.file.isFile('test/phonegap/platforms/android/bin/HelloWorld-debug.apk'), 'debug apk should be created'
+    name = grunt.config.get('phonegap.config.config.data.name')
+    test.ok grunt.file.isFile("test/phonegap/platforms/android/bin/#{name}-debug.apk"), 'debug apk should be created'
     test.done()
 
-  'custom config location should be copied': (test) ->
+  'the specified config.xml template should be compiled': (test) ->
     test.expect 1
-    test.ok grunt.file.isFile('test/phonegap/www/config.xml'), 'custom_config.xml should be copied to config.xml'
+    test.ok grunt.file.isFile('test/phonegap/www/config.xml'), 'a file should be written to config.xml'
+    test.done()
+
+  'configData should be interpolated in config.xml': (test) ->
+    test.expect 2
+    data = grunt.config.get('phonegap.config.config.data')
+    xml = grunt.file.read 'test/phonegap/www/config.xml'
+    config = xmlParser.toJson xml, object: true
+    test.equal config.widget.id, data.id, 'id should match config.id'
+    test.equal config.widget.version, data.version, 'version should match config.version'
     test.done()

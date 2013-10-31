@@ -15,7 +15,7 @@
       this.config = config;
       this.buildPlatform = __bind(this.buildPlatform, this);
       this.addPlugin = __bind(this.addPlugin, this);
-      this.copyConfig = __bind(this.copyConfig, this);
+      this.compileConfig = __bind(this.compileConfig, this);
       this.cloneRoot = __bind(this.cloneRoot, this);
       this.cloneCordova = __bind(this.cloneCordova, this);
       this.file = this.grunt.file;
@@ -75,10 +75,23 @@
       });
     };
 
-    Build.prototype.copyConfig = function(fn) {
-      return this.cp(this.config.config, this.path.join(this.config.path, 'www', 'config.xml'), function() {
+    Build.prototype.compileConfig = function(fn) {
+      var compiled, dest, template;
+      dest = this.path.join(this.config.path, 'www', 'config.xml');
+      if (this.grunt.util.kindOf(this.config.config) === 'string') {
+        this.log.writeln("Copying static " + this.config.config);
+        return this.cp(this.config.config, dest, function() {
+          return fn();
+        });
+      } else {
+        this.log.writeln("Compiling template " + this.config.config.template);
+        template = this.grunt.file.read(this.config.config.template);
+        compiled = this.grunt.template.process(template, {
+          data: this.config.config.data
+        });
+        this.grunt.file.write(dest, compiled);
         return fn();
-      });
+      }
     };
 
     Build.prototype.addPlugin = function(plugin, fn) {
