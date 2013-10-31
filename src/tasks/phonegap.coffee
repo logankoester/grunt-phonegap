@@ -57,4 +57,4 @@ module.exports = (grunt) ->
     platform = @args[0] || _.first(config.platforms)
 
     done = @async()
-    require('./release') grunt, config, platform, -> done()
+    require('./release').release grunt, config, platform, -> done()
