@@ -1,6 +1,5 @@
 *.swp
 *.swo
 tmp/*
-tasks/*
 test/*
 node_modules/*
