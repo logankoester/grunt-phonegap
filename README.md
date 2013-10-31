@@ -50,12 +50,15 @@ grunt.initConfig({
         var pkg = grunt.file.readJSON('package.json');
         return(pkg.name + '-' + pkg.version);
       },
+
+      // Add a key if you plan to use the `release:android` task
+      // See http://developer.android.com/tools/publishing/app-signing.html
       key: {
         store: 'release.keystore',
         alias: 'release',
         aliasPassword: function(){
           // Prompt, read an environment variable, or just embed as a string literal
-          return(''); 
+          return('');
         },
         storePassword: function(){
           // Prompt, read an environment variable, or just embed as a string literal
