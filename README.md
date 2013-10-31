@@ -111,6 +111,7 @@ the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key
     git clone https://github.com/logankoester/grunt-phonegap.git
     cd grunt-phonegap
     npm install
+    git submodule init
     git submodule update
     grunt
 
