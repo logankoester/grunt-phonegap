@@ -18,19 +18,15 @@ exports.phonegap =
     test.done()
 
   'plugins should be installed': (test) ->
-    test.expect 2
+    test.expect 3
     test.ok grunt.file.isDir('test/phonegap/plugins/org.apache.cordova.core.device'), 'should add a local plugin'
-    test.ok grunt.file.isDir('test/phonegap/plugins/org.apache.cordova.core.variables'), 'should add a local plugin'
+    test.ok grunt.file.isDir('test/phonegap/plugins/org.apache.cordova.variables'), 'should add a local plugin'
+    test.equal grunt.config.get('phonegap.config.plugins.length'), 2, 'two plugins should be configured'
     test.done()
 
   'plugins can accept variables': (test) ->
     test.expect 1
-    test.ok true
-    test.done()
-
-  'plugins can accept variables': (test) ->
-    test.expect 2
-    test.ok phonegap.config.plugins.length
+    test.ok grunt.config.get('phonegap.config.plugins')[1]['variables'], 'variables should be defined'
     test.done()
 
   'android platform should be built': (test) ->
