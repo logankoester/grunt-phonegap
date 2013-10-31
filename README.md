@@ -83,18 +83,7 @@ grunt.initConfig({
 })
 ```
 
-### Tasks
-
-#### phonegap:build
-
-Running `phonegap:build` with no arguments will...
-
-* Purge your `phonegap.config.path`
-* Copy your `phonegap.config.cordova` and `phonegap.config.root` files into it
-* Add any plugins listed in `phonegap.config.plugins`
-* ..and then generate a Phonegap build for all platforms listed in `phonegap.config.platforms`
-
-##### Dynamic config.xml
+#### Dynamic config.xml
 
 Beginning with **v0.4.1**, `phonegap.config.config` may be either a string or an object.
 
@@ -103,7 +92,7 @@ As a string, the file is copied directly, as with previous versions.
 As an object with the keys `template<String>` and `data<Object>`, the file at `template` will
 be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
 
-###### Example
+##### Example
 
 **Gruntfile.js**
 
@@ -127,12 +116,29 @@ be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
 
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="<%= id %>" version="<%= version %>" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget
+  id="<%= id %>"
+  version="<%= version %>"
+  xmlns="http://www.w3.org/ns/widgets"
+  xmlns:gap="http://phonegap.com/ns/1.0">
+
     <name><%= name %></name>
+
     <!-- ... -->
 </widget>
 
 ```
+
+### Tasks
+
+#### phonegap:build
+
+Running `phonegap:build` with no arguments will...
+
+* Purge your `phonegap.config.path`
+* Copy your `phonegap.config.cordova` and `phonegap.config.root` files into it
+* Add any plugins listed in `phonegap.config.plugins`
+* ..and then generate a Phonegap build for all platforms listed in `phonegap.config.platforms`
 
 #### phonegap:run[:platform][:device]
 
