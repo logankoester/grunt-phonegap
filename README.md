@@ -44,7 +44,24 @@ grunt.initConfig({
       path: 'phonegap',
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
-      verbose: false
+      verbose: false,
+      releases: 'releases',
+      releaseName: function(){
+        var pkg = grunt.file.readJSON('package.json');
+        return(pkg.name + '-' + pkg.version);
+      },
+      key: {
+        store: 'release.keystore',
+        alias: 'release',
+        aliasPassword: function(){
+          // Prompt, read an environment variable, or just embed as a string literal
+          return(''); 
+        },
+        storePassword: function(){
+          // Prompt, read an environment variable, or just embed as a string literal
+          return('');
+        }
+      }
     }
   }
 })
@@ -72,11 +89,22 @@ If you are using the Android platform, you can see the list of connected devices
 
 The platform argument will default to the first platform listed in `phonegap.config.platforms`.
 
-The device argument will default to "device", the default name for the first Android device connected to your machine.
+#### phonegap:release[:platform]
+
+Create a releases/ directory containing a signed application package for distribution.
+
+Currently `android` is the only platform supported by this task. You will need to create
+a keystore file at `phonegap.config.key.store` like this:
+
+    $ keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
+
+The keytool command will interactively ask you to set store and alias passwords, which must match
+the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key.storePassword` respectively.
 
 ## What's next
 
-* Creating signed releases (`phonegap:release`)
+* `release` task for iOS and other platforms
+* Set an app icon during build task
 
 ## Running the test suite
 
@@ -94,6 +122,9 @@ CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
 
 ## Release History
+
+#### 0.4.0
+  * Adds `release:android` task to build a releases/ directory containing a signed APK for distribution.
 
 #### 0.3.0
 

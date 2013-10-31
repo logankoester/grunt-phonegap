@@ -11,15 +11,22 @@ module.exports = (grunt) ->
     config: 'www/config.xml'
     path: 'build'
     cordova: '.cordova'
-    releases: 'releases'
     plugins: []
     platforms: []
     verbose: false
+    releases: 'releases'
+    releaseName: ->
+      pkg = grunt.file.readJSON 'package.json'
+      "#{pkg.name}-#{pkg.version}"
+    key:
+      store: 'release.keystore'
+      alias: 'release'
+      aliasPassword: -> ''
+      storePassword: -> ''
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
     # Set default options
     config = _.defaults grunt.config.get('phonegap.config'), defaults
-
 
     done = @async()
     build = new Build(grunt, config).clean().buildTree()
@@ -42,3 +49,12 @@ module.exports = (grunt) ->
 
     done = @async()
     build = new Run(grunt, config).run platform, device, -> done()
+
+  grunt.registerTask 'phonegap:release', 'Create a distributable release', ->
+    # Set default options
+    config = _.defaults grunt.config.get('phonegap.config'), defaults
+
+    platform = @args[0] || _.first(config.platforms)
+
+    done = @async()
+    require('./release') grunt, config, platform, -> done()

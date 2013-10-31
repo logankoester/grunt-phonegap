@@ -16,11 +16,16 @@ module.exports = (grunt) ->
         root: 'test/fixtures/www'
         cordova: 'test/fixtures/.cordova'
         path: 'test/phonegap'
-        releases: 'test/releases'
         plugins: ['../fixtures/org.apache.cordova.core.device']
         platforms: ['android']
         config: 'test/fixtures/www/custom_config.xml'
         verbose: false
+        releases: 'test/releases'
+        key:
+          store: 'test/fixtures/release.keystore'
+          alias: 'release'
+          aliasPassword: -> 'testAliasPassword'
+          storePassword: -> 'testStorePassword'
 
     # Before generating any new files, remove any previously-created files.
     clean:
@@ -92,7 +97,7 @@ module.exports = (grunt) ->
   # Load this plugin's tasks (deferred until build is ready)
   grunt.registerTask 'test', ->
     grunt.loadTasks 'tasks'
-    grunt.task.run 'phonegap:build', 'nodeunit'
+    grunt.task.run 'phonegap:build', 'phonegap:release:android', 'nodeunit'
 
   grunt.registerTask 'run', ->
     grunt.loadTasks 'tasks'
