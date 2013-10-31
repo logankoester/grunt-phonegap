@@ -186,6 +186,9 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.4.1
+  * Adds option to process custom config.xml as a template
+
 #### 0.4.0
   * Adds `release:android` task to build a releases/ directory containing a signed APK for distribution.
   * Includes compiled tasks/ directory in source countrol
