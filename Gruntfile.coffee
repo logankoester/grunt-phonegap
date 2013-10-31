@@ -18,9 +18,9 @@ module.exports = (grunt) ->
         path: 'test/phonegap'
         releases: 'test/releases'
         plugins: [
-          'test/fixtures/org.apache.cordova.core.device',
+          '../fixtures/org.apache.cordova.core.device',
           {
-            plugin: 'test/fixtures/org.apache.cordova.core.device'
+            plugin: '../fixtures/org.apache.cordova.core.variables'
             variables: [{
               name: 'API_KEY'
               value: '0118 999 881 999 119 7253'
