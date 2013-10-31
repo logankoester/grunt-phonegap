@@ -48,7 +48,6 @@
     "cordova"
   ],
   "dependencies": {
-    "phonegap": "~3.0.0-0.14.3",
     "directory-copy": "0.0.4",
     "async": "~0.2.9",
     "cp": "~0.1.1"

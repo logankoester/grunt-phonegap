@@ -8,6 +8,18 @@ by wrapping the Phonegap 3.0 command line interface.
 Rather than polluting the top-level of your project, `grunt-phonegap` copies your files into a
 subdirectory containing the Phonegap project, which gets regenerated every build.
 
+## Requirements
+
+You will need the `phonegap` CLI tool installed globally to use `grunt-phonegap`.
+
+```shell
+npm install phonegap -g
+```
+You should also install whatever system dependencies are required by the platforms
+you intend to target.
+
+For help with that, see [Platform Guides](http://docs.phonegap.com/en/3.1.0/guide_platforms_index.md.html#Platform%20Guides) from the Phonegap documentation.
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
@@ -129,6 +141,8 @@ Before running the included test suite, you must first run `git submodule update
 
 #### 0.4.0
   * Adds `release:android` task to build a releases/ directory containing a signed APK for distribution.
+  * Includes compiled tasks/ directory in source countrol
+  * Removes `phonegap` npm dependency - install it globally with -g instead.
 
 #### 0.3.0
 
