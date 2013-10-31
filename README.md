@@ -186,6 +186,9 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.4.2
+  * Fixes a regression in 0.4.1 that causes the apk copied into the release directory to contain 0 bytes
+
 #### 0.4.1
   * Adds option to process custom config.xml as a template
 
