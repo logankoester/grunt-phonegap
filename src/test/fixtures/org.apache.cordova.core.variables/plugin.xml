@@ -3,14 +3,12 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:rim="http://www.blackberry.com/ns/widgets"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="org.apache.cordova.variables"
+        id="org.apache.cordova.core.variables"
         version="0.2.3">
-    <name>Device</name>
-    <description>Cordova Device Plugin</description>
+    <name>Variables</name>
+    <description>Cordova Variables Test Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,device</keywords>
-
-    <perference name="API_KEY" />
+    <keywords>cordova,variables</keywords>
 
     <!-- firefoxos -->
     <platform name="firefoxos">
@@ -27,9 +25,11 @@
 
     <!-- android -->
     <platform name="android">
+        <preference name="API_KEY" />
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Device" >
                 <param name="android-package" value="org.apache.cordova.variables.Device"/>
+                <param name="api-key" value="$API_KEY"/>
             </feature>
         </config-file>
     </platform>

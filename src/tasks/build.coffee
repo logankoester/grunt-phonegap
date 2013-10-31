@@ -43,6 +43,7 @@ class module.exports.Build
       cmd += " #{@_setVerbosity()}"
     else
       cmd = "phonegap local plugin add #{plugin} #{@_setVerbosity()}"
+    @grunt.log.writeln cmd
     proc = @exec cmd, {cwd: @config.path, maxBuffer: @config.maxBuffer * 1024}, (err, stdout, stderr) =>
       @fatal err if err
       fn(err) if fn
