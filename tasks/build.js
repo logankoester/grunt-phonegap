@@ -13,6 +13,7 @@
     function Build(grunt, config) {
       this.grunt = grunt;
       this.config = config;
+      this.buildIcons = __bind(this.buildIcons, this);
       this.buildPlatform = __bind(this.buildPlatform, this);
       this.addPlugin = __bind(this.addPlugin, this);
       this.compileConfig = __bind(this.compileConfig, this);
@@ -136,6 +137,58 @@
       return childProcess.stderr.on('data', function(err) {
         return _this.fatal(err);
       });
+    };
+
+    Build.prototype.buildIcons = function(platform, fn) {
+      if (this.config.icons) {
+        switch (platform) {
+          case 'android':
+            this.buildAndroidIcons(this.config.icons);
+            break;
+          default:
+            this.warn("You have set `phonegap.config.icons`, but " + platform + " does not support it. Skipped...");
+        }
+      } else {
+        this.log.writeln("No `phonegap.config.icons` specified. Skipped.");
+      }
+      if (fn) {
+        return fn();
+      }
+    };
+
+    Build.prototype.buildAndroidIcons = function(icons) {
+      var best, res;
+      res = this.path.join(this.config.path, 'platforms', 'android', 'res');
+      best = null;
+      if (icons['ldpi']) {
+        best = icons['ldpi'];
+        this.file.copy(icons['ldpi'], this.path.join(res, 'drawable-ldpi', 'icon.png'), {
+          encoding: null
+        });
+      }
+      if (icons['mdpi']) {
+        best = icons['mdpi'];
+        this.file.copy(icons['mdpi'], this.path.join(res, 'drawable-mdpi', 'icon.png'), {
+          encoding: null
+        });
+      }
+      if (icons['hdpi']) {
+        best = icons['hdpi'];
+        this.file.copy(icons['hdpi'], this.path.join(res, 'drawable-hdpi', 'icon.png'), {
+          encoding: null
+        });
+      }
+      if (icons['xhdpi']) {
+        best = icons['xhdpi'];
+        this.file.copy(icons['xhdpi'], this.path.join(res, 'drawable-xhdpi', 'icon.png'), {
+          encoding: null
+        });
+      }
+      if (best) {
+        return this.file.copy(best, this.path.join(res, 'drawable', 'icon.png'), {
+          encoding: null
+        });
+      }
     };
 
     Build.prototype._setVerbosity = function() {

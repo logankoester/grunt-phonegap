@@ -128,6 +128,29 @@ be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
 </widget>
 
 ```
+#### App Icons
+
+If you choose to set `phonegap.config.icons` with one or more icon sizes, these files
+will be copied into the appropriate directories to use as your app icon.
+
+Currently this feature only supports the Android platform.
+
+##### Example
+
+```js
+  phonegap: {
+    config: {
+      // ...
+      icons: {
+        ldpi: 'icon-36-ldpi.png',
+        mdpi: 'icon-48-mdpi.png',
+        hdpi: 'icon-72-hdpi.png',
+        xhdpi: 'icon-96-xhdpi.png'
+      }
+      // ...
+    }
+  }
+```
 
 ### Tasks
 

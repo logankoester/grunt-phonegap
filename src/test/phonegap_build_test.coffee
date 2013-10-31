@@ -1,5 +1,6 @@
 grunt = require 'grunt'
 xmlParser = require 'xml2json'
+path = require 'path'
 
 exports.phonegap =
   'tree should be created': (test) ->

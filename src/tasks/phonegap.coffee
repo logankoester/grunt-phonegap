@@ -24,6 +24,7 @@ module.exports = (grunt) ->
       aliasPassword: -> ''
       storePassword: -> ''
 
+
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
     # Set default options
     config = _.defaults grunt.config.get('phonegap.config'), defaults
@@ -38,7 +39,8 @@ module.exports = (grunt) ->
     ], ->
       async.eachSeries config.plugins, build.addPlugin, (err) ->
         async.eachSeries config.platforms, build.buildPlatform, (err) ->
-          done()
+          async.eachSeries config.platforms, build.buildIcons, (err) ->
+            done()
 
   grunt.registerTask 'phonegap:run', 'Run a Phonegap application', ->
     # Set default options

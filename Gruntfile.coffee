@@ -33,11 +33,18 @@ module.exports = (grunt) ->
 
         verbose: false
         releases: 'test/releases'
+
         key:
           store: 'test/fixtures/release.keystore'
           alias: 'release'
           aliasPassword: -> 'testAliasPassword'
           storePassword: -> 'testStorePassword'
+
+        icons:
+          ldpi: 'test/fixtures/www/icon-36-ldpi.png'
+          mdpi: 'test/fixtures/www/icon-48-mdpi.png'
+          hdpi: 'test/fixtures/www/icon-72-hdpi.png'
+          xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
 
     # Before generating any new files, remove any previously-created files.
     clean:
