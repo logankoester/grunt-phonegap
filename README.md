@@ -141,6 +141,9 @@ be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
 If you choose to set `phonegap.config.icons` with one or more icon sizes, these files
 will be copied into the appropriate directories to use as your app icon.
 
+You may want to use this feature in conjunction with [grunt-rasterize](https://github.com/logankoester/grunt-rasterize)
+to generate the correctly sized icon files from an SVG source.
+
 Currently this feature only supports the Android platform.
 
 ##### Example
@@ -197,7 +200,6 @@ the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key
 ## What's next
 
 * `release` task for iOS and other platforms
-* Set an app icon during build task
 
 ## Running the test suite
 
