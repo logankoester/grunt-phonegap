@@ -57,6 +57,7 @@ grunt.initConfig({
       path: 'phonegap',
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
+      maxBuffer: 200, // You may need to raise this for iOS.
       verbose: false,
       releases: 'releases',
       releaseName: function(){

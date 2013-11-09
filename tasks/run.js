@@ -18,7 +18,8 @@
         cmd += " --device " + device;
       }
       childProcess = this.exec(cmd, {
-        cwd: this.config.path
+        cwd: this.config.path,
+        maxBuffer: this.config.maxBuffer * 1024
       }, function(err, stdout, stderr) {
         if (err) {
           _this.grunt.fatal(err);

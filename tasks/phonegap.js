@@ -13,6 +13,7 @@
       cordova: '.cordova',
       plugins: [],
       platforms: [],
+      maxBuffer: 200,
       verbose: false,
       releases: 'releases',
       releaseName: function() {
