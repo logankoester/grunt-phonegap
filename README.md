@@ -220,6 +220,9 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.5.1
+  * Allows you to set the maxBuffer size for child processes
+
 #### 0.5.0
   * Adds app icon management for Android
 
