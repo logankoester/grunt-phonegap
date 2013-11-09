@@ -100,7 +100,8 @@
         _this = this;
       cmd = "phonegap local plugin add " + plugin + " " + (this._setVerbosity());
       proc = this.exec(cmd, {
-        cwd: this.config.path
+        cwd: this.config.path,
+        maxBuffer: this.config.maxBuffer * 1024
       }, function(err, stdout, stderr) {
         if (err) {
           _this.fatal(err);
@@ -122,7 +123,8 @@
         _this = this;
       cmd = "phonegap local build " + platform + " " + (this._setVerbosity());
       childProcess = this.exec(cmd, {
-        cwd: this.config.path
+        cwd: this.config.path,
+        maxBuffer: this.config.maxBuffer * 1024
       }, function(err, stdout, stderr) {
         if (err) {
           _this.fatal(err);
