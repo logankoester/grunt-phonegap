@@ -53,6 +53,7 @@
   "dependencies": {
     "directory-copy": "0.0.4",
     "async": "~0.2.9",
-    "cp": "~0.1.1"
+    "cp": "~0.1.1",
+    "xmldom": "~0.1.16"
   }
 }

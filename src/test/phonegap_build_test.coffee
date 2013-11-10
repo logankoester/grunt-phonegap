@@ -43,3 +43,12 @@ exports.phonegap =
     test.equal config.widget.id, data.id, 'id should match config.id'
     test.equal config.widget.version, data.version, 'version should match config.version'
     test.done()
+
+  'versionCode in AndroidManifest.xml should match config.versionCode': (test) ->
+    test.expect 1
+    data = grunt.config.get 'phonegap.config.versionCode'
+    versionCode = data() if grunt.util.kindOf(data) == 'function'
+    xml = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
+    manifest = xmlParser.toJson xml, object: true
+    test.equal versionCode, manifest['manifest']['android:versionCode'], 'versionCode value should match'
+    test.done()

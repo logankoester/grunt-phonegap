@@ -13,8 +13,10 @@
     function Build(grunt, config) {
       this.grunt = grunt;
       this.config = config;
+      this._fixAndroidVersionCode = __bind(this._fixAndroidVersionCode, this);
       this.buildIcons = __bind(this.buildIcons, this);
       this.buildPlatform = __bind(this.buildPlatform, this);
+      this.postProcessPlatform = __bind(this.postProcessPlatform, this);
       this.addPlugin = __bind(this.addPlugin, this);
       this.compileConfig = __bind(this.compileConfig, this);
       this.cloneRoot = __bind(this.cloneRoot, this);
@@ -118,6 +120,16 @@
       });
     };
 
+    Build.prototype.postProcessPlatform = function(platform, fn) {
+      switch (platform) {
+        case 'android':
+          this._fixAndroidVersionCode();
+      }
+      if (fn) {
+        return fn();
+      }
+    };
+
     Build.prototype.buildPlatform = function(platform, fn) {
       var childProcess, cmd,
         _this = this;
@@ -199,6 +211,20 @@
       } else {
         return '';
       }
+    };
+
+    Build.prototype._fixAndroidVersionCode = function() {
+      var data, doc, dom, manifest, manifestPath, versionCode;
+      dom = require('xmldom').DOMParser;
+      data = this.grunt.config.get('phonegap.config.versionCode');
+      if (this.grunt.util.kindOf(data) === 'function') {
+        versionCode = data();
+      }
+      manifestPath = this.path.join(this.config.path, 'platforms', 'android', 'AndroidManifest.xml');
+      manifest = this.grunt.file.read(manifestPath);
+      doc = new dom().parseFromString(manifest, 'text/xml');
+      doc.getElementsByTagName('manifest')[0].setAttribute('android:versionCode', versionCode);
+      return this.grunt.file.write(manifestPath, doc);
     };
 
     return Build;

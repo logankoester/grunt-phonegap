@@ -46,6 +46,8 @@ module.exports = (grunt) ->
           hdpi: 'test/fixtures/www/icon-72-hdpi.png'
           xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
 
+        versionCode: -> 2
+
     # Before generating any new files, remove any previously-created files.
     clean:
       tasks: ['tasks']
