@@ -239,6 +239,9 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.6.0
+  * Adds configurable `versionCode` for Android applications
+
 #### 0.5.1
   * Allows you to set the maxBuffer size for child processes
 
