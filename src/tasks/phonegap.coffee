@@ -24,6 +24,7 @@ module.exports = (grunt) ->
       alias: 'release'
       aliasPassword: -> ''
       storePassword: -> ''
+    versionCode: -> 1
 
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
