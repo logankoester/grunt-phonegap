@@ -57,6 +57,13 @@ class module.exports.Build
     proc.stdout.on 'data', (out) => @log.write(out)
     proc.stderr.on 'data', (err) => @fatal(err)
 
+  postProcessPlatform: (platform, fn) =>
+    switch platform
+      when 'android'
+        @_fixAndroidVersionCode()
+    fn() if fn
+
+
   buildPlatform: (platform, fn) =>
     cmd = "phonegap local build #{platform} #{@_setVerbosity()}"
     childProcess = @exec cmd, {
@@ -105,3 +112,14 @@ class module.exports.Build
 
   _setVerbosity: ->
     if @config.verbose then '-V' else ''
+
+  _fixAndroidVersionCode: =>
+    dom = require('xmldom').DOMParser
+    data = @grunt.config.get 'phonegap.config.versionCode'
+    versionCode = data() if @grunt.util.kindOf(data) == 'function'
+
+    manifestPath = @path.join @config.path, 'platforms', 'android', 'AndroidManifest.xml'
+    manifest = @grunt.file.read manifestPath
+    doc = new dom().parseFromString manifest, 'text/xml'
+    doc.getElementsByTagName('manifest')[0].setAttribute('android:versionCode', versionCode)
+    @grunt.file.write manifestPath, doc
