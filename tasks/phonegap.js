@@ -30,6 +30,9 @@
         storePassword: function() {
           return '';
         }
+      },
+      versionCode: function() {
+        return 1;
       }
     };
     grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function() {
