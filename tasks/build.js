@@ -216,10 +216,8 @@
     Build.prototype._fixAndroidVersionCode = function() {
       var data, doc, dom, manifest, manifestPath, versionCode;
       dom = require('xmldom').DOMParser;
-      data = this.grunt.config.get('phonegap.config.versionCode');
-      if (this.grunt.util.kindOf(data) === 'function') {
-        versionCode = data();
-      }
+      data = this.config.versionCode;
+      versionCode = this.grunt.util.kindOf(data) === 'function' ? data() : data;
       manifestPath = this.path.join(this.config.path, 'platforms', 'android', 'AndroidManifest.xml');
       manifest = this.grunt.file.read(manifestPath);
       doc = new dom().parseFromString(manifest, 'text/xml');

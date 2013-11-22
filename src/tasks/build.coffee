@@ -115,8 +115,8 @@ class module.exports.Build
 
   _fixAndroidVersionCode: =>
     dom = require('xmldom').DOMParser
-    data = @grunt.config.get 'phonegap.config.versionCode'
-    versionCode = data() if @grunt.util.kindOf(data) == 'function'
+    data = @config.versionCode
+    versionCode = if @grunt.util.kindOf(data) == 'function' then data() else data
 
     manifestPath = @path.join @config.path, 'platforms', 'android', 'AndroidManifest.xml'
     manifest = @grunt.file.read manifestPath
