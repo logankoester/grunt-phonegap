@@ -1,7 +1,7 @@
 {
   "name": "grunt-phonegap",
   "description": "Local build tasks for Phonegap applications",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "homepage": "https://github.com/logankoester/grunt-phonegap",
   "author": {
     "name": "Logan Koester",
