@@ -45,7 +45,7 @@
       var keyStorePath, properties;
       keyStorePath = this.path.relative(this._platformPath('android'), this.config.key.store);
       properties = [];
-      properties.push("key.store=" + keyStorePath);
+      properties.push("key.store=" + (this.path.sep === '\\' ? keyStorePath.replace(/\\/g, '\\\\') : keyStorePath)); // Path must be escaped in the file as well
       properties.push("key.alias=" + this.config.key.alias);
       if (includePasswords) {
         properties.push("key.store.password=" + (this.config.key.storePassword()));
