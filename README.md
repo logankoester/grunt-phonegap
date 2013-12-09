@@ -3,6 +3,8 @@
 [![Dependency Status](https://david-dm.org/logankoester/grunt-phonegap.png)](https://david-dm.org/logankoester/grunt-phonegap)
 [![devDependency Status](https://david-dm.org/logankoester/grunt-phonegap/dev-status.png)](https://david-dm.org/logankoester/grunt-phonegap#info=devDependencies)
 
+[![NPM](https://nodei.co/npm/grunt-phonegap.png?downloads=true)](https://nodei.co/npm/grunt-phonegap/)
+
 > Local build tasks for [Phonegap](http://phonegap.com/) applications
 
 `grunt-phonegap` integrates Phonegap development with [Grunt](http://gruntjs.com/)-based workflows
