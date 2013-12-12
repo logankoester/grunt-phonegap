@@ -3,6 +3,7 @@
 [![Build Status](http://ci.ldk.io/logankoester/grunt-phonegap/badge)](http://ci.ldk.io/logankoester/grunt-phonegap/)
 [![Dependency Status](https://david-dm.org/logankoester/grunt-phonegap.png)](https://david-dm.org/logankoester/grunt-phonegap)
 [![devDependency Status](https://david-dm.org/logankoester/grunt-phonegap/dev-status.png)](https://david-dm.org/logankoester/grunt-phonegap#info=devDependencies)
+[![Gittip](http://img.shields.io/gittip/logankoester.png)](https://www.gittip.com/logankoester/)
 
 [![NPM](https://nodei.co/npm/grunt-phonegap.png?downloads=true)](https://nodei.co/npm/grunt-phonegap/)
 
