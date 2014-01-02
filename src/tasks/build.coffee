@@ -81,6 +81,8 @@ class module.exports.Build
       switch platform
         when 'android'
           @buildAndroidIcons(@config.icons)
+        when 'wp8'
+          @buildWindowsPhone8Icons(@config.icons)
         else
           @warn "You have set `phonegap.config.icons`, but #{platform} does not support it. Skipped..."
     else
@@ -91,24 +93,33 @@ class module.exports.Build
     res = @path.join @config.path, 'platforms', 'android', 'res'
     best = null
 
-    if icons['ldpi']
-      best = icons['ldpi']
-      @file.copy icons['ldpi'], @path.join(res, 'drawable-ldpi', 'icon.png'), encoding: null
+    if icons?.android?.ldpi
+      best = icons.android.ldpi
+      @file.copy icons.android.ldpi, @path.join(res, 'drawable-ldpi', 'icon.png'), encoding: null
 
-    if icons['mdpi']
-      best = icons['mdpi']
-      @file.copy icons['mdpi'], @path.join(res, 'drawable-mdpi', 'icon.png'), encoding: null
+    if icons?.android?.mdpi
+      best = icons.android.mdpi
+      @file.copy icons.android.mdpi, @path.join(res, 'drawable-mdpi', 'icon.png'), encoding: null
 
-    if icons['hdpi']
-      best = icons['hdpi']
-      @file.copy icons['hdpi'], @path.join(res, 'drawable-hdpi', 'icon.png'), encoding: null
+    if icons?.android?.hdpi
+      best = icons.android.hdpi
+      @file.copy icons.android.hdpi, @path.join(res, 'drawable-hdpi', 'icon.png'), encoding: null
 
-    if icons['xhdpi']
-      best = icons['xhdpi']
-      @file.copy icons['xhdpi'], @path.join(res, 'drawable-xhdpi', 'icon.png'), encoding: null
+    if icons?.android?.xhdpi
+      best = icons.android.xhdpi
+      @file.copy icons.android.xhdpi, @path.join(res, 'drawable-xhdpi', 'icon.png'), encoding: null
 
     if best
       @file.copy best, @path.join(res, 'drawable', 'icon.png'), encoding: null
+
+  buildWindowsPhone8Icons: (icons) ->
+    res = @path.join @config.path, 'platforms', 'wp8'
+
+    if icons?.wp8?.app
+      @file.copy icons.wp8.app, @path.join(res, 'ApplicationIcon.png'), encoding: null
+
+    if icons?.wp8?.tile
+      @file.copy icons.wp8.tile, @path.join(res, 'Background.png'), encoding: null
 
   _setVerbosity: ->
     if @config.verbose then '-V' else ''
