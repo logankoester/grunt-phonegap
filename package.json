@@ -51,7 +51,7 @@
     "cordova"
   ],
   "dependencies": {
-    "directory-copy": "0.0.4",
+    "directory-copy": ">= 0.1.0",
     "async": "~0.2.9",
     "cp": "~0.1.1",
     "xmldom": "~0.1.16"
