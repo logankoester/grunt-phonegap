@@ -15,7 +15,11 @@
         _this = this;
       cmd = "phonegap local run " + platform + " " + (this._setVerbosity());
       if (device) {
-        cmd += " --device " + device;
+        if (device === 'emulator') {
+          cmd += ' --emulator';
+        } else {
+          cmd += " --device " + device;
+        }
       }
       childProcess = this.exec(cmd, {
         cwd: this.config.path,

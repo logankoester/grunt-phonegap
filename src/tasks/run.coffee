@@ -5,7 +5,13 @@ class module.exports.Run
 
   run: (platform, device, fn) =>
     cmd = "phonegap local run #{platform} #{@_setVerbosity()}"
-    cmd += " --device #{device}" if device
+
+    if device
+      if device == 'emulator'
+        cmd += ' --emulator'
+      else
+        cmd += " --device #{device}"
+
     childProcess = @exec cmd, {
       cwd: @config.path,
       maxBuffer: @config.maxBuffer * 1024
