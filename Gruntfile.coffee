@@ -7,7 +7,7 @@
 #
 
 module.exports = (grunt) ->
-  #
+
   # Project configuration.
   grunt.initConfig
     # Configuration to be run (and then tested).
@@ -46,6 +46,9 @@ module.exports = (grunt) ->
             mdpi: 'test/fixtures/www/icon-48-mdpi.png'
             hdpi: 'test/fixtures/www/icon-72-hdpi.png'
             xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
+          wp8:
+            app: 'test/fixtures/www/icon-62-tile.png'
+            tile: 'test/fixtures/www/icon-173-tile.png'
 
         versionCode: -> 2
 
@@ -54,10 +57,9 @@ module.exports = (grunt) ->
       tasks: ['tasks']
       test: ['test']
 
-
     # Unit tests.
     nodeunit:
-      tests: ['test/*_test.js']
+      tests: ['test/**/*_test.js']
 
     # Copy files
     copy:

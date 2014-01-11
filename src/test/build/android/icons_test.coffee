@@ -1,3 +1,7 @@
+# If you choose to set `phonegap.config.icons.android` with one or more icon
+# sizes, these files will be copied into the appropriate directories to use as
+# your app icon.
+
 grunt = require 'grunt'
 path = require 'path'
 hash_file = require 'hash_file'

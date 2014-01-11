@@ -13,7 +13,7 @@
 by wrapping the Phonegap 3.0 command line interface.
 
 Rather than polluting the top-level of your project, `grunt-phonegap` copies your files into a
-subdirectory containing the Phonegap project, which gets regenerated every build.
+subdirectory containing the Phonegap project, which gets regenerated every time the task `phonegap:build` is executed.
 
 ## Requirements
 
@@ -88,7 +88,7 @@ grunt.initConfig({
       },
 
       // Set an app icon at various sizes (optional)
-      icon: {
+      icons: {
       	android: {
         	ldpi: 'icon-36-ldpi.png',
             mdpi: 'icon-48-mdpi.png',
