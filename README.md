@@ -259,9 +259,9 @@ Before running the included test suite, you must first run `git submodule update
 
 #### 0.7.0
 
-    The icon configuration API has changed to permit multiple platforms. If you
-    used this feature before `v0.7.0`, please update your **Gruntfile** as per
-    the updated example in `README.md`.
+The icon configuration API has changed to permit multiple platforms. If you
+used this feature before `v0.7.0`, please update your **Gruntfile** as per
+the updated example in `README.md`.
 
   * Adds app icon management for Windows Phone 8 (thanks @kombucha)
   * FIX: Cordova hook file permissions are now preserved (#13)
