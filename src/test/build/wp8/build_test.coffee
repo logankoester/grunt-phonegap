@@ -5,3 +5,8 @@
 #
 # @see http://docs.phonegap.com/en/edge/guide_platforms_wp8_index.md.html#Windows%20Phone%208%20Platform%20Guide
 # @see http://www.microsoft.com/en-us/download/details.aspx?id=35471
+
+platform = require 'platform'
+
+unless platform.os.family == 'Windows'
+  console.log 'Skipping "wp8" build tests (not running on Windows)'
