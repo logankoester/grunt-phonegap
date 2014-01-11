@@ -249,6 +249,9 @@ the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key
     git submodule update
     grunt
 
+Note that not all tests can be run on all platforms. For example, tests depending on the Windows Phone SDK
+will be skipped if your OS is detected to be non-Windows.
+
 ## Contributing
 
 Fork the repo on Github and open a pull request. Note that the files in `tasks/` and `test/` are the output of
