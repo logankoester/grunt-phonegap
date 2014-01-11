@@ -1,10 +1,6 @@
 module.exports = (grunt) ->
-  Build = require('./build').Build
-  Run = require('./run').Run
-
-  _ = grunt.util._
-  async = grunt.util.async
-  async.eachSeries = require('async').eachSeries
+  _ = require 'lodash'
+  async = require 'async'
 
   defaults =
     root: 'www'
@@ -28,6 +24,8 @@ module.exports = (grunt) ->
 
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
+    Build = require('./build').Build
+
     # Set default options
     config = _.defaults grunt.config.get('phonegap.config'), defaults
 
@@ -46,6 +44,8 @@ module.exports = (grunt) ->
               done()
 
   grunt.registerTask 'phonegap:run', 'Run a Phonegap application', ->
+    Run = require('./run').Run
+
     # Set default options
     config = _.defaults grunt.config.get('phonegap.config'), defaults
 
@@ -56,10 +56,12 @@ module.exports = (grunt) ->
     build = new Run(grunt, config).run platform, device, -> done()
 
   grunt.registerTask 'phonegap:release', 'Create a distributable release', ->
+    release = require('./release').release
+
     # Set default options
     config = _.defaults grunt.config.get('phonegap.config'), defaults
 
     platform = @args[0] || _.first(config.platforms)
 
     done = @async()
-    require('./release').release grunt, config, platform, -> done()
+    release grunt, config, platform, -> done()

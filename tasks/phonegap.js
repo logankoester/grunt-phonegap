@@ -1,11 +1,8 @@
 (function() {
   module.exports = function(grunt) {
-    var Build, Run, async, defaults, _;
-    Build = require('./build').Build;
-    Run = require('./run').Run;
-    _ = grunt.util._;
-    async = grunt.util.async;
-    async.eachSeries = require('async').eachSeries;
+    var async, defaults, _;
+    _ = require('lodash');
+    async = require('async');
     defaults = {
       root: 'www',
       config: 'www/config.xml',
@@ -36,7 +33,8 @@
       }
     };
     grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function() {
-      var build, config, done;
+      var Build, build, config, done;
+      Build = require('./build').Build;
       config = _.defaults(grunt.config.get('phonegap.config'), defaults);
       done = this.async();
       build = new Build(grunt, config).clean().buildTree();
@@ -53,7 +51,8 @@
       });
     });
     grunt.registerTask('phonegap:run', 'Run a Phonegap application', function() {
-      var build, config, device, done, platform;
+      var Run, build, config, device, done, platform;
+      Run = require('./run').Run;
       config = _.defaults(grunt.config.get('phonegap.config'), defaults);
       platform = this.args[0] || _.first(config.platforms);
       device = this.args[1] || '';
@@ -63,11 +62,12 @@
       });
     });
     return grunt.registerTask('phonegap:release', 'Create a distributable release', function() {
-      var config, done, platform;
+      var config, done, platform, release;
+      release = require('./release').release;
       config = _.defaults(grunt.config.get('phonegap.config'), defaults);
       platform = this.args[0] || _.first(config.platforms);
       done = this.async();
-      return require('./release').release(grunt, config, platform, function() {
+      return release(grunt, config, platform, function() {
         return done();
       });
     });
