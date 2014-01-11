@@ -89,10 +89,16 @@ grunt.initConfig({
 
       // Set an app icon at various sizes (optional)
       icon: {
-        ldpi: 'icon-36-ldpi.png',
-        mdpi: 'icon-48-mdpi.png',
-        hdpi: 'icon-72-hdpi.png',
-        xhdpi: 'icon-96-xhdpi.png'
+      	android: {
+        	ldpi: 'icon-36-ldpi.png',
+            mdpi: 'icon-48-mdpi.png',
+            hdpi: 'icon-72-hdpi.png',
+            xhdpi: 'icon-96-xhdpi.png'
+        },
+        wp8: {
+        	app: 'icon-62-tile.png',
+            tile: 'icon-173-tile.png'
+        }
       },
 
       // Android-only integer version to increase with each release.
@@ -156,7 +162,7 @@ will be copied into the appropriate directories to use as your app icon.
 You may want to use this feature in conjunction with [grunt-rasterize](https://github.com/logankoester/grunt-rasterize)
 to generate the correctly sized icon files from an SVG source.
 
-Currently this feature only supports the Android platform.
+Currently this feature only supports Android and Windows Phone 8.
 
 ##### Example
 
@@ -165,10 +171,16 @@ Currently this feature only supports the Android platform.
     config: {
       // ...
       icons: {
-        ldpi: 'icon-36-ldpi.png',
-        mdpi: 'icon-48-mdpi.png',
-        hdpi: 'icon-72-hdpi.png',
-        xhdpi: 'icon-96-xhdpi.png'
+      	android: {
+            ldpi: 'icon-36-ldpi.png',
+            mdpi: 'icon-48-mdpi.png',
+            hdpi: 'icon-72-hdpi.png',
+            xhdpi: 'icon-96-xhdpi.png'
+        },
+        wp8: {
+        	app: 'icon-62-tile.png',
+            tile: 'icon-173-tile.png'
+        }
       }
       // ...
     }
