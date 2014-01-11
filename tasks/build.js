@@ -178,7 +178,7 @@
       res = this.path.join(this.config.path, 'platforms', 'android', 'res');
       best = null;
       if ((icons != null ? icons.ldpi : void 0) || (icons != null ? icons.mdpi : void 0) || (icons != null ? icons.hdpi : void 0) || (icons != null ? icons.xhdpi : void 0)) {
-        this.warn("`phonegap.config.icons` has moved to `phonegap.config.icons.<platform>`.\nCheck the example in the grunt-phonegap README and update your Gruntfile soon.\n");
+        this.warn("`phonegap.config.icons` has moved to `phonegap.config.icons.<platform>`.\nCheck the example in the grunt-phonegap README and update your Gruntfile accordingly.\n");
         icons.android = icons;
       }
       if (icons != null ? (_ref = icons.android) != null ? _ref.ldpi : void 0 : void 0) {
