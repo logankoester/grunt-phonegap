@@ -236,10 +236,6 @@ a keystore file at `phonegap.config.key.store` like this:
 The keytool command will interactively ask you to set store and alias passwords, which must match
 the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key.storePassword` respectively.
 
-## What's next
-
-* `release` task for iOS and other platforms
-
 ## Running the test suite
 
     git clone https://github.com/logankoester/grunt-phonegap.git
