@@ -266,6 +266,8 @@ the updated example in `README.md`.
   * Adds app icon management for Windows Phone 8 (thanks @kombucha)
   * FIX: Cordova hook file permissions are now preserved (#13)
   * FIX: Release keystore file path can lead to unexpected escaped characters (Windows) (#15)
+  * FIX: No longer inadvertantly attempt a device deploy instead of an emulator deploy when the
+    emulator option is passed to `phonegap:run` (#17)
   * Reorganizes tests into an improved file structure based on platforms and features
   * Removes indirect references to Grunt's deprecated external (lodash & async) libraries
   * Updates devDependencies `grunt-contrib-coffee`, `grunt-contrib-copy` and `grunt-bump` to their latest versions.
