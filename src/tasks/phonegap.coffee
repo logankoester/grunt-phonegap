@@ -22,7 +22,6 @@ module.exports = (grunt) ->
       storePassword: -> ''
     versionCode: -> 1
 
-
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
     Build = require('./build').Build
 

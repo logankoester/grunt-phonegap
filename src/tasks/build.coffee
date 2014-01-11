@@ -93,6 +93,10 @@ class module.exports.Build
     res = @path.join @config.path, 'platforms', 'android', 'res'
     best = null
 
+    if icons?.ldpi || icons?.mdpi || icons?.hdpi || icons?.xhdpi
+      @warn "`phonegap.config.icons` has moved to `phonegap.config.icons.<platform>`.\nCheck the example in the grunt-phonegap README and update your Gruntfile accordingly.\n"
+      icons.android = icons
+
     if icons?.android?.ldpi
       best = icons.android.ldpi
       @file.copy icons.android.ldpi, @path.join(res, 'drawable-ldpi', 'icon.png'), encoding: null
