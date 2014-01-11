@@ -41,10 +41,11 @@ module.exports = (grunt) ->
           storePassword: -> 'testStorePassword'
 
         icons:
-          ldpi: 'test/fixtures/www/icon-36-ldpi.png'
-          mdpi: 'test/fixtures/www/icon-48-mdpi.png'
-          hdpi: 'test/fixtures/www/icon-72-hdpi.png'
-          xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
+          android:
+            ldpi: 'test/fixtures/www/icon-36-ldpi.png'
+            mdpi: 'test/fixtures/www/icon-48-mdpi.png'
+            hdpi: 'test/fixtures/www/icon-72-hdpi.png'
+            xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
 
         versionCode: -> 2
 

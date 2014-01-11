@@ -159,6 +159,9 @@
           case 'android':
             this.buildAndroidIcons(this.config.icons);
             break;
+          case 'wp8':
+            this.buildWindowsPhone8Icons(this.config.icons);
+            break;
           default:
             this.warn("You have set `phonegap.config.icons`, but " + platform + " does not support it. Skipped...");
         }
@@ -171,35 +174,50 @@
     };
 
     Build.prototype.buildAndroidIcons = function(icons) {
-      var best, res;
+      var best, res, _ref, _ref1, _ref2, _ref3;
       res = this.path.join(this.config.path, 'platforms', 'android', 'res');
       best = null;
-      if (icons['ldpi']) {
-        best = icons['ldpi'];
-        this.file.copy(icons['ldpi'], this.path.join(res, 'drawable-ldpi', 'icon.png'), {
+      if (icons != null ? (_ref = icons.android) != null ? _ref.ldpi : void 0 : void 0) {
+        best = icons.android.ldpi;
+        this.file.copy(icons.android.ldpi, this.path.join(res, 'drawable-ldpi', 'icon.png'), {
           encoding: null
         });
       }
-      if (icons['mdpi']) {
-        best = icons['mdpi'];
-        this.file.copy(icons['mdpi'], this.path.join(res, 'drawable-mdpi', 'icon.png'), {
+      if (icons != null ? (_ref1 = icons.android) != null ? _ref1.mdpi : void 0 : void 0) {
+        best = icons.android.mdpi;
+        this.file.copy(icons.android.mdpi, this.path.join(res, 'drawable-mdpi', 'icon.png'), {
           encoding: null
         });
       }
-      if (icons['hdpi']) {
-        best = icons['hdpi'];
-        this.file.copy(icons['hdpi'], this.path.join(res, 'drawable-hdpi', 'icon.png'), {
+      if (icons != null ? (_ref2 = icons.android) != null ? _ref2.hdpi : void 0 : void 0) {
+        best = icons.android.hdpi;
+        this.file.copy(icons.android.hdpi, this.path.join(res, 'drawable-hdpi', 'icon.png'), {
           encoding: null
         });
       }
-      if (icons['xhdpi']) {
-        best = icons['xhdpi'];
-        this.file.copy(icons['xhdpi'], this.path.join(res, 'drawable-xhdpi', 'icon.png'), {
+      if (icons != null ? (_ref3 = icons.android) != null ? _ref3.xhdpi : void 0 : void 0) {
+        best = icons.android.xhdpi;
+        this.file.copy(icons.android.xhdpi, this.path.join(res, 'drawable-xhdpi', 'icon.png'), {
           encoding: null
         });
       }
       if (best) {
         return this.file.copy(best, this.path.join(res, 'drawable', 'icon.png'), {
+          encoding: null
+        });
+      }
+    };
+
+    Build.prototype.buildWindowsPhone8Icons = function(icons) {
+      var res, _ref, _ref1;
+      res = this.path.join(this.config.path, 'platforms', 'wp8');
+      if (icons != null ? (_ref = icons.wp8) != null ? _ref.app : void 0 : void 0) {
+        this.file.copy(icons.wp8.app, this.path.join(res, 'ApplicationIcon.png'), {
+          encoding: null
+        });
+      }
+      if (icons != null ? (_ref1 = icons.wp8) != null ? _ref1.tile : void 0 : void 0) {
+        return this.file.copy(icons.wp8.tile, this.path.join(res, 'Background.png'), {
           encoding: null
         });
       }

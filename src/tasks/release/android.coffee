@@ -27,6 +27,7 @@ module.exports = exports = class ReleaseAndroid
     keyStorePath = @path.relative @_platformPath('android'), @config.key.store
     properties = []
     properties.push "key.store=#{keyStorePath}"
+    properties.push "key.store=#{if @path.sep == '\\' then keyStorePath.replace /\\/g, '\\\\' else keyStorePath}" # Path must be escaped in the file as well
     properties.push "key.alias=#{@config.key.alias}"
 
     if includePasswords
