@@ -43,7 +43,9 @@
           return async.eachSeries(config.platforms, build.buildPlatform, function(err) {
             return async.eachSeries(config.platforms, build.postProcessPlatform, function() {
               return async.eachSeries(config.platforms, build.buildIcons, function(err) {
-                return done();
+                return async.eachSeries(config.platforms, build.buildScreens, function(err) {
+                  return done();
+                });
               });
             });
           });

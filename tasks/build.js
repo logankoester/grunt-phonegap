@@ -14,6 +14,7 @@
       this.grunt = grunt;
       this.config = config;
       this._fixAndroidVersionCode = __bind(this._fixAndroidVersionCode, this);
+      this.buildScreens = __bind(this.buildScreens, this);
       this.buildIcons = __bind(this.buildIcons, this);
       this.buildPlatform = __bind(this.buildPlatform, this);
       this.postProcessPlatform = __bind(this.postProcessPlatform, this);
@@ -222,6 +223,88 @@
       }
       if (icons != null ? (_ref1 = icons.wp8) != null ? _ref1.tile : void 0 : void 0) {
         return this.file.copy(icons.wp8.tile, this.path.join(res, 'Background.png'), {
+          encoding: null
+        });
+      }
+    };
+
+    Build.prototype.buildScreens = function(platform, fn) {
+      if (this.config.screens) {
+        switch (platform) {
+          case 'android':
+            this.buildAndroidScreens(this.config.screens);
+            break;
+          default:
+            this.warn("You have set `phonegap.config.screens`, but " + platform + " does not support it. Skipped...");
+        }
+      } else {
+        this.log.writeln("No `phonegap.config.screens` specified. Skipped.");
+      }
+      if (fn) {
+        return fn();
+      }
+    };
+
+    Build.prototype.buildAndroidScreens = function(screens) {
+      var best, bestLand, res, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+      res = this.path.join(this.config.path, 'platforms', 'android', 'res');
+      best = null;
+      bestLand = null;
+      if (screens != null ? (_ref = screens.android) != null ? _ref.ldpi : void 0 : void 0) {
+        best = screens.android.ldpi;
+        this.file.copy(screens.android.ldpi, this.path.join(res, 'drawable-ldpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref1 = screens.android) != null ? _ref1.ldpiLand : void 0 : void 0) {
+        bestLand = screens.android.ldpiLand;
+        this.file.copy(screens.android.ldpiLand, this.path.join(res, 'drawable-land-ldpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref2 = screens.android) != null ? _ref2.mdpi : void 0 : void 0) {
+        best = screens.android.mdpi;
+        this.file.copy(screens.android.mdpi, this.path.join(res, 'drawable-mdpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref3 = screens.android) != null ? _ref3.mdpiLand : void 0 : void 0) {
+        bestLand = screens.android.mdpiLand;
+        this.file.copy(screens.android.mdpiLand, this.path.join(res, 'drawable-land-mdpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref4 = screens.android) != null ? _ref4.hdpi : void 0 : void 0) {
+        best = screens.android.hdpi;
+        this.file.copy(screens.android.hdpi, this.path.join(res, 'drawable-hdpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref5 = screens.android) != null ? _ref5.hdpiLand : void 0 : void 0) {
+        bestLand = screens.android.hdpiLand;
+        this.file.copy(screens.android.hdpiLand, this.path.join(res, 'drawable-land-hdpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref6 = screens.android) != null ? _ref6.xhdpi : void 0 : void 0) {
+        best = screens.android.xhdpi;
+        this.file.copy(screens.android.xhdpi, this.path.join(res, 'drawable-xhdpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (screens != null ? (_ref7 = screens.android) != null ? _ref7.xhdpiLand : void 0 : void 0) {
+        bestLand = screens.android.xhdpiLand;
+        this.file.copy(screens.android.xhdpiLand, this.path.join(res, 'drawable-land-xhdpi', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (best) {
+        this.file.copy(best, this.path.join(res, 'drawable', 'splash.png'), {
+          encoding: null
+        });
+      }
+      if (bestLand) {
+        return this.file.copy(bestLand, this.path.join(res, 'drawable-land', 'splash.png'), {
           encoding: null
         });
       }
