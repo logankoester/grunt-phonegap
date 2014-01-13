@@ -89,15 +89,34 @@ grunt.initConfig({
 
       // Set an app icon at various sizes (optional)
       icons: {
-      	android: {
-        	ldpi: 'icon-36-ldpi.png',
-            mdpi: 'icon-48-mdpi.png',
-            hdpi: 'icon-72-hdpi.png',
-            xhdpi: 'icon-96-xhdpi.png'
+        android: {
+          ldpi: 'icon-36-ldpi.png',
+          mdpi: 'icon-48-mdpi.png',
+          hdpi: 'icon-72-hdpi.png',
+          xhdpi: 'icon-96-xhdpi.png'
         },
         wp8: {
-        	app: 'icon-62-tile.png',
-            tile: 'icon-173-tile.png'
+          app: 'icon-62-tile.png',
+          tile: 'icon-173-tile.png'
+        }
+      },
+
+      // Set a splash screen at various sizes (optional)
+      // Only works for Android now
+      screens: {
+        android: {
+          ldpi: 'screen-ldpi-portrait.png'
+          // landscape version
+          ldpiLand: 'screen-ldpi-landscape.png'
+          mdpi: 'screen-mdpi-portrait.png'
+          // landscape version
+          mdpiLand: 'screen-mdpi-landscape.png'
+          hdpi: 'screen-hdpi-portrait.png'
+          // landscape version
+          hdpiLand: 'screen-hdpi-landscape.png'
+          xhdpi: 'screen-xhdpi-portrait.png'
+          // landscape version
+          xhdpiLand: 'www/screen-xhdpi-landscape.png'
         }
       },
 

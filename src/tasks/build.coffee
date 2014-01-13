@@ -125,6 +125,60 @@ class module.exports.Build
     if icons?.wp8?.tile
       @file.copy icons.wp8.tile, @path.join(res, 'Background.png'), encoding: null
 
+  buildScreens: (platform, fn) =>
+    if @config.screens
+      switch platform
+        when 'android'
+          @buildAndroidScreens(@config.screens)
+        else
+          @warn "You have set `phonegap.config.screens`, but #{platform} does not support it. Skipped..."
+    else
+      @log.writeln "No `phonegap.config.screens` specified. Skipped."
+    fn() if fn
+
+  buildAndroidScreens: (screens) ->
+    res = @path.join @config.path, 'platforms', 'android', 'res'
+    best = null
+    bestLand = null
+
+    if screens?.android?.ldpi
+      best = screens.android.ldpi
+      @file.copy screens.android.ldpi, @path.join(res, 'drawable-ldpi', 'splash.png'), encoding: null
+
+    if screens?.android?.ldpiLand
+      bestLand = screens.android.ldpiLand
+      @file.copy screens.android.ldpiLand, @path.join(res, 'drawable-land-ldpi', 'splash.png'), encoding: null
+
+    if screens?.android?.mdpi
+      best = screens.android.mdpi
+      @file.copy screens.android.mdpi, @path.join(res, 'drawable-mdpi', 'splash.png'), encoding: null
+
+    if screens?.android?.mdpiLand
+      bestLand = screens.android.mdpiLand
+      @file.copy screens.android.mdpiLand, @path.join(res, 'drawable-land-mdpi', 'splash.png'), encoding: null
+
+    if screens?.android?.hdpi
+      best = screens.android.hdpi
+      @file.copy screens.android.hdpi, @path.join(res, 'drawable-hdpi', 'splash.png'), encoding: null
+
+    if screens?.android?.hdpiLand
+      bestLand = screens.android.hdpiLand
+      @file.copy screens.android.hdpiLand, @path.join(res, 'drawable-land-hdpi', 'splash.png'), encoding: null
+
+    if screens?.android?.xhdpi
+      best = screens.android.xhdpi
+      @file.copy screens.android.xhdpi, @path.join(res, 'drawable-xhdpi', 'splash.png'), encoding: null
+
+    if screens?.android?.xhdpiLand
+      bestLand = screens.android.xhdpiLand
+      @file.copy screens.android.xhdpiLand, @path.join(res, 'drawable-land-xhdpi', 'splash.png'), encoding: null
+
+    if best
+      @file.copy best, @path.join(res, 'drawable', 'splash.png'), encoding: null
+
+    if bestLand
+      @file.copy bestLand, @path.join(res, 'drawable-land', 'splash.png'), encoding: null
+
   _setVerbosity: ->
     if @config.verbose then '-V' else ''
 

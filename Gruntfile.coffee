@@ -46,6 +46,16 @@ module.exports = (grunt) ->
             mdpi: 'test/fixtures/www/icon-48-mdpi.png'
             hdpi: 'test/fixtures/www/icon-72-hdpi.png'
             xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
+        screens:
+          android:
+            ldpi: 'test/fixtures/www/screen-ldpi-portrait.png'
+            ldpiLand: 'test/fixtures/www/screen-ldpi-landscape.png'
+            mdpi: 'test/fixtures/www/screen-mdpi-portrait.png'
+            mdpiLand: 'test/fixtures/www/screen-mdpi-landscape.png'
+            hdpi: 'test/fixtures/www/screen-hdpi-portrait.png'
+            hdpiLand: 'test/fixtures/www/screen-hdpi-landscape.png'
+            xhdpi: 'test/fixtures/www/screen-xhdpi-portrait.png'
+            xhdpiLand: 'test/fixtures/www/screen-xhdpi-landscape.png'
           wp8:
             app: 'test/fixtures/www/icon-62-tile.png'
             tile: 'test/fixtures/www/icon-173-tile.png'
