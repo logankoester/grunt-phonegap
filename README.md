@@ -276,6 +276,10 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.8.0
+
+  * Adds configuration for Android splash screens. (thanks @arthurgeek)
+
 #### 0.7.0
 
 The icon configuration API has changed to permit multiple platforms. If you
