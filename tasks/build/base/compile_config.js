@@ -16,7 +16,7 @@
         configXml = helpers.config('config');
         dest = path.join(phonegapPath, 'www', 'config.xml');
         if (grunt.util.kindOf(configXml) === 'string') {
-          grunt.logc.writeln("Copying static " + configXml);
+          grunt.log.writeln("Copying static " + configXml);
           return cp(configXml, dest, function(err) {
             if (fn) {
               return fn(err);

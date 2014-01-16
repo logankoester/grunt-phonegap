@@ -15,9 +15,10 @@ module.exports = (grunt) ->
       config:
         root: 'test/fixtures/www'
         cordova: 'test/fixtures/.cordova'
+        name: 'TestFixtureApp'
         path: 'test/phonegap'
         plugins: ['../fixtures/org.apache.cordova.core.device']
-        platforms: ['android']
+        platforms: ['android', 'ios']
 
         config:
           template: 'test/fixtures/www/custom_config.xml'
@@ -47,6 +48,19 @@ module.exports = (grunt) ->
             mdpi: 'test/fixtures/www/icon-48-mdpi.png'
             hdpi: 'test/fixtures/www/icon-72-hdpi.png'
             xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
+          ios:
+            icon29: 'test/fixtures/www/icon29.png'
+            icon29x2: 'test/fixtures/www/icon29x2.png'
+            icon40: 'test/fixtures/www/icon40.png'
+            icon40x2: 'test/fixtures/www/icon40x2.png'
+            icon57: 'test/fixtures/www/icon57.png'
+            icon57x2: 'test/fixtures/www/icon57x2.png'
+            icon60x2: 'test/fixtures/www/icon60x2.png'
+            icon72: 'test/fixtures/www/icon72.png'
+            icon72x2: 'test/fixtures/www/icon72x2.png'
+            icon76: 'test/fixtures/www/icon76.png'
+            icon76x2: 'test/fixtures/www/icon76x2.png'
+
         screens:
           android:
             ldpi: 'test/fixtures/www/screen-ldpi-portrait.png'
