@@ -30,6 +30,7 @@ module.exports = (grunt) ->
 
     done = @async()
     build = new Build(grunt, config).clean().buildTree()
+    platforms = [this.args[0]] || config.platforms
 
     async.series [
       build.cloneRoot,
@@ -37,10 +38,10 @@ module.exports = (grunt) ->
       build.compileConfig
     ], ->
       async.eachSeries config.plugins, build.addPlugin, (err) ->
-        async.eachSeries config.platforms, build.buildPlatform, (err) ->
-          async.eachSeries config.platforms, build.postProcessPlatform, ->
-            async.eachSeries config.platforms, build.buildIcons, (err) ->
-              async.eachSeries config.platforms, build.buildScreens, (err) ->
+        async.eachSeries platforms, build.buildPlatform, (err) ->
+          async.eachSeries platforms, build.postProcessPlatform, ->
+            async.eachSeries platforms, build.buildIcons, (err) ->
+              async.eachSeries platforms, build.buildScreens, (err) ->
                 done()
 
   grunt.registerTask 'phonegap:run', 'Run a Phonegap application', ->
