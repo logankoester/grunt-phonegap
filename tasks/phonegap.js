@@ -32,13 +32,13 @@
         return 1;
       }
     };
-    grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function() {
+    grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function(platform) {
       var Build, build, config, done, platforms;
       Build = require('./build').Build;
       config = _.defaults(grunt.config.get('phonegap.config'), defaults);
       done = this.async();
       build = new Build(grunt, config).clean().buildTree();
-      platforms = [this.args[0]] || config.platforms;
+      platforms = platform || config.platforms;
       return async.series([build.cloneRoot, build.cloneCordova, build.compileConfig], function() {
         return async.eachSeries(config.plugins, build.addPlugin, function(err) {
           return async.eachSeries(platforms, build.buildPlatform, function(err) {

@@ -22,7 +22,7 @@ module.exports = (grunt) ->
       storePassword: -> ''
     versionCode: -> 1
 
-  grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', ->
+  grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', (platform) ->
     Build = require('./build').Build
 
     # Set default options
@@ -30,7 +30,7 @@ module.exports = (grunt) ->
 
     done = @async()
     build = new Build(grunt, config).clean().buildTree()
-    platforms = [this.args[0]] || config.platforms
+    platforms = platform || config.platforms
 
     async.series [
       build.cloneRoot,
