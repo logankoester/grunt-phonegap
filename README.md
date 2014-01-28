@@ -231,6 +231,9 @@ Running `phonegap:build` with no arguments will...
 * Add any plugins listed in `phonegap.config.plugins`
 * ..and then generate a Phonegap build for all platforms listed in `phonegap.config.platforms`
 
+If you pass a specific platform as an argument (eg `grunt phonegap:build:android`), the `phonegap.config.platforms` array will be
+ignored and only that specific platform will be built.
+
 #### phonegap:run[:platform][:device]
 
 After a build is complete, the `phonegap:run` grunt task can be used to launch your app
