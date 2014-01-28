@@ -285,7 +285,7 @@ Before running the included test suite, you must first run `git submodule update
 
 #### 0.8.0
 
-  * Adds configuration for Android splash screens. (thanks @arthurgeek)
+  * Adds configuration for Android splash screens. (thanks [@arthurgeek](https://github.com/arthurgeek))
 
 #### 0.7.0
 
@@ -293,7 +293,7 @@ The icon configuration API has changed to permit multiple platforms. If you
 used this feature before `v0.7.0`, please update your **Gruntfile** as per
 the updated example in `README.md`.
 
-  * Adds app icon management for Windows Phone 8 (thanks @kombucha)
+  * Adds app icon management for Windows Phone 8 (thanks [@kombucha](https://github.com/kombucha))
   * FIX: Cordova hook file permissions are now preserved (#13)
   * FIX: Release keystore file path can lead to unexpected escaped characters (Windows) (#15)
   * FIX: No longer inadvertantly attempt a device deploy instead of an emulator deploy when the
@@ -327,8 +327,8 @@ the updated example in `README.md`.
 
 #### 0.3.0
 
-  * Fixes [issue #2](https://github.com/logankoester/grunt-phonegap/issues/2) "Test not completing" (thanks @skarjalainen and @jrvidal)
-  * Removed default 'device' flag (thanks @robwalch)
+  * Fixes [issue #2](https://github.com/logankoester/grunt-phonegap/issues/2) "Test not completing" (thanks [@skarjalainen](https://github.com/skarjalainen) and [@jrvidal](https://github.com/jrvidal))
+  * Removed default 'device' flag (thanks [@robwalch](https://github.com/robwalch))
 
 #### 0.2.0
 
