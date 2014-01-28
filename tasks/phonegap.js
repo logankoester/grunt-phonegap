@@ -38,7 +38,7 @@
       config = _.defaults(grunt.config.get('phonegap.config'), defaults);
       done = this.async();
       build = new Build(grunt, config).clean().buildTree();
-      platforms = platform || config.platforms;
+      platforms = platform ? [platform] : config.platforms;
       return async.series([build.cloneRoot, build.cloneCordova, build.compileConfig], function() {
         return async.eachSeries(config.plugins, build.addPlugin, function(err) {
           return async.eachSeries(platforms, build.buildPlatform, function(err) {

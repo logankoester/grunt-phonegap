@@ -30,7 +30,7 @@ module.exports = (grunt) ->
 
     done = @async()
     build = new Build(grunt, config).clean().buildTree()
-    platforms = platform || config.platforms
+    platforms = if platform then [platform] else config.platforms
 
     async.series [
       build.cloneRoot,
