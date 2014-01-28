@@ -223,7 +223,7 @@ See http://developer.android.com/tools/publishing/versioning.html
 
 ### Tasks
 
-#### phonegap:build
+#### phonegap:build[:platform]
 
 Running `phonegap:build` with no arguments will...
 
