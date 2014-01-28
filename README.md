@@ -278,6 +278,11 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.8.1
+  * Adds optional platform argument for `phonegap:build[:platform]` task,
+    allows you to override the platforms array for a specific single-platform build (thanks [@bouzuya](https://github.com/bouzuya))
+  * Updates `grunt-contrib-nodeunit` to v0.3.0
+
 #### 0.8.0
 
   * Adds configuration for Android splash screens. (thanks @arthurgeek)
