@@ -2,7 +2,6 @@
 > A [Grunt](http://gruntjs.com/) plugin to provide local build tasks for [Phonegap](http://phonegap.com/) applications
 
 [![Build Status](http://ci.ldk.io/logankoester/grunt-phonegap/badge)](http://ci.ldk.io/logankoester/grunt-phonegap/)
-[![status](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/badges/status.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Dependency Status](https://david-dm.org/logankoester/grunt-phonegap.png)](https://david-dm.org/logankoester/grunt-phonegap)
 [![devDependency Status](https://david-dm.org/logankoester/grunt-phonegap/dev-status.png)](https://david-dm.org/logankoester/grunt-phonegap#info=devDependencies)
 [![Gittip](http://img.shields.io/gittip/logankoester.png)](https://www.gittip.com/logankoester/)
