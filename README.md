@@ -121,7 +121,16 @@ grunt.initConfig({
 
       // Android-only integer version to increase with each release.
       // See http://developer.android.com/tools/publishing/versioning.html
-      versionCode: function(){ return(1) }
+      versionCode: function(){ return(1) },
+
+      // If you want to use the Phonegap Build service to build one or more
+      // of the platforms specified above, include these options.
+      // See https://build.phonegap.com/
+      remote: {
+        username: 'your_username',
+        password: 'your_password',
+        platforms: ['android', 'blackberry', 'ios', 'symbian', 'webos', 'wp7']
+      }
     }
   }
 })
@@ -207,7 +216,7 @@ Currently this feature only supports Android and Windows Phone 8.
 
 #### versionCode
 
-The [config-xml](https://build.phonegap.com/docs/config-xml) documentation from Phonegap Build (the hosted build service)
+The [config-xml](https://build.phonegap.com/docs/config-xml) documentation from Phonegap Build (the remote build service)
 indicate that you can set a **versionCode** for your `AndroidManifest.xml` file inside your `config.xml`. However, `phonegap local`
 just ignores that property.
 
@@ -219,6 +228,8 @@ If you set a `phonegap.config.versionCode` value (function or literal), `grunt p
 In most applications it should simply be an integer that you increment with each release.
 
 See http://developer.android.com/tools/publishing/versioning.html
+
+This option will be ignored for non-Android platforms or when using the remote build service.
 
 ### Tasks
 
@@ -256,6 +267,15 @@ a keystore file at `phonegap.config.key.store` like this:
 
 The keytool command will interactively ask you to set store and alias passwords, which must match
 the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key.storePassword` respectively.
+
+#### phonegap:login
+
+Log into the Phonegap Build service with the credentials specified at `phonegap.config.remote.username`
+and `phonegap.config.remote.password`.
+
+#### phonegap:logout
+
+Log out of the Phonegap Build service.
 
 ## Running the test suite
 

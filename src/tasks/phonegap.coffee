@@ -21,6 +21,7 @@ module.exports = (grunt) ->
       aliasPassword: -> ''
       storePassword: -> ''
     versionCode: -> 1
+    remote: {}
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', (platform) ->
     Build = require('./build').Build
@@ -66,3 +67,32 @@ module.exports = (grunt) ->
 
     done = @async()
     release grunt, config, platform, -> done()
+
+  grunt.registerTask 'phonegap:login', 'Log into the remote build service', ->
+    grunt.config.requires 'phonegap.remote.username'
+    grunt.config.requires 'phonegap.remote.password'
+
+    username = grunt.config.get('phonegap.remote.username')
+    password = grunt.config.get('phonegap.remote.password')
+
+    cmd = "phonegap remote login --username #{username} --password #{password}"
+
+    childProcess = require('child_process').exec cmd, {
+      cwd: grunt.config.get('phonegap.path'),
+      maxBuffer: (grunt.config.get('phonegap.maxBuffer') * 1024)
+    }, (err, stdout, stderr) =>
+      grunt.fatal err if err
+      fn(err) if fn
+    childProcess.stdout.on 'data', (out) => grunt.log.write(out)
+    childProcess.stderr.on 'data', (err) => grunt.fatal(err)
+
+  grunt.registerTask 'phonegap:logout', 'Log out of the remote build service', ->
+    cmd = 'phonegap remote logout'
+    childProcess = require('child_process').exec cmd, {
+      cwd: grunt.config.get('phonegap.path'),
+      maxBuffer: (grunt.config.get('phonegap.maxBuffer') * 1024)
+    }, (err, stdout, stderr) =>
+      grunt.fatal err if err
+      fn(err) if fn
+    childProcess.stdout.on 'data', (out) => grunt.log.write(out)
+    childProcess.stderr.on 'data', (err) => grunt.fatal(err)

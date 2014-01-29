@@ -1,5 +1,6 @@
 (function() {
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   module.exports.Build = (function() {
     Build.prototype.copy = require('directory-copy');
@@ -16,6 +17,9 @@
       this.grunt = grunt;
       this.config = config;
       this._fixAndroidVersionCode = __bind(this._fixAndroidVersionCode, this);
+      this._childExec = __bind(this._childExec, this);
+      this._buildPlatformLocal = __bind(this._buildPlatformLocal, this);
+      this._buildPlatformRemote = __bind(this._buildPlatformRemote, this);
       this.buildScreens = __bind(this.buildScreens, this);
       this.buildIcons = __bind(this.buildIcons, this);
       this.buildPlatform = __bind(this.buildPlatform, this);
@@ -106,7 +110,7 @@
     Build.prototype.addPlugin = function(plugin, fn) {
       var cmd, proc,
         _this = this;
-      cmd = "phonegap local plugin add " + plugin + " " + (this._setVerbosity());
+      cmd = "phonegap plugin add " + plugin + " " + (this._setVerbosity());
       proc = this.exec(cmd, {
         cwd: this.config.path,
         maxBuffer: this.config.maxBuffer * 1024
@@ -129,7 +133,9 @@
     Build.prototype.postProcessPlatform = function(platform, fn) {
       switch (platform) {
         case 'android':
-          this._fixAndroidVersionCode();
+          if (!this._isRemote()) {
+            this._fixAndroidVersionCode();
+          }
       }
       if (fn) {
         return fn();
@@ -137,26 +143,11 @@
     };
 
     Build.prototype.buildPlatform = function(platform, fn) {
-      var childProcess, cmd,
-        _this = this;
-      cmd = "phonegap local build " + platform + " " + (this._setVerbosity());
-      childProcess = this.exec(cmd, {
-        cwd: this.config.path,
-        maxBuffer: this.config.maxBuffer * 1024
-      }, function(err, stdout, stderr) {
-        if (err) {
-          _this.fatal(err);
-        }
-        if (fn) {
-          return fn(err);
-        }
-      });
-      childProcess.stdout.on('data', function(out) {
-        return _this.log.write(out);
-      });
-      return childProcess.stderr.on('data', function(err) {
-        return _this.fatal(err);
-      });
+      if (this._isRemote()) {
+        return this._buildPlatformRemote(platform, fn);
+      } else {
+        return this._buildPlatformLocal(platform, fn);
+      }
     };
 
     Build.prototype.buildIcons = function(platform, fn) {
@@ -315,6 +306,38 @@
       }
     };
 
+    Build.prototype._buildPlatformRemote = function(platform, fn) {
+      this.grunt.task.run('phonegap:login');
+      this._childExec("phonegap remote build " + platform + " " + (this._setVerbosity()), fn);
+      return this.grunt.task.run('phonegap:logout');
+    };
+
+    Build.prototype._buildPlatformLocal = function(platform, fn) {
+      return this._childExec("phonegap local build " + platform + " " + (this._setVerbosity()), fn);
+    };
+
+    Build.prototype._childExec = function(cmd, fn) {
+      var childProcess,
+        _this = this;
+      childProcess = this.exec(cmd, {
+        cwd: this.config.path,
+        maxBuffer: this.config.maxBuffer * 1024
+      }, function(err, stdout, stderr) {
+        if (err) {
+          _this.fatal(err);
+        }
+        if (fn) {
+          return fn(err);
+        }
+      });
+      childProcess.stdout.on('data', function(out) {
+        return _this.log.write(out);
+      });
+      return childProcess.stderr.on('data', function(err) {
+        return _this.fatal(err);
+      });
+    };
+
     Build.prototype._setVerbosity = function() {
       if (this.config.verbose) {
         return '-V';
@@ -333,6 +356,17 @@
       doc = new dom().parseFromString(manifest, 'text/xml');
       doc.getElementsByTagName('manifest')[0].setAttribute('android:versionCode', versionCode);
       return this.grunt.file.write(manifestPath, doc);
+    };
+
+    Build.prototype._isRemote = function(platform) {
+      var _ref, _ref1;
+      if ((((_ref = this.config.remote) != null ? _ref.platforms : void 0) != null) && __indexOf.call((_ref1 = this.config.remote) != null ? _ref1.platforms : void 0, platform) >= 0) {
+        this.grunt.config.requires('phonegap.remote.username');
+        this.grunt.config.requires('phonegap.remote.password');
+        return true;
+      } else {
+        return false;
+      }
     };
 
     return Build;

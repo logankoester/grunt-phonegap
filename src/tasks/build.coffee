@@ -50,7 +50,7 @@ class module.exports.Build
       fn()
 
   addPlugin: (plugin, fn) =>
-    cmd = "phonegap local plugin add #{plugin} #{@_setVerbosity()}"
+    cmd = "phonegap plugin add #{plugin} #{@_setVerbosity()}"
     proc = @exec cmd, {
       cwd: @config.path,
       maxBuffer: @config.maxBuffer * 1024
@@ -64,21 +64,14 @@ class module.exports.Build
   postProcessPlatform: (platform, fn) =>
     switch platform
       when 'android'
-        @_fixAndroidVersionCode()
+        @_fixAndroidVersionCode() unless @_isRemote()
     fn() if fn
 
-
   buildPlatform: (platform, fn) =>
-    cmd = "phonegap local build #{platform} #{@_setVerbosity()}"
-    childProcess = @exec cmd, {
-      cwd: @config.path,
-      maxBuffer: @config.maxBuffer * 1024
-    }, (err, stdout, stderr) =>
-      @fatal err if err
-      fn(err) if fn
-
-    childProcess.stdout.on 'data', (out) => @log.write(out)
-    childProcess.stderr.on 'data', (err) => @fatal(err)
+    if @_isRemote()
+      @_buildPlatformRemote platform, fn
+    else
+      @_buildPlatformLocal platform, fn
 
   buildIcons: (platform, fn) =>
     if @config.icons
@@ -183,6 +176,25 @@ class module.exports.Build
     if bestLand
       @file.copy bestLand, @path.join(res, 'drawable-land', 'splash.png'), encoding: null
 
+  _buildPlatformRemote: (platform, fn) =>
+    @grunt.task.run 'phonegap:login'
+    @_childExec "phonegap remote build #{platform} #{@_setVerbosity()}", fn
+    @grunt.task.run 'phonegap:logout'
+
+  _buildPlatformLocal: (platform, fn) =>
+    @_childExec "phonegap local build #{platform} #{@_setVerbosity()}", fn
+
+  _childExec: (cmd, fn) =>
+    childProcess = @exec cmd, {
+      cwd: @config.path,
+      maxBuffer: @config.maxBuffer * 1024
+    }, (err, stdout, stderr) =>
+      @fatal err if err
+      fn(err) if fn
+
+    childProcess.stdout.on 'data', (out) => @log.write(out)
+    childProcess.stderr.on 'data', (err) => @fatal(err)
+
   _setVerbosity: ->
     if @config.verbose then '-V' else ''
 
@@ -196,3 +208,11 @@ class module.exports.Build
     doc = new dom().parseFromString manifest, 'text/xml'
     doc.getElementsByTagName('manifest')[0].setAttribute('android:versionCode', versionCode)
     @grunt.file.write manifestPath, doc
+
+  _isRemote: (platform) ->
+    if @config.remote?.platforms? && platform in @config.remote?.platforms
+      @grunt.config.requires 'phonegap.remote.username'
+      @grunt.config.requires 'phonegap.remote.password'
+      return true
+    else
+      return false
