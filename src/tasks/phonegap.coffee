@@ -29,8 +29,8 @@ module.exports = (grunt) ->
     config = _.defaults grunt.config.get('phonegap.config'), defaults
 
     done = @async()
-    build = new Build(grunt, config).clean().buildTree()
     platforms = if platform then [platform] else config.platforms
+    build = new Build(grunt, config).clean().buildTree(platforms)
 
     async.series [
       build.cloneRoot,
