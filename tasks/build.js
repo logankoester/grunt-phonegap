@@ -10,6 +10,8 @@
 
     Build.prototype.exec = require('child_process').exec;
 
+    Build.prototype.each = require('lodash').each;
+
     function Build(grunt, config) {
       this.grunt = grunt;
       this.config = config;
@@ -38,14 +40,17 @@
       return this;
     };
 
-    Build.prototype.buildTree = function() {
-      var path;
+    Build.prototype.buildTree = function(platforms) {
+      var path,
+        _this = this;
       path = this.config.path;
       this.file.mkdir(this.path.join(path, 'plugins'));
       this.file.mkdir(this.path.join(path, 'platforms'));
-      this.file.mkdir(this.path.join(path, 'merges', 'android'));
       this.file.mkdir(this.path.join(path, 'www'));
       this.file.mkdir(this.path.join(path, '.cordova'));
+      this.each(platforms, function(platform) {
+        return _this.file.mkdir(_this.path.join(path, 'merges', platform));
+      });
       return this;
     };
 

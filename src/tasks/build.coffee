@@ -3,6 +3,7 @@ class module.exports.Build
   cp: require 'cp'
   path: require 'path'
   exec: require('child_process').exec
+  each: require('lodash').each
 
   constructor: (@grunt, @config) ->
     @file = @grunt.file
@@ -14,13 +15,16 @@ class module.exports.Build
     if @file.exists(path) then @file.delete(path)
     @
 
-  buildTree: ->
+  buildTree: (platforms)->
     path = @config.path
     @file.mkdir @path.join(path, 'plugins')
     @file.mkdir @path.join(path, 'platforms')
-    @file.mkdir @path.join(path, 'merges', 'android')
     @file.mkdir @path.join(path, 'www')
     @file.mkdir @path.join(path, '.cordova')
+
+    @each platforms, (platform) =>
+      @file.mkdir @path.join(path, 'merges', platform)
+
     @
 
   cloneCordova: (fn) =>
