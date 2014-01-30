@@ -33,6 +33,7 @@ module.exports = (grunt) ->
 
         verbose: false
         releases: 'test/releases'
+        releaseName: 'TestFixtureApp-0.0.0'
 
         key:
           store: 'test/fixtures/release.keystore'

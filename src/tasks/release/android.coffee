@@ -1,62 +1,55 @@
-module.exports = exports = class ReleaseAndroid
-  cp: require 'cp'
-  path: require 'path'
-  exec: require('child_process').exec
+grunt = require 'grunt'
+path = require 'path'
+helpers = require '../helpers'
 
-  constructor: (@grunt, @config) ->
-    @file = @grunt.file
-    @log = @grunt.log
-    @warn = @grunt.warn
-    @fatal = @grunt.fatal
+copyApk = (fn) ->
+  phonegapPath = helpers.config 'path'
+  srcDir = path.join phonegapPath, 'platforms', 'android', 'bin'
+  releaseName = helpers.config 'releaseName'
+  src = grunt.file.expand("#{srcDir}/*-release.apk")[0]
+  dest = path.join helpers.config('releases'), 'android', "#{releaseName}.apk"
+  grunt.file.copy src, dest, encoding: null
+  fn() if fn
 
+setAntProperties = (includePasswords) ->
+  key = helpers.config 'key'
+  keyStorePath = path.relative platformPath('android'), key.store
+  properties = []
+  properties.push "key.store=#{keyStorePath}"
+  properties.push "key.store=#{if path.sep == '\\' then keyStorePath.replace /\\/g, '\\\\' else keyStorePath}" # Path must be escaped in the file as well
+  properties.push "key.alias=#{key.alias}"
+
+  if includePasswords
+    properties.push "key.store.password=#{key.storePassword()}"
+    properties.push "key.alias.password=#{key.aliasPassword()}"
+
+  grunt.file.write antPropertiesFile(), properties.join("\n")
+
+antRelease = (fn) ->
+  phonegapPath = helpers.config 'path'
+  keyStore = helpers.config 'key.store'
+
+  helpers.ensureExists keyStore, 'You need to create a keystore file to generate a signed release (see http://developer.android.com/tools/publishing/app-signing.html)'
+  cmd = 'ant release'
+  cwd = path.join phonegapPath, 'platforms', 'android'
+  helpers.exec cmd, fn, cwd
+
+platformPath = (platform) ->
+  path.join helpers.config('path'), 'platforms', 'android'
+
+antPropertiesFile = ->
+  path.join platformPath('android'), 'ant.properties'
+
+createReleasesPath = (platform) ->
+  releasesPath = helpers.config 'releases'
+  grunt.file.mkdir path.join(releasesPath, platform)
+
+module.exports =
   release: (fn) ->
-    @setAntProperties true
-    @antRelease =>
-      @copyApk =>
-        @setAntProperties false # Scrub passwords
+    grunt.log.writeln 'Creating release for \'android\' platform'
+    createReleasesPath 'android'
+    setAntProperties true
+    antRelease ->
+      copyApk ->
+        setAntProperties false # Scrub passwords
         fn()
-
-  copyApk: (fn) ->
-    srcDir = @path.join @config.path, 'platforms', 'android', 'bin'
-    src = @file.expand("#{srcDir}/*-release.apk")[0]
-    dest = @path.join @config.releases, 'android', "#{@config.releaseName()}.apk"
-    @file.copy src, dest, encoding: null
-    fn() if fn
-
-  setAntProperties: (includePasswords) ->
-    keyStorePath = @path.relative @_platformPath('android'), @config.key.store
-    properties = []
-    properties.push "key.store=#{keyStorePath}"
-    properties.push "key.store=#{if @path.sep == '\\' then keyStorePath.replace /\\/g, '\\\\' else keyStorePath}" # Path must be escaped in the file as well
-    properties.push "key.alias=#{@config.key.alias}"
-
-    if includePasswords
-      properties.push "key.store.password=#{@config.key.storePassword()}"
-      properties.push "key.alias.password=#{@config.key.aliasPassword()}"
-
-    @file.write @_antPropertiesFile(), properties.join("\n")
-
-  antRelease: (fn) ->
-    @_ensureExists @config.key.store, 'You need to create a keystore file to generate a signed release (see http://developer.android.com/tools/publishing/app-signing.html)'
-    cmd = 'ant release'
-    cwd = @path.join @config.path, 'platforms', 'android'
-    childProcess = @exec cmd, cwd: cwd, (err, stdout, stderr) =>
-      @fatal err if err
-      fn(err) if fn
-
-    childProcess.stdout.on 'data', (out) => @log.write out
-    childProcess.stderr.on 'data', (err) => @fatal err
-
-  _platformPath: (platform) ->
-    @path.join @config.path, 'platforms', 'android'
-
-  _antPropertiesFile: ->
-    @path.join @_platformPath('android'), 'ant.properties'
-
-  _ensureExists: (path, failMessage)->
-    failMessage ||= "\"#{path}\" does not exist."
-    if @grunt.file.exists(@config.key.store)
-      true
-    else
-      @fatal failMessage
-      false

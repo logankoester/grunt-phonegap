@@ -1,6 +1,7 @@
 module.exports = (grunt) ->
   _ = require 'lodash'
   async = require 'async'
+  helpers = require './helpers'
 
   defaults =
     root: 'www'
@@ -24,21 +25,23 @@ module.exports = (grunt) ->
     remote: {}
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', (platform) ->
+    helpers.mergeConfig defaults
     Build = require('./build').Build
 
-    # Set default options
-    config = _.defaults grunt.config.get('phonegap.config'), defaults
-
     done = @async()
-    platforms = if platform then [platform] else config.platforms
-    build = new Build(grunt, config).clean().buildTree(platforms)
+    platforms = if platform then [platform] else helpers.config('platforms')
+    plugins = helpers.config 'plugins'
+    build = new Build
+    
+    helpers.clean helpers.config('path')
+    build.buildTree platforms
 
     async.series [
       build.cloneRoot,
       build.cloneCordova,
       build.compileConfig
     ], ->
-      async.eachSeries config.plugins, build.addPlugin, (err) ->
+      async.eachSeries plugins, build.addPlugin, (err) ->
         async.eachSeries platforms, build.buildPlatform, (err) ->
           async.eachSeries platforms, build.postProcessPlatform, ->
             async.eachSeries platforms, build.buildIcons, (err) ->
@@ -46,53 +49,35 @@ module.exports = (grunt) ->
                 done()
 
   grunt.registerTask 'phonegap:run', 'Run a Phonegap application', ->
+    helpers.mergeConfig defaults
     Run = require('./run').Run
 
-    # Set default options
-    config = _.defaults grunt.config.get('phonegap.config'), defaults
-
-    platform = @args[0] || _.first(config.platforms)
+    platform = @args[0] || _.first(grunt.config.get('phonegap.config.platforms'))
     device  = @args[1] || ''
 
     done = @async()
-    build = new Run(grunt, config).run platform, device, -> done()
+    run = new Run().run platform, device, -> done()
 
   grunt.registerTask 'phonegap:release', 'Create a distributable release', ->
-    release = require('./release').release
-
-    # Set default options
-    config = _.defaults grunt.config.get('phonegap.config'), defaults
-
-    platform = @args[0] || _.first(config.platforms)
-
+    helpers.mergeConfig defaults
+    platform = @args[0] || _.first(grunt.config.get('phonegap.config.platforms'))
     done = @async()
-    release grunt, config, platform, -> done()
+    require('./release').on platform, -> done()
 
   grunt.registerTask 'phonegap:login', 'Log into the remote build service', ->
+    helpers.mergeConfig defaults
+
     grunt.config.requires 'phonegap.remote.username'
     grunt.config.requires 'phonegap.remote.password'
 
-    username = grunt.config.get('phonegap.remote.username')
-    password = grunt.config.get('phonegap.remote.password')
+    username = grunt.config.get 'phonegap.remote.username'
+    password = grunt.config.get 'phonegap.remote.password'
 
+    done = @async()
     cmd = "phonegap remote login --username #{username} --password #{password}"
-
-    childProcess = require('child_process').exec cmd, {
-      cwd: grunt.config.get('phonegap.path'),
-      maxBuffer: (grunt.config.get('phonegap.maxBuffer') * 1024)
-    }, (err, stdout, stderr) =>
-      grunt.fatal err if err
-      fn(err) if fn
-    childProcess.stdout.on 'data', (out) => grunt.log.write(out)
-    childProcess.stderr.on 'data', (err) => grunt.fatal(err)
+    helpers.exec cmd, -> done()
 
   grunt.registerTask 'phonegap:logout', 'Log out of the remote build service', ->
-    cmd = 'phonegap remote logout'
-    childProcess = require('child_process').exec cmd, {
-      cwd: grunt.config.get('phonegap.path'),
-      maxBuffer: (grunt.config.get('phonegap.maxBuffer') * 1024)
-    }, (err, stdout, stderr) =>
-      grunt.fatal err if err
-      fn(err) if fn
-    childProcess.stdout.on 'data', (out) => grunt.log.write(out)
-    childProcess.stderr.on 'data', (err) => grunt.fatal(err)
+    helpers.mergeConfig defaults
+    done = @async()
+    helpers.exec 'phonegap remote logout', -> done()

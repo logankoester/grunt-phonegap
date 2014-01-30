@@ -16,7 +16,7 @@ exports.phonegap =
 
   'signed apk should be created': (test) ->
     test.expect 2
-    apk = path.join 'test', 'releases', 'android', "#{pkg.name}-#{pkg.version}.apk"
+    apk = path.join 'test', 'releases', 'android', 'TestFixtureApp-0.0.0.apk'
     test.ok grunt.file.isFile(apk), "#{apk} does not exist"
     fs.stat apk, (err, stats) =>
       test.notEqual stats.size, 0, "#{apk} is an empty file"

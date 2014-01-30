@@ -1,14 +1,11 @@
+grunt = require 'grunt'
+path = require 'path'
+
 module.exports =
-  release: (grunt, config, platform, fn) ->
-    grunt.log.writeln "Creating release for #{platform} platform"
-
-    grunt.file.mkdir require('path').join(config.releases, platform)
-
-    switch platform
-      when 'android'
-        releaseAndroid = require './release/android'
-        r = new releaseAndroid(grunt, config)
-        r.release fn
-      else
-        grunt.fatal 'You must specify a platform for release. Only "android" is currently supported.'
-        fn() if fn
+  on: (platform, fn) ->
+    releaseAdapter = path.join __dirname, 'release', "#{platform}.js"
+    if grunt.file.exists releaseAdapter
+      require(releaseAdapter).release fn
+    else
+      grunt.warn "Missing source file '#{releaseAdapter}'"
+      grunt.fatal "grunt-phonegap does not yet include a release adapter for platform '#{platform}'"
