@@ -27,7 +27,7 @@ module.exports = run = (grunt) ->
     helpers.exec cmd, fn
 
   run: (platform, device, fn) ->
-    if helpers.isRemote()
+    if helpers.isRemote(platform)
       remote platform, device, fn
     else
       local platform, device, fn

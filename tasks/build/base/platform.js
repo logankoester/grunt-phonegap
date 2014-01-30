@@ -9,9 +9,7 @@
     var buildPlatform, helpers, local, remote, runAfter;
     helpers = require('../../helpers')(grunt);
     remote = function(platform, fn) {
-      grunt.task.run('phonegap:login');
-      helpers.exec("phonegap remote build " + platform + " " + (helpers.setVerbosity()), fn);
-      return grunt.task.run('phonegap:logout');
+      return helpers.exec("phonegap remote build " + platform + " " + (helpers.setVerbosity()), fn);
     };
     local = function(platform, fn) {
       return helpers.exec("phonegap local build " + platform + " " + (helpers.setVerbosity()), fn);
@@ -29,7 +27,7 @@
       }
     };
     buildPlatform = function(platform, fn) {
-      if (helpers.isRemote()) {
+      if (helpers.isRemote(platform)) {
         return remote(platform, function() {
           return runAfter('remote', platform, fn);
         });

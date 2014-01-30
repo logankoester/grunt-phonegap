@@ -5,9 +5,7 @@ module.exports = platform = (grunt) ->
   helpers = require('../../helpers')(grunt)
 
   remote = (platform, fn) ->
-    grunt.task.run 'phonegap:login'
     helpers.exec "phonegap remote build #{platform} #{helpers.setVerbosity()}", fn
-    grunt.task.run 'phonegap:logout'
 
   local = (platform, fn) ->
     helpers.exec "phonegap local build #{platform} #{helpers.setVerbosity()}", fn
@@ -21,7 +19,7 @@ module.exports = platform = (grunt) ->
       if fn then fn()
 
   buildPlatform = (platform, fn) ->
-    if helpers.isRemote()
+    if helpers.isRemote(platform)
       remote platform, ->
         runAfter 'remote', platform, fn
     else

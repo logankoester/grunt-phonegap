@@ -23,7 +23,7 @@
     };
     return {
       run: function(platform, device, fn) {
-        if (helpers.isRemote()) {
+        if (helpers.isRemote(platform)) {
           return remote(platform, device, fn);
         } else {
           return local(platform, device, fn);

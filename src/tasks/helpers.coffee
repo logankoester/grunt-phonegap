@@ -19,6 +19,7 @@ module.exports = helpers = (grunt) ->
   # @param [String] cmd The shell command to execute
   # @param [Function] fn An optional function to call when the child process terminates.
   exec: (cmd, fn, cwd = grunt.config.get('phonegap.config.path')) ->
+    grunt.log.writeln "Running: #{cmd}"
     options =
       maxBuffer: (grunt.config.get('phonegap.config.maxBuffer') * 1024)
       cwd: cwd

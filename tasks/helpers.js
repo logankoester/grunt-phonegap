@@ -17,6 +17,7 @@
         if (cwd == null) {
           cwd = grunt.config.get('phonegap.config.path');
         }
+        grunt.log.writeln("Running: " + cmd);
         options = {
           maxBuffer: grunt.config.get('phonegap.config.maxBuffer') * 1024,
           cwd: cwd

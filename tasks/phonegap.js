@@ -6,11 +6,7 @@
   async = require('async');
 
   module.exports = function(grunt) {
-    var build, defaults, helpers, release, run;
-    helpers = require('./helpers')(grunt);
-    build = require('./build')(grunt);
-    run = require('./run')(grunt);
-    release = require('./release')(grunt);
+    var defaults;
     defaults = {
       root: 'www',
       config: 'www/config.xml',
@@ -42,8 +38,10 @@
       remote: {}
     };
     grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function(platform) {
-      var done, platforms;
+      var build, done, helpers, platforms;
+      helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
+      build = require('./build')(grunt);
       platforms = platform ? [platform] : helpers.config('platforms');
       done = this.async();
       return build.run(platforms, function(err, result) {
@@ -54,8 +52,10 @@
       });
     });
     grunt.registerTask('phonegap:run', 'Run a Phonegap application', function() {
-      var device, done, platform;
+      var device, done, helpers, platform, run;
+      helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
+      run = require('./run')(grunt);
       platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
       device = this.args[1] || '';
       done = this.async();
@@ -64,8 +64,10 @@
       });
     });
     grunt.registerTask('phonegap:release', 'Create a distributable release', function() {
-      var done, platform;
+      var done, helpers, platform, release;
+      helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
+      release = require('./release')(grunt);
       platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
       done = this.async();
       return release.on(platform, function() {
@@ -73,12 +75,13 @@
       });
     });
     grunt.registerTask('phonegap:login', 'Log into the remote build service', function() {
-      var cmd, done, password, username;
+      var cmd, done, helpers, password, username;
+      helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
-      grunt.config.requires('phonegap.remote.username');
-      grunt.config.requires('phonegap.remote.password');
-      username = grunt.config.get('phonegap.remote.username');
-      password = grunt.config.get('phonegap.remote.password');
+      grunt.config.requires('phonegap.config.remote.username');
+      grunt.config.requires('phonegap.config.remote.password');
+      username = grunt.config.get('phonegap.config.remote.username');
+      password = grunt.config.get('phonegap.config.remote.password');
       done = this.async();
       cmd = "phonegap remote login --username " + username + " --password " + password;
       return helpers.exec(cmd, function() {
@@ -86,7 +89,8 @@
       });
     });
     return grunt.registerTask('phonegap:logout', 'Log out of the remote build service', function() {
-      var done;
+      var done, helpers;
+      helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
       done = this.async();
       return helpers.exec('phonegap remote logout', function() {
