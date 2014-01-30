@@ -1,5 +1,5 @@
 # Grunt: Phonegap
-> A [Grunt](http://gruntjs.com/) plugin to provide local build tasks for [Phonegap](http://phonegap.com/) applications
+> A [Grunt](http://gruntjs.com/) plugin to provide build tasks for [Phonegap](http://phonegap.com/) applications
 
 [![Build Status](http://ci.ldk.io/logankoester/grunt-phonegap/badge)](http://ci.ldk.io/logankoester/grunt-phonegap/)
 [![Dependency Status](https://david-dm.org/logankoester/grunt-phonegap.png)](https://david-dm.org/logankoester/grunt-phonegap)
@@ -231,6 +231,11 @@ See http://developer.android.com/tools/publishing/versioning.html
 
 This option will be ignored for non-Android platforms or when using the remote build service.
 
+#### Phonegap Build
+
+If you set `phonegap.config.remote` to a subset of `phonegap.config.platforms`, those platforms will be built remotely. This is still somewhat
+experimental, and may not integrate with all local features.
+
 ### Tasks
 
 #### phonegap:build[:platform]
@@ -297,6 +302,14 @@ CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
 
 ## Release History
+
+#### 0.9.0
+
+A large amount of code has been refactored, which may have introduced new bugs. Please [open an issue](https://github.com/logankoester/grunt-phonegap/issues)
+if a feature no longer works with your `v0.8.1` config.
+
+  * Adds support for remote builds using the [Phonegap Build](https://build.phonegap.com) service ([#31](https://github.com/logankoester/grunt-phonegap/issues/31))
+  * Refactors tasks source into feature-specific files ([#28](https://github.com/logankoester/grunt-phonegap/issues/28))
 
 #### 0.8.1
   * Adds optional platform argument for `phonegap:build[:platform]` task,

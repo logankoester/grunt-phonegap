@@ -26,7 +26,6 @@ module.exports = platform = (grunt) ->
       local platform, ->
         runAfter 'local', platform, fn
 
-
   build: (platforms, fn) ->
     grunt.log.writeln 'Building platforms'
     async.eachSeries platforms, buildPlatform, (err) ->
