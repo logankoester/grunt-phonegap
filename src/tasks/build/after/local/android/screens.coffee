@@ -1,8 +1,8 @@
 path = require 'path'
-grunt = require 'grunt'
-helpers = require '../../../../helpers'
 
-module.exports =
+module.exports = screens = (grunt) ->
+  helpers = require('../../../../helpers')(grunt)
+
   build: (fn) ->
     screens = helpers.config 'screens'
     phonegapPath = helpers.config 'path'

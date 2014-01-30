@@ -1,12 +1,11 @@
 async = require 'async'
-grunt = require 'grunt'
-helpers = require '../../helpers'
 
-addPlugin = (plugin, fn) ->
-  cmd = "phonegap plugin add #{plugin} #{helpers.setVerbosity()}"
-  helpers.exec cmd, fn
+module.exports = plugin = (grunt) ->
+  helpers = require('../../helpers')(grunt)
 
-module.exports = plugin =
+  addPlugin = (plugin, fn) ->
+    cmd = "phonegap plugin add #{plugin} #{helpers.setVerbosity()}"
+    helpers.exec cmd, fn
 
   add: (plugins, fn) ->
     grunt.log.writeln 'Adding plugins'

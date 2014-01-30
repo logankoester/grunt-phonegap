@@ -1,33 +1,33 @@
 async = require 'async'
 path = require 'path'
-grunt = require 'grunt'
-helpers = require '../../helpers'
 
-remote = (platform, fn) ->
-  grunt.task.run 'phonegap:login'
-  helpers.exec "phonegap remote build #{platform} #{helpers.setVerbosity()}", fn
-  grunt.task.run 'phonegap:logout'
+module.exports = platform = (grunt) ->
+  helpers = require('../../helpers')(grunt)
 
-local = (platform, fn) ->
-  helpers.exec "phonegap local build #{platform} #{helpers.setVerbosity()}", fn
+  remote = (platform, fn) ->
+    grunt.task.run 'phonegap:login'
+    helpers.exec "phonegap remote build #{platform} #{helpers.setVerbosity()}", fn
+    grunt.task.run 'phonegap:logout'
 
-runAfter = (provider, platform, fn) ->
-  adapter = path.join __dirname, '..', 'after', provider, "#{platform}.js"
-  if grunt.file.exists adapter
-    require(adapter).run(fn)
-  else
-    grunt.log.writeln "No post-build tasks at '#{adapter}'"
-    if fn then fn()
+  local = (platform, fn) ->
+    helpers.exec "phonegap local build #{platform} #{helpers.setVerbosity()}", fn
 
-buildPlatform = (platform, fn) ->
-  if helpers.isRemote()
-    remote platform, ->
-      runAfter 'remote', platform, fn
-  else
-    local platform, ->
-      runAfter 'local', platform, fn
+  runAfter = (provider, platform, fn) ->
+    adapter = path.join __dirname, '..', 'after', provider, "#{platform}.js"
+    if grunt.file.exists adapter
+      require(adapter)(grunt).run(fn)
+    else
+      grunt.log.writeln "No post-build tasks at '#{adapter}'"
+      if fn then fn()
 
-module.exports =
+  buildPlatform = (platform, fn) ->
+    if helpers.isRemote()
+      remote platform, ->
+        runAfter 'remote', platform, fn
+    else
+      local platform, ->
+        runAfter 'local', platform, fn
+
 
   build: (platforms, fn) ->
     grunt.log.writeln 'Building platforms'

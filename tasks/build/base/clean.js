@@ -1,20 +1,20 @@
 (function() {
-  var clean, grunt, helpers;
+  var clean;
 
-  grunt = require('grunt');
-
-  helpers = require('../../helpers');
-
-  module.exports = clean = {
-    run: function(fn) {
-      var path;
-      path = helpers.config('path');
-      grunt.log.writeln("Cleaning " + path);
-      helpers.clean(path);
-      if (fn) {
-        return fn();
+  module.exports = clean = function(grunt) {
+    var helpers;
+    helpers = require('../../helpers')(grunt);
+    return {
+      run: function(fn) {
+        var path;
+        path = helpers.config('path');
+        grunt.log.writeln("Cleaning " + path);
+        helpers.clean(path);
+        if (fn) {
+          return fn();
+        }
       }
-    }
+    };
   };
 
 }).call(this);

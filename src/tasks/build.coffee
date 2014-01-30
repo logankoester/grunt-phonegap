@@ -1,18 +1,19 @@
-helpers = require './helpers'
 fluid = require 'fluid'
 
-base =
-  clean: require('./build/base/clean').run
-  createTree: require('./build/base/create_tree').run
-  cloneRoot: require('./build/base/clone_root').run
-  cloneCordova: require('./build/base/clone_cordova').run
-  compileConfig: require('./build/base/compile_config').run
-  addPlugins: require('./build/base/plugin').add
-  buildPlatforms: require('./build/base/platform').build
+module.exports = build = (grunt) ->
 
-plugins = helpers.config 'plugins'
+  base =
+    clean: require('./build/base/clean')(grunt).run
+    createTree: require('./build/base/create_tree')(grunt).run
+    cloneRoot: require('./build/base/clone_root')(grunt).run
+    cloneCordova: require('./build/base/clone_cordova')(grunt).run
+    compileConfig: require('./build/base/compile_config')(grunt).run
+    addPlugins: require('./build/base/plugin')(grunt).add
+    buildPlatforms: require('./build/base/platform')(grunt).build
 
-module.exports = build =
+  helpers = require('./helpers')(grunt)
+  plugins = helpers.config 'plugins'
+
   run: (platforms, fn) ->
     fluid(base)
       .clean()

@@ -1,7 +1,6 @@
-grunt = require 'grunt'
-helpers = require '../../helpers'
+module.exports = clean = (grunt) ->
+  helpers = require('../../helpers')(grunt)
 
-module.exports = clean =
   run: (fn) ->
     path = helpers.config 'path'
     grunt.log.writeln "Cleaning #{path}"

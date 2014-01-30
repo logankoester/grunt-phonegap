@@ -1,12 +1,11 @@
 fluid = require 'fluid'
-grunt = require 'grunt'
 
-tasks =
-  repairVersionCode: require('./android/version_code').repair
-  buildIcons: require('./android/icons').build
-  buildScreens: require('./android/screens').build
+module.exports = android = (grunt) ->
+  tasks =
+    repairVersionCode: require('./android/version_code')(grunt).repair
+    buildIcons: require('./android/icons')(grunt).build
+    buildScreens: require('./android/screens')(grunt).build
 
-module.exports =
   run: (fn) ->
     fluid(tasks)
       .repairVersionCode()

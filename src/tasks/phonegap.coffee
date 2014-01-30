@@ -1,7 +1,11 @@
+_ = require 'lodash'
+async = require 'async'
+
 module.exports = (grunt) ->
-  _ = require 'lodash'
-  async = require 'async'
-  helpers = require './helpers'
+  helpers = require('./helpers')(grunt)
+  build = require('./build')(grunt)
+  run = require('./run')(grunt)
+  release = require('./release')(grunt)
 
   defaults =
     root: 'www'
@@ -26,7 +30,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', (platform) ->
     helpers.mergeConfig defaults
-    build = require './build'
 
     platforms = if platform then [platform] else helpers.config 'platforms'
 
@@ -37,19 +40,18 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'phonegap:run', 'Run a Phonegap application', ->
     helpers.mergeConfig defaults
-    Run = require('./run').Run
 
     platform = @args[0] || _.first(grunt.config.get('phonegap.config.platforms'))
     device  = @args[1] || ''
 
     done = @async()
-    run = new Run().run platform, device, -> done()
+    run.run platform, device, -> done()
 
   grunt.registerTask 'phonegap:release', 'Create a distributable release', ->
     helpers.mergeConfig defaults
     platform = @args[0] || _.first(grunt.config.get('phonegap.config.platforms'))
     done = @async()
-    require('./release').on platform, -> done()
+    release.on platform, -> done()
 
   grunt.registerTask 'phonegap:login', 'Log into the remote build service', ->
     helpers.mergeConfig defaults

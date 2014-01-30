@@ -1,10 +1,9 @@
 fluid = require 'fluid'
-grunt = require 'grunt'
 
-tasks =
-  buildIcons: require('./wp8/icons').build
+module.exports = wp8 = (grunt) ->
+  tasks =
+    buildIcons: require('./wp8/icons')(grunt).build
 
-module.exports =
   run: (fn) ->
     fluid(tasks)
       .buildIcons()

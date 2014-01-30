@@ -1,9 +1,9 @@
-grunt = require 'grunt'
 path = require 'path'
 _ = require 'lodash'
-helpers = require '../../helpers'
 
-module.exports = createTree =
+module.exports = createTree = (grunt) ->
+  helpers = require('../../helpers')(grunt)
+
   run: (platforms, fn) ->
     grunt.log.writeln 'Creating directory tree'
     phonegapPath = helpers.config 'path'

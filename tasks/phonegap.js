@@ -1,9 +1,16 @@
 (function() {
+  var async, _;
+
+  _ = require('lodash');
+
+  async = require('async');
+
   module.exports = function(grunt) {
-    var async, defaults, helpers, _;
-    _ = require('lodash');
-    async = require('async');
-    helpers = require('./helpers');
+    var build, defaults, helpers, release, run;
+    helpers = require('./helpers')(grunt);
+    build = require('./build')(grunt);
+    run = require('./run')(grunt);
+    release = require('./release')(grunt);
     defaults = {
       root: 'www',
       config: 'www/config.xml',
@@ -35,9 +42,8 @@
       remote: {}
     };
     grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function(platform) {
-      var build, done, platforms;
+      var done, platforms;
       helpers.mergeConfig(defaults);
-      build = require('./build');
       platforms = platform ? [platform] : helpers.config('platforms');
       done = this.async();
       return build.run(platforms, function(err, result) {
@@ -48,13 +54,12 @@
       });
     });
     grunt.registerTask('phonegap:run', 'Run a Phonegap application', function() {
-      var Run, device, done, platform, run;
+      var device, done, platform;
       helpers.mergeConfig(defaults);
-      Run = require('./run').Run;
       platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
       device = this.args[1] || '';
       done = this.async();
-      return run = new Run().run(platform, device, function() {
+      return run.run(platform, device, function() {
         return done();
       });
     });
@@ -63,7 +68,7 @@
       helpers.mergeConfig(defaults);
       platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
       done = this.async();
-      return require('./release').on(platform, function() {
+      return release.on(platform, function() {
         return done();
       });
     });

@@ -1,8 +1,7 @@
 _ = require 'lodash'
-grunt = require 'grunt'
 exec = require('child_process').exec
 
-module.exports = helpers =
+module.exports = helpers = (grunt) ->
 
   # Merge a default config object into the grunt-phonegap configuration.
   #
@@ -41,7 +40,7 @@ module.exports = helpers =
     if grunt.config.get('phonegap.config.verbose') then '-V' else ''
 
   isRemote: (platform) ->
-    remote = helpers.config 'remote'
+    remote = helpers(grunt).config 'remote'
     if remote?.platforms? && platform in remote.platforms
       grunt.config.requires 'phonegap.config.remote.username'
       grunt.config.requires 'phonegap.config.remote.password'

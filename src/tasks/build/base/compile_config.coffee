@@ -1,9 +1,9 @@
-grunt = require 'grunt'
 path = require 'path'
 cp = require 'cp'
-helpers = require '../../helpers'
 
-module.exports = compileConfig =
+module.exports = compileConfig = (grunt) ->
+  helpers = require('../../helpers')(grunt)
+
   run: (fn) ->
     grunt.log.writeln 'Compiling config.xml'
     phonegapPath = helpers.config 'path'

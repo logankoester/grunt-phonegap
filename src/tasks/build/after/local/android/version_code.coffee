@@ -1,9 +1,9 @@
 xmldom = require 'xmldom'
 path = require 'path'
-grunt = require 'grunt'
-helpers = require '../../../../helpers'
 
-module.exports =
+module.exports = versionCode = (grunt) ->
+  helpers = require('../../../../helpers')(grunt)
+
   repair: (fn) ->
     dom = xmldom.DOMParser
     data = helpers.config 'versionCode'

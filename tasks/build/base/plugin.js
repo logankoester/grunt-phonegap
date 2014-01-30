@@ -1,27 +1,26 @@
 (function() {
-  var addPlugin, async, grunt, helpers, plugin;
+  var async, plugin;
 
   async = require('async');
 
-  grunt = require('grunt');
-
-  helpers = require('../../helpers');
-
-  addPlugin = function(plugin, fn) {
-    var cmd;
-    cmd = "phonegap plugin add " + plugin + " " + (helpers.setVerbosity());
-    return helpers.exec(cmd, fn);
-  };
-
-  module.exports = plugin = {
-    add: function(plugins, fn) {
-      grunt.log.writeln('Adding plugins');
-      return async.eachSeries(plugins, addPlugin, function(err) {
-        if (fn) {
-          return fn(err);
-        }
-      });
-    }
+  module.exports = plugin = function(grunt) {
+    var addPlugin, helpers;
+    helpers = require('../../helpers')(grunt);
+    addPlugin = function(plugin, fn) {
+      var cmd;
+      cmd = "phonegap plugin add " + plugin + " " + (helpers.setVerbosity());
+      return helpers.exec(cmd, fn);
+    };
+    return {
+      add: function(plugins, fn) {
+        grunt.log.writeln('Adding plugins');
+        return async.eachSeries(plugins, addPlugin, function(err) {
+          if (fn) {
+            return fn(err);
+          }
+        });
+      }
+    };
   };
 
 }).call(this);

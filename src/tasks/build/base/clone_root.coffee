@@ -1,9 +1,8 @@
-grunt = require 'grunt'
 path = require 'path'
 copy = require 'directory-copy'
-helpers = require '../../helpers'
 
-module.exports = cloneRoot =
+module.exports = cloneRoot = (grunt) ->
+  helpers = require('../../helpers')(grunt)
   run: (fn) ->
     grunt.log.writeln 'Cloning root directory'
     rootPath = helpers.config 'root'
