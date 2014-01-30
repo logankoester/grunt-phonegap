@@ -35,27 +35,16 @@
       remote: {}
     };
     grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function(platform) {
-      var Build, build, done, platforms, plugins;
+      var build, done, platforms;
       helpers.mergeConfig(defaults);
-      Build = require('./build').Build;
-      done = this.async();
+      build = require('./build');
       platforms = platform ? [platform] : helpers.config('platforms');
-      plugins = helpers.config('plugins');
-      build = new Build;
-      helpers.clean(helpers.config('path'));
-      build.buildTree(platforms);
-      return async.series([build.cloneRoot, build.cloneCordova, build.compileConfig], function() {
-        return async.eachSeries(plugins, build.addPlugin, function(err) {
-          return async.eachSeries(platforms, build.buildPlatform, function(err) {
-            return async.eachSeries(platforms, build.postProcessPlatform, function() {
-              return async.eachSeries(platforms, build.buildIcons, function(err) {
-                return async.eachSeries(platforms, build.buildScreens, function(err) {
-                  return done();
-                });
-              });
-            });
-          });
-        });
+      done = this.async();
+      return build.run(platforms, function(err, result) {
+        if (err) {
+          grunt.fatal(err);
+        }
+        return done();
       });
     });
     grunt.registerTask('phonegap:run', 'Run a Phonegap application', function() {

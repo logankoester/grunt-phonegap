@@ -26,27 +26,14 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'phonegap:build', 'Build as a Phonegap application', (platform) ->
     helpers.mergeConfig defaults
-    Build = require('./build').Build
+    build = require './build'
+
+    platforms = if platform then [platform] else helpers.config 'platforms'
 
     done = @async()
-    platforms = if platform then [platform] else helpers.config('platforms')
-    plugins = helpers.config 'plugins'
-    build = new Build
-    
-    helpers.clean helpers.config('path')
-    build.buildTree platforms
-
-    async.series [
-      build.cloneRoot,
-      build.cloneCordova,
-      build.compileConfig
-    ], ->
-      async.eachSeries plugins, build.addPlugin, (err) ->
-        async.eachSeries platforms, build.buildPlatform, (err) ->
-          async.eachSeries platforms, build.postProcessPlatform, ->
-            async.eachSeries platforms, build.buildIcons, (err) ->
-              async.eachSeries platforms, build.buildScreens, (err) ->
-                done()
+    build.run platforms, (err, result) ->
+      if err then grunt.fatal err
+      done()
 
   grunt.registerTask 'phonegap:run', 'Run a Phonegap application', ->
     helpers.mergeConfig defaults
