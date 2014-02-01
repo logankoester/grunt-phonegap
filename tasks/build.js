@@ -18,7 +18,7 @@
     plugins = helpers.config('plugins');
     return {
       run: function(platforms, fn) {
-        return fluid(base).clean().createTree('platforms').cloneRoot().cloneCordova().compileConfig().custom(function(done) {
+        return fluid(base).clean().createTree(platforms).cloneRoot().cloneCordova().compileConfig().custom(function(done) {
           return base.addPlugins(plugins, function() {
             return done();
           });
