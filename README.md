@@ -303,6 +303,12 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.9.1
+
+  * Fixes bugs caused by simple typos in `v0.9.0` ([#39](https://github.com/logankoester/grunt-phonegap/pull/39), [#40](https://github.com/logankoester/grunt-phonegap/pull/40)) - thanks [@mkai](https://github.com/mkai)!
+  * Reverts to using `phonegap local plugin add` (as opposed to `phonegap plugin add`) after discovering that the shortcut is not available in some versions of [phonegap-cli](https://github.com/phonegap/phonegap-cli)
+  * Release tags created by `grunt-bump` should now be signed.
+
 #### 0.9.0
 
 A large amount of code has been refactored, which may have introduced new bugs. Please [open an issue](https://github.com/logankoester/grunt-phonegap/issues)
