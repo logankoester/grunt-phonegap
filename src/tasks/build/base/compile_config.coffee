@@ -12,7 +12,7 @@ module.exports = compileConfig = (grunt) ->
     dest = path.join phonegapPath, 'www', 'config.xml'
 
     if grunt.util.kindOf(configXml) == 'string'
-      grunt.logc.writeln "Copying static #{configXml}"
+      grunt.log.writeln "Copying static #{configXml}"
       cp configXml, dest, (err) ->
         if fn then fn(err)
 
