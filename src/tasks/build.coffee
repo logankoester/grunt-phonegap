@@ -17,7 +17,7 @@ module.exports = build = (grunt) ->
   run: (platforms, fn) ->
     fluid(base)
       .clean()
-      .createTree('platforms')
+      .createTree(platforms)
       .cloneRoot()
       .cloneCordova()
       .compileConfig()
