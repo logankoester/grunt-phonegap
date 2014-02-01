@@ -4,7 +4,7 @@ module.exports = plugin = (grunt) ->
   helpers = require('../../helpers')(grunt)
 
   addPlugin = (plugin, fn) ->
-    cmd = "phonegap plugin add #{plugin} #{helpers.setVerbosity()}"
+    cmd = "phonegap local plugin add #{plugin} #{helpers.setVerbosity()}"
     helpers.exec cmd, fn
 
   add: (plugins, fn) ->

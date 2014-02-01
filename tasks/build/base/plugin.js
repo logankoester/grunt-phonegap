@@ -8,7 +8,7 @@
     helpers = require('../../helpers')(grunt);
     addPlugin = function(plugin, fn) {
       var cmd;
-      cmd = "phonegap plugin add " + plugin + " " + (helpers.setVerbosity());
+      cmd = "phonegap local plugin add " + plugin + " " + (helpers.setVerbosity());
       return helpers.exec(cmd, fn);
     };
     return {
