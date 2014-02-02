@@ -15,6 +15,11 @@
       plugins: [],
       platforms: [],
       maxBuffer: 200,
+      name: function() {
+        var pkg;
+        pkg = grunt.file.readJSON('package.json');
+        return pkg.name;
+      },
       verbose: false,
       releases: 'releases',
       releaseName: function() {

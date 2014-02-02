@@ -8,7 +8,8 @@ module.exports = helpers = (grunt) ->
   # @param [Object] defaults The default config object
   # @return [Object] The merged config object
   mergeConfig: (defaults) ->
-    _.defaults grunt.config.get('phonegap.config'), defaults
+    grunt.config.set 'phonegap.config'
+      , _.defaults grunt.config.get('phonegap.config'), defaults
 
   # Execute the given command in a child process, and then run the
   # callback function if one is provided.
@@ -59,7 +60,7 @@ module.exports = helpers = (grunt) ->
 
   config: (property) ->
     value = grunt.config.get("phonegap.config.#{property}")
-    if typeof value == 'Function'
+    if typeof value == 'function'
       return value()
     else
       return value

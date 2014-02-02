@@ -9,7 +9,7 @@
   module.exports = helpers = function(grunt) {
     return {
       mergeConfig: function(defaults) {
-        return _.defaults(grunt.config.get('phonegap.config'), defaults);
+        return grunt.config.set('phonegap.config', _.defaults(grunt.config.get('phonegap.config'), defaults));
       },
       exec: function(cmd, fn, cwd) {
         var options, proc,
@@ -72,7 +72,7 @@
       config: function(property) {
         var value;
         value = grunt.config.get("phonegap.config." + property);
-        if (typeof value === 'Function') {
+        if (typeof value === 'function') {
           return value();
         } else {
           return value;

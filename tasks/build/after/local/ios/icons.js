@@ -1,0 +1,78 @@
+(function() {
+  var icons, path;
+
+  path = require('path');
+
+  module.exports = icons = function(grunt) {
+    var helpers;
+    helpers = require('../../../../helpers')(grunt);
+    return {
+      build: function(fn) {
+        var appName, phonegapPath, res, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+        icons = helpers.config('icons');
+        phonegapPath = helpers.config('path');
+        appName = helpers.config('name');
+        res = path.join(phonegapPath, 'platforms', 'ios', appName, 'Resources', 'icons');
+        if (icons != null ? (_ref = icons.ios) != null ? _ref.icon29 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon29, path.join(res, 'icon-small.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref1 = icons.ios) != null ? _ref1.icon29x2 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon29x2, path.join(res, 'icon-small@2x.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref2 = icons.ios) != null ? _ref2.icon40 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon40, path.join(res, 'icon-40.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref3 = icons.ios) != null ? _ref3.icon40x2 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon40x2, path.join(res, 'icon-40@2x.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref4 = icons.ios) != null ? _ref4.icon57 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon57, path.join(res, 'icon.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref5 = icons.ios) != null ? _ref5.icon57x2 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon57x2, path.join(res, 'icon@2x.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref6 = icons.ios) != null ? _ref6.icon60x2 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon60x2, path.join(res, 'icon-60@2x.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref7 = icons.ios) != null ? _ref7.icon72 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon72, path.join(res, 'icon-72.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref8 = icons.ios) != null ? _ref8.icon72x2 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon72x2, path.join(res, 'icon-72@2x.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref9 = icons.ios) != null ? _ref9.icon76 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon76, path.join(res, 'icon-76.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref10 = icons.ios) != null ? _ref10.icon76x2 : void 0 : void 0) {
+          grunt.file.copy(icons.ios.icon76x2, path.join(res, 'icon-76@2x.png'), {
+            encoding: null
+          });
+        }
+        if (fn) {
+          return fn();
+        }
+      }
+    };
+  };
+
+}).call(this);

@@ -11,6 +11,9 @@ module.exports = (grunt) ->
     plugins: []
     platforms: []
     maxBuffer: 200
+    name: ->
+      pkg = grunt.file.readJSON 'package.json'
+      pkg.name
     verbose: false
     releases: 'releases'
     releaseName: ->
