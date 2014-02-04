@@ -158,7 +158,7 @@ module.exports = (grunt) ->
           informative: true
           h1: '#'
           h2: '##'
-          back_to_top_custom: null
+          back_to_top_custom: '#grunt-phonegap'
         order:
           'requirements.md': 'Requirements'
           'getting-started.md': 'Getting Started'
