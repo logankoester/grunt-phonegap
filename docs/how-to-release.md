@@ -6,7 +6,7 @@ The following procedure is documented only for project owners. If you're not an 
 
 2. Run `grunt docs`, which will regenerate the README (to add your release notes)
 
-3. Run `grunt bump:[major|minor|patch]` to bump the version number and tag a release.
+3. Run `grunt bump:[major|minor|patch]` to bump the version number and tag a release. See [grunt-bump](https://github.com/logankoester/grunt-bump) for details.
 
 4. Push to **master** with `git push origin master; git push --tags`.
 
