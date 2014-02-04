@@ -12,8 +12,7 @@
         return grunt.config.set('phonegap.config', _.defaults(grunt.config.get('phonegap.config'), defaults));
       },
       exec: function(cmd, fn, cwd) {
-        var options, proc,
-          _this = this;
+        var options, proc;
         if (cwd == null) {
           cwd = grunt.config.get('phonegap.config.path');
         }
@@ -22,20 +21,26 @@
           maxBuffer: grunt.config.get('phonegap.config.maxBuffer') * 1024,
           cwd: cwd
         };
-        proc = exec(cmd, options, function(err, stdout, stderr) {
-          if (err) {
-            grunt.fatal(err);
-          }
-          if (fn) {
-            return fn(err);
-          }
-        });
-        proc.stdout.on('data', function(out) {
-          return grunt.log.write(out);
-        });
-        return proc.stderr.on('data', function(err) {
-          return grunt.fatal(err);
-        });
+        proc = exec(cmd, options, (function(_this) {
+          return function(err, stdout, stderr) {
+            if (err) {
+              grunt.fatal(err);
+            }
+            if (fn) {
+              return fn(err);
+            }
+          };
+        })(this));
+        proc.stdout.on('data', (function(_this) {
+          return function(out) {
+            return grunt.log.write(out);
+          };
+        })(this));
+        return proc.stderr.on('data', (function(_this) {
+          return function(err) {
+            return grunt.fatal(err);
+          };
+        })(this));
       },
       clean: function(target) {
         if (grunt.file.exists(target)) {
