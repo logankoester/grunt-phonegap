@@ -121,6 +121,19 @@ grunt.initConfig({
         wp8: {
           app: 'icon-62-tile.png',
           tile: 'icon-173-tile.png'
+        },
+        ios: {
+          icon29: 'icon29.png',
+          icon29x2: 'icon29x2.png',
+          icon40: 'icon40.png',
+          icon40x2: 'icon40x2.png',
+          icon57: 'icon57.png',
+          icon57x2: 'icon57x2.png',
+          icon60x2: 'icon60x2.png',
+          icon72: 'icon72.png',
+          icon72x2: 'icon72x2.png',
+          icon76: 'icon76.png',
+          icon76x2: 'icon76x2.png'
         }
       },
 
@@ -356,7 +369,12 @@ will be skipped if your OS is detected to be non-Windows.
 Fork the repo on Github and open a pull request. Note that the files in `tasks/` and `test/` are the output of
 CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 
+Likewise, `README.md` is the output of the `grunt docs` task, and will be overwritten. README updates should be made in
+the Markdown files under `docs/`.
+
 Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
+
+Please run `grunt build` before submitting a pull request. The build output should be included with your changes.
 
 
 ## Release History
