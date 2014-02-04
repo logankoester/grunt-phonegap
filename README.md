@@ -303,6 +303,11 @@ Before running the included test suite, you must first run `git submodule update
 
 ## Release History
 
+#### 0.9.2
+
+  * Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
+  * Updates `grunt-contrib-coffee`
+
 #### 0.9.1
 
   * Fixes bugs caused by simple typos in `v0.9.0` ([#39](https://github.com/logankoester/grunt-phonegap/pull/39), [#40](https://github.com/logankoester/grunt-phonegap/pull/40)) - thanks [@mkai](https://github.com/mkai)!
