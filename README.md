@@ -14,7 +14,23 @@ by wrapping the Phonegap 3.0 command line interface.
 Rather than polluting the top-level of your project, `grunt-phonegap` copies your files into a
 subdirectory containing the Phonegap project, which gets regenerated every time the task `phonegap:build` is executed.
 
+## Jump to Section
+
+* [Requirements](#requirements)
+* [Getting Started](#getting-started)
+* [Overview](#overview)
+* [Dynamic config.xml](#dynamic-config.xml)
+* [App Icons](#app-icons)
+* [versionCode](#versioncode)
+* [Phonegap Build](#phonegap-build)
+* [Tasks](#tasks)
+* [Running the test suite](#running-the-test-suite)
+* [Contributing](#contributing)
+* [Release History](#release-history)
+* [License](#license)
+
 ## Requirements
+[[Back To Top]](#grunt-phonegap)
 
 You will need the `phonegap` CLI tool installed globally to use `grunt-phonegap`.
 
@@ -26,7 +42,11 @@ you intend to target.
 
 For help with that, see [Platform Guides](http://docs.phonegap.com/en/3.1.0/guide_platforms_index.md.html#Platform%20Guides) from the Phonegap documentation.
 
+
+
 ## Getting Started
+[[Back To Top]](#grunt-phonegap)
+
 This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
@@ -41,7 +61,11 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-phonegap');
 ```
 
-### Overview
+
+
+## Overview
+[[Back To Top]](#grunt-phonegap)
+
 In your project's Gruntfile, add a section named `phonegap` to the data object passed into `grunt.initConfig()`.
 
 Point `phonegap.config.root` to the output of your other build steps (where your `index.html` file is located).
@@ -97,6 +121,19 @@ grunt.initConfig({
         wp8: {
           app: 'icon-62-tile.png',
           tile: 'icon-173-tile.png'
+        },
+        ios: {
+          icon29: 'icon29.png',
+          icon29x2: 'icon29x2.png',
+          icon40: 'icon40.png',
+          icon40x2: 'icon40x2.png',
+          icon57: 'icon57.png',
+          icon57x2: 'icon57x2.png',
+          icon60x2: 'icon60x2.png',
+          icon72: 'icon72.png',
+          icon72x2: 'icon72x2.png',
+          icon76: 'icon76.png',
+          icon76x2: 'icon76x2.png'
         }
       },
 
@@ -136,7 +173,10 @@ grunt.initConfig({
 })
 ```
 
-#### Dynamic config.xml
+
+
+## Dynamic config.xml
+[[Back To Top]](#grunt-phonegap)
 
 Beginning with **v0.4.1**, `phonegap.config.config` may be either a string or an object.
 
@@ -144,6 +184,7 @@ As a string, the file is copied directly, as with previous versions.
 
 As an object with the keys `template<String>` and `data<Object>`, the file at `template` will
 be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
+
 
 ##### Example
 
@@ -181,7 +222,10 @@ be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
 </widget>
 
 ```
-#### App Icons
+
+
+## App Icons
+[[Back To Top]](#grunt-phonegap)
 
 If you choose to set `phonegap.config.icons` with one or more icon sizes, these files
 will be copied into the appropriate directories to use as your app icon.
@@ -227,7 +271,9 @@ Currently this feature supports Android, Windows Phone 8, and iOS.
   }
 ```
 
-#### versionCode
+
+## versionCode
+[[Back To Top]](#grunt-phonegap)
 
 The [config-xml](https://build.phonegap.com/docs/config-xml) documentation from Phonegap Build (the remote build service)
 indicate that you can set a **versionCode** for your `AndroidManifest.xml` file inside your `config.xml`. However, `phonegap local`
@@ -244,12 +290,18 @@ See http://developer.android.com/tools/publishing/versioning.html
 
 This option will be ignored for non-Android platforms or when using the remote build service.
 
-#### Phonegap Build
+
+
+## Phonegap Build
+[[Back To Top]](#grunt-phonegap)
 
 If you set `phonegap.config.remote` to a subset of `phonegap.config.platforms`, those platforms will be built remotely. This is still somewhat
 experimental, and may not integrate with all local features.
 
-### Tasks
+
+
+## Tasks
+[[Back To Top]](#grunt-phonegap)
 
 #### phonegap:build[:platform]
 
@@ -295,7 +347,9 @@ and `phonegap.config.remote.password`.
 
 Log out of the Phonegap Build service.
 
+
 ## Running the test suite
+[[Back To Top]](#grunt-phonegap)
 
     git clone https://github.com/logankoester/grunt-phonegap.git
     cd grunt-phonegap
@@ -307,100 +361,42 @@ Log out of the Phonegap Build service.
 Note that not all tests can be run on all platforms. For example, tests depending on the Windows Phone SDK
 will be skipped if your OS is detected to be non-Windows.
 
+
+
 ## Contributing
+[[Back To Top]](#grunt-phonegap)
 
 Fork the repo on Github and open a pull request. Note that the files in `tasks/` and `test/` are the output of
 CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 
+Likewise, `README.md` is the output of the `grunt docs` task, and will be overwritten. README updates should be made in
+the Markdown files under `docs/`.
+
 Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
 
+Please run `grunt build` before submitting a pull request. The build output should be included with your changes.
+
+
 ## Release History
+[[Back To Top]](#grunt-phonegap)
 
-#### 0.9.2
+You can find [all the changelogs here](/docs/releases).
 
-  * Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
-  * Fixes regression ([#43](https://github.com/logankoester/grunt-phonegap/issues/43)) (Android install fails when optional property config.versionCode is omitted)
-  * Updates `grunt-contrib-coffee`
+### Latest changelog is from v0.9.2.md:
 
-#### 0.9.1
+#### v0.9.2
 
-  * Fixes bugs caused by simple typos in `v0.9.0` ([#39](https://github.com/logankoester/grunt-phonegap/pull/39), [#40](https://github.com/logankoester/grunt-phonegap/pull/40)) - thanks [@mkai](https://github.com/mkai)!
-  * Reverts to using `phonegap local plugin add` (as opposed to `phonegap plugin add`) after discovering that the shortcut is not available in some versions of [phonegap-cli](https://github.com/phonegap/phonegap-cli)
-  * Release tags created by `grunt-bump` should now be signed.
+* Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
+* Fixes regression ([#43](https://github.com/logankoester/grunt-phonegap/issues/43)) (Android install fails when optional property config.versionCode is omitted)
+* Splits `README.md` into multiple source files listed under `docs/`, as it was becoming large and unwieldy.
+* Updates `grunt-contrib-coffee`
 
-#### 0.9.0
-
-A large amount of code has been refactored, which may have introduced new bugs. Please [open an issue](https://github.com/logankoester/grunt-phonegap/issues)
-if a feature no longer works with your `v0.8.1` config.
-
-  * Adds support for remote builds using the [Phonegap Build](https://build.phonegap.com) service ([#31](https://github.com/logankoester/grunt-phonegap/issues/31))
-  * Refactors tasks source into feature-specific files ([#28](https://github.com/logankoester/grunt-phonegap/issues/28))
-
-#### 0.8.1
-  * Adds optional platform argument for `phonegap:build[:platform]` task,
-    allows you to override the platforms array for a specific single-platform build (thanks [@bouzuya](https://github.com/bouzuya))
-  * Updates `grunt-contrib-nodeunit` to v0.3.0
-
-#### 0.8.0
-
-  * Adds configuration for Android splash screens. (thanks [@arthurgeek](https://github.com/arthurgeek))
-
-#### 0.7.0
-
-The icon configuration API has changed to permit multiple platforms. If you
-used this feature before `v0.7.0`, please update your **Gruntfile** as per
-the updated example in `README.md`.
-
-  * Adds app icon management for Windows Phone 8 (thanks [@kombucha](https://github.com/kombucha))
-  * FIX: Cordova hook file permissions are now preserved (#13)
-  * FIX: Release keystore file path can lead to unexpected escaped characters (Windows) (#15)
-  * FIX: No longer inadvertantly attempt a device deploy instead of an emulator deploy when the
-    emulator option is passed to `phonegap:run` (#17)
-  * Reorganizes tests into an improved file structure based on platforms and features
-  * Removes indirect references to Grunt's deprecated external (lodash & async) libraries
-  * Updates devDependencies `grunt-contrib-coffee`, `grunt-contrib-copy` and `grunt-bump` to their latest versions.
-
-#### 0.6.1
-  * FIX: fixAndroidVersionCode not handling the config.versionCode correctly
-
-#### 0.6.0
-  * Adds configurable `versionCode` for Android applications
-
-#### 0.5.1
-  * Allows you to set the maxBuffer size for child processes
-
-#### 0.5.0
-  * Adds app icon management for Android
-
-#### 0.4.2
-  * Fixes a regression in 0.4.1 that causes the apk copied into the release directory to contain 0 bytes
-
-#### 0.4.1
-  * Adds option to process custom config.xml as a template
-
-#### 0.4.0
-  * Adds `release:android` task to build a releases/ directory containing a signed APK for distribution.
-  * Includes compiled tasks/ directory in source countrol
-  * Removes `phonegap` npm dependency - install it globally with -g instead.
-
-#### 0.3.0
-
-  * Fixes [issue #2](https://github.com/logankoester/grunt-phonegap/issues/2) "Test not completing" (thanks [@skarjalainen](https://github.com/skarjalainen) and [@jrvidal](https://github.com/jrvidal))
-  * Removed default 'device' flag (thanks [@robwalch](https://github.com/robwalch))
-
-#### 0.2.0
-
-  * Adds 'config' option for specifying a custom path to 'config.xml'.
-
-#### 0.1.0
-
-  * Initial release
 
 ## License
+[[Back To Top]](#grunt-phonegap)
 
 Copyright (c) 2013-2014 Logan Koester.
 Released under the MIT license. See `LICENSE-MIT` for details.
-
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/logankoester/grunt-phonegap/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
@@ -411,3 +407,5 @@ Released under the MIT license. See `LICENSE-MIT` for details.
 [![authors](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/badges/authors.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Total views](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/counters/views.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/counters/views-24h.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
+
+

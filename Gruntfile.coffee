@@ -2,7 +2,7 @@
 # * grunt-phonegap
 # * https://github.com/logankoester/grunt-phonegap
 # *
-# * Copyright (c) 2013 Logan Koester
+# * Copyright (c) 2013-2014 Logan Koester
 # * Licensed under the MIT license.
 #
 
@@ -10,6 +10,7 @@ module.exports = (grunt) ->
 
   # Project configuration.
   grunt.initConfig
+    pkg: grunt.file.readJSON 'package.json'
     # Configuration to be run (and then tested).
     phonegap:
       config:
@@ -137,6 +138,40 @@ module.exports = (grunt) ->
         signCommits: true
         signTags: true
 
+    readme_generator:
+      readme:
+        options:
+          readme_folder: 'docs'
+          output: 'README.md'
+          table_of_contents: true
+          toc_extra_links: []
+          generate_changelog: true
+          changelog_folder: 'docs/releases'
+          changelog_version_prefix: 'v'
+          changelog_insert_before: 'legal.md'
+          banner: 'banner.md'
+          has_travis: false
+          github_username: 'logankoester'
+          generate_footer: false
+          generate_title: false
+          package_title: null
+          informative: true
+          h1: '#'
+          h2: '##'
+          back_to_top_custom: '#grunt-phonegap'
+        order:
+          'requirements.md': 'Requirements'
+          'getting-started.md': 'Getting Started'
+          'overview.md': 'Overview'
+          'features/dynamic-config.md': 'Dynamic config.xml'
+          'features/app-icons.md': 'App Icons'
+          'features/version-code.md': 'versionCode'
+          'features/phonegap-build.md': 'Phonegap Build'
+          'tasks.md': 'Tasks'
+          'test-suite.md': 'Running the test suite'
+          '../CONTRIBUTING.md': 'Contributing'
+          'legal.md': 'License'
+
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -144,6 +179,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-nodeunit'
   grunt.loadNpmTasks 'grunt-bump'
+  grunt.loadNpmTasks 'grunt-readme-generator'
 
   # Load this plugin's tasks (deferred until build is ready)
   grunt.registerTask 'test', ->
@@ -154,5 +190,6 @@ module.exports = (grunt) ->
     grunt.loadTasks 'tasks'
     grunt.task.run 'phonegap:run'
 
-  grunt.registerTask 'build', ['clean', 'copy', 'coffee']
+  grunt.registerTask 'docs', ['readme_generator']
+  grunt.registerTask 'build', ['clean', 'copy', 'coffee', 'docs']
   grunt.registerTask 'default', ['build', 'test']
