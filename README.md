@@ -189,7 +189,7 @@ will be copied into the appropriate directories to use as your app icon.
 You may want to use this feature in conjunction with [grunt-rasterize](https://github.com/logankoester/grunt-rasterize)
 to generate the correctly sized icon files from an SVG source.
 
-Currently this feature only supports Android and Windows Phone 8.
+Currently this feature supports Android, Windows Phone 8, and iOS.
 
 ##### Example
 
@@ -199,14 +199,27 @@ Currently this feature only supports Android and Windows Phone 8.
       // ...
       icons: {
       	android: {
-            ldpi: 'icon-36-ldpi.png',
-            mdpi: 'icon-48-mdpi.png',
-            hdpi: 'icon-72-hdpi.png',
-            xhdpi: 'icon-96-xhdpi.png'
+          ldpi: 'icon-36-ldpi.png',
+          mdpi: 'icon-48-mdpi.png',
+          hdpi: 'icon-72-hdpi.png',
+          xhdpi: 'icon-96-xhdpi.png'
         },
         wp8: {
-        	app: 'icon-62-tile.png',
-            tile: 'icon-173-tile.png'
+          app: 'icon-62-tile.png',
+          tile: 'icon-173-tile.png'
+        },
+        ios: {
+          icon29: 'icon29.png',
+          icon29x2: 'icon29x2.png',
+          icon40: 'icon40.png',
+          icon40x2: 'icon40x2.png',
+          icon57: 'icon57.png',
+          icon57x2: 'icon57x2.png',
+          icon60x2: 'icon60x2.png',
+          icon72: 'icon72.png',
+          icon72x2: 'icon72x2.png',
+          icon76: 'icon76.png',
+          icon76x2: 'icon76x2.png'
         }
       }
       // ...
