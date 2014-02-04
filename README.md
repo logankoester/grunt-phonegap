@@ -386,9 +386,10 @@ You can find [all the changelogs here](/docs/releases).
 
 #### v0.9.2
 
-  * Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
-  * Fixes regression ([#43](https://github.com/logankoester/grunt-phonegap/issues/43)) (Android install fails when optional property config.versionCode is omitted)
-  * Updates `grunt-contrib-coffee`
+* Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
+* Fixes regression ([#43](https://github.com/logankoester/grunt-phonegap/issues/43)) (Android install fails when optional property config.versionCode is omitted)
+* Splits `README.md` into multiple source files listed under `docs/`, as it was becoming large and unwieldy.
+* Updates `grunt-contrib-coffee`
 
 
 ## License
