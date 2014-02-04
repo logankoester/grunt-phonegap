@@ -75,6 +75,14 @@ module.exports = (grunt) ->
           wp8:
             app: 'test/fixtures/www/icon-62-tile.png'
             tile: 'test/fixtures/www/icon-173-tile.png'
+          ios:
+            ipadLand: 'test/fixtures/www/screen-ipad-landscape.png'
+            ipadLandx2: 'test/fixtures/www/screen-ipad-landscape-2x.png'
+            ipadPortrait: 'test/fixtures/www/screen-ipad-portrait.png'
+            ipadPortraitx2: 'test/fixtures/www/screen-ipad-portrait-2x.png'
+            iphonePortrait: 'test/fixtures/www/screen-iphone-portrait.png'
+            iphonePortraitx2: 'test/fixtures/www/screen-iphone-portrait-2x.png'
+            iphone568hx2: 'test/fixtures/www/screen-iphone-568h-2x.png'
 
         versionCode: -> 2
 
