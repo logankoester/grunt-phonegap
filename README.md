@@ -319,6 +319,7 @@ Before running the included test suite, you must first run `git submodule update
 #### 0.9.2
 
   * Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
+  * Fixes regression ([#43](https://github.com/logankoester/grunt-phonegap/issues/43)) (Android install fails when optional property config.versionCode is omitted)
   * Updates `grunt-contrib-coffee`
 
 #### 0.9.1
