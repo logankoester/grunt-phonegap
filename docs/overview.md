@@ -27,6 +27,13 @@ grunt.initConfig({
         return(pkg.name + '-' + pkg.version);
       },
 
+      // Must be set for ios to work.
+      // Should return the app name.
+      name: function(){
+        var pkg = grunt.file.readJSON('package.json');
+        return pkg.name;
+      },
+
       // Add a key if you plan to use the `release:android` task
       // See http://developer.android.com/tools/publishing/app-signing.html
       key: {

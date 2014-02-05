@@ -95,6 +95,13 @@ grunt.initConfig({
         return(pkg.name + '-' + pkg.version);
       },
 
+      // Must be set for ios to work.
+      // Should return the app name.
+      name: function(){
+        var pkg = grunt.file.readJSON('package.json');
+        return pkg.name;
+      },
+
       // Add a key if you plan to use the `release:android` task
       // See http://developer.android.com/tools/publishing/app-signing.html
       key: {
@@ -138,7 +145,7 @@ grunt.initConfig({
       },
 
       // Set a splash screen at various sizes (optional)
-      // Only works for Android now
+      // Only works for Android and IOS
       screens: {
         android: {
           ldpi: 'screen-ldpi-portrait.png'
@@ -153,6 +160,18 @@ grunt.initConfig({
           xhdpi: 'screen-xhdpi-portrait.png'
           // landscape version
           xhdpiLand: 'www/screen-xhdpi-landscape.png'
+        },
+        ios: {
+          // ipad landscape
+          ipadLand: 'screen-ipad-landscape.png',
+          ipadLandx2: 'screen-ipad-landscape-2x.png',
+          // ipad portrait
+          ipadPortrait: 'screen-ipad-portrait.png',
+          ipadPortraitx2: 'screen-ipad-portrait-2x.png',
+          // iphone portrait
+          iphonePortrait: 'screen-iphone-portrait.png',
+          iphonePortraitx2: 'screen-iphone-portrait-2x.png',
+          iphone568hx2: 'screen-iphone-568h-2x.png'
         }
       },
 
