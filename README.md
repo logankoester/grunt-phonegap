@@ -401,14 +401,12 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.9.2.md:
+### Latest changelog is from v0.9.3.md:
 
-#### v0.9.2
+#### v0.9.3
 
-* Adds support for iOS icons (thanks [gabrielpoca](https://github.com/gabrielpoca)!)
-* Fixes regression ([#43](https://github.com/logankoester/grunt-phonegap/issues/43)) (Android install fails when optional property config.versionCode is omitted)
-* Splits `README.md` into multiple source files listed under `docs/`, as it was becoming large and unwieldy.
-* Updates `grunt-contrib-coffee`
+* Adds support for iOS splash screens.
+* Updates `README.md` with information for iOS icons and screens.
 
 
 ## License
