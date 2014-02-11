@@ -41,7 +41,7 @@
     "xml2json": "~0.3.2",
     "lodash": "~2.4.0",
     "hash_file": "~0.1.1",
-    "grunt-readme-generator": "~0.3.41"
+    "grunt-readme-generator": "git://github.com/logankoester/grunt-readme-generator#semver-sort"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"
