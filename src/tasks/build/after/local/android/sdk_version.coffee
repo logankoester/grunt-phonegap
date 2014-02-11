@@ -6,9 +6,8 @@ module.exports = sdkVersion = (grunt) ->
 
   setTarget: (fn) ->
     dom = xmldom.DOMParser
-    data = helpers.config 'targetSdkVersion'
-    if data
-      targetSdkVersion = if grunt.util.kindOf(data) == 'function' then data() else data
+    targetSdkVersion = helpers.config 'targetSdkVersion'
+    if targetSdkVersion
       phonegapPath = helpers.config 'path'
 
       manifestPath = path.join phonegapPath, 'platforms', 'android', 'AndroidManifest.xml'

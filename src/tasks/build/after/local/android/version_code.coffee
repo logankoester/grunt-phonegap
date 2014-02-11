@@ -6,9 +6,8 @@ module.exports = versionCode = (grunt) ->
 
   repair: (fn) ->
     dom = xmldom.DOMParser
-    data = helpers.config 'versionCode'
-    if data
-      versionCode = if grunt.util.kindOf(data) == 'function' then data() else data
+    versionCode = helpers.config 'versionCode'
+    if versionCode
       phonegapPath = helpers.config 'path'
 
       manifestPath = path.join phonegapPath, 'platforms', 'android', 'AndroidManifest.xml'

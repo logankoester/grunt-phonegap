@@ -10,11 +10,10 @@
     helpers = require('../../../../helpers')(grunt);
     return {
       setTarget: function(fn) {
-        var data, doc, dom, manifest, manifestPath, phonegapPath, targetSdkVersion;
+        var doc, dom, manifest, manifestPath, phonegapPath, targetSdkVersion;
         dom = xmldom.DOMParser;
-        data = helpers.config('targetSdkVersion');
-        if (data) {
-          targetSdkVersion = grunt.util.kindOf(data) === 'function' ? data() : data;
+        targetSdkVersion = helpers.config('targetSdkVersion');
+        if (targetSdkVersion) {
           phonegapPath = helpers.config('path');
           manifestPath = path.join(phonegapPath, 'platforms', 'android', 'AndroidManifest.xml');
           manifest = grunt.file.read(manifestPath);
