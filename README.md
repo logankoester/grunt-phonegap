@@ -425,13 +425,12 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.10.0.md:
+### Latest changelog is from v0.10.1.md:
 
-#### v0.10.0
+#### v0.10.1
 
-* Adds options to set explicit minSdkVersion and targetSdkVersion values in AndroidManifest.xml
-* Updates `grunt-contrib-coffee` dependency to `v0.10.0`
-* Updates required node engine version to v0.10.0
+* Swtich to fork of grunt-readme-generator with a patched semver-based changelog sort
+* Resolves an issue that would result in early termination of the fluid task chain if one or more optional features were not enabled
 
 
 ## License
