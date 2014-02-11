@@ -111,6 +111,12 @@ grunt.initConfig({
       // See http://developer.android.com/tools/publishing/versioning.html
       versionCode: function(){ return(1) },
 
+      // Android-only options that will override the defaults set by Phonegap in the
+      // generated AndroidManifest.xml
+      // See https://developer.android.com/guide/topics/manifest/uses-sdk-element.html
+      minSdkVersion: function(){ return(10) },
+      targetSdkVersion: function(){ return(19) },
+
       // If you want to use the Phonegap Build service to build one or more
       // of the platforms specified above, include these options.
       // See https://build.phonegap.com/

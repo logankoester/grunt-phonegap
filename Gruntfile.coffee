@@ -85,6 +85,8 @@ module.exports = (grunt) ->
             iphone568hx2: 'test/fixtures/www/screen-iphone-568h-2x.png'
 
         versionCode: -> 2
+        targetSdkVersion: -> 18
+        minSdkVersion: -> 11
 
     # Before generating any new files, remove any previously-created files.
     clean:
@@ -174,6 +176,7 @@ module.exports = (grunt) ->
           'features/dynamic-config.md': 'Dynamic config.xml'
           'features/app-icons.md': 'App Icons'
           'features/version-code.md': 'versionCode'
+          'features/sdk-version.md': 'minSdkVersion and targetSdkVersion'
           'features/phonegap-build.md': 'Phonegap Build'
           'tasks.md': 'Tasks'
           'test-suite.md': 'Running the test suite'
