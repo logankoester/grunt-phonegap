@@ -429,9 +429,10 @@ You can find [all the changelogs here](/docs/releases).
 
 #### v0.10.0
 
-* Adds options to set explicit minSdkVersion and maxSdkVersion values in AndroidManifest.xml
+* Adds options to set explicit minSdkVersion and targetSdkVersion values in AndroidManifest.xml
 * Updates `grunt-contrib-coffee` dependency to `v0.10.0`
 * Updates required node engine version to v0.10.0
+
 
 ## License
 [[Back To Top]](#grunt-phonegap)
