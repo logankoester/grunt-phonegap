@@ -425,13 +425,13 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.9.3.md:
+### Latest changelog is from v0.10.0.md:
 
-#### v0.9.3
+#### v0.10.0
 
-* Adds support for iOS splash screens.
-* Updates `README.md` with information for iOS icons and screens.
-
+* Adds options to set explicit minSdkVersion and maxSdkVersion values in AndroidManifest.xml
+* Updates `grunt-contrib-coffee` dependency to `v0.10.0`
+* Updates required node engine version to v0.10.0
 
 ## License
 [[Back To Top]](#grunt-phonegap)
