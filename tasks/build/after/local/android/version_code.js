@@ -17,12 +17,13 @@
           phonegapPath = helpers.config('path');
           manifestPath = path.join(phonegapPath, 'platforms', 'android', 'AndroidManifest.xml');
           manifest = grunt.file.read(manifestPath);
+          grunt.log.writeln("Setting versionCode to " + versionCode + " in '" + manifestPath + "'");
           doc = new dom().parseFromString(manifest, 'text/xml');
           doc.getElementsByTagName('manifest')[0].setAttribute('android:versionCode', versionCode);
           grunt.file.write(manifestPath, doc);
-          if (fn) {
-            return fn();
-          }
+        }
+        if (fn) {
+          return fn();
         }
       }
     };

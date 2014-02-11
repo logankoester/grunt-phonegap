@@ -12,11 +12,14 @@ module.exports = sdkVersion = (grunt) ->
 
       manifestPath = path.join phonegapPath, 'platforms', 'android', 'AndroidManifest.xml'
       manifest = grunt.file.read manifestPath
+
+      grunt.log.writeln "Setting targetSdkVersion to #{targetSdkVersion} in '#{manifestPath}'"
+
       doc = new dom().parseFromString manifest, 'text/xml'
       doc.getElementsByTagName('uses-sdk')[0].setAttribute('android:targetSdkVersion', targetSdkVersion)
       grunt.file.write manifestPath, doc
 
-      if fn then fn()
+    if fn then fn()
 
   setMin: (fn) ->
     dom = xmldom.DOMParser
@@ -26,8 +29,11 @@ module.exports = sdkVersion = (grunt) ->
 
       manifestPath = path.join phonegapPath, 'platforms', 'android', 'AndroidManifest.xml'
       manifest = grunt.file.read manifestPath
+
+      grunt.log.writeln "Setting minSdkVersion to #{minSdkVersion} in '#{manifestPath}'"
+      
       doc = new dom().parseFromString manifest, 'text/xml'
       doc.getElementsByTagName('uses-sdk')[0].setAttribute('android:minSdkVersion', minSdkVersion)
       grunt.file.write manifestPath, doc
 
-      if fn then fn()
+    if fn then fn()
