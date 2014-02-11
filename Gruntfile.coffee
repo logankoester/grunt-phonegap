@@ -86,6 +86,7 @@ module.exports = (grunt) ->
 
         versionCode: -> 2
         targetSdkVersion: -> 18
+        minSdkVersion: -> 11
 
     # Before generating any new files, remove any previously-created files.
     clean:
