@@ -27,3 +27,12 @@ exports.phonegap =
     manifest = xmlParser.toJson xml, object: true
     test.equal versionCode, manifest['manifest']['android:versionCode'], 'versionCode value should match'
     test.done()
+
+  'targetSdkVersion in AndroidManifest.xml should match config.targetSdkVersion': (test) ->
+    test.expect 1
+    data = grunt.config.get 'phonegap.config.targetSdkVersion'
+    targetSdkVersion = data() if grunt.util.kindOf(data) == 'function'
+    xml = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
+    manifest = xmlParser.toJson xml, object: true
+    test.equal targetSdkVersion, manifest['manifest']['uses-sdk']['android:targetSdkVersion'], 'targetSdkVersion value should match'
+    test.done()

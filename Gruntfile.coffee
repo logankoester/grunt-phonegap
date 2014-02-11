@@ -85,6 +85,7 @@ module.exports = (grunt) ->
             iphone568hx2: 'test/fixtures/www/screen-iphone-568h-2x.png'
 
         versionCode: -> 2
+        targetSdkVersion: -> 18
 
     # Before generating any new files, remove any previously-created files.
     clean:

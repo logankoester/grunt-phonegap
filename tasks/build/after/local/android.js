@@ -8,11 +8,12 @@
     tasks = {
       repairVersionCode: require('./android/version_code')(grunt).repair,
       buildIcons: require('./android/icons')(grunt).build,
-      buildScreens: require('./android/screens')(grunt).build
+      buildScreens: require('./android/screens')(grunt).build,
+      setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget
     };
     return {
       run: function(fn) {
-        return fluid(tasks).repairVersionCode().buildIcons().buildScreens().go(function(err, result) {
+        return fluid(tasks).repairVersionCode().setTargetSdkVersion().buildIcons().buildScreens().go(function(err, result) {
           if (err) {
             grunt.fatal(err);
           }
