@@ -18,7 +18,7 @@ module.exports = (grunt) ->
         cordova: 'test/fixtures/.cordova'
         name: 'TestFixtureApp'
         path: 'test/phonegap'
-        plugins: ['../fixtures/org.apache.cordova.core.device']
+        plugins: ['test/fixtures/org.apache.cordova.core.device']
         platforms: ['android', 'ios']
 
         config:

@@ -1,13 +1,21 @@
 (function() {
-  var async, plugin;
+  var URI, async, path, plugin;
 
   async = require('async');
+
+  path = require('path');
+
+  URI = require('URIjs');
 
   module.exports = plugin = function(grunt) {
     var addPlugin, helpers;
     helpers = require('../../helpers')(grunt);
     addPlugin = function(plugin, fn) {
-      var cmd;
+      var cmd, uri;
+      uri = new URI(plugin);
+      if (uri.protocol() === '') {
+        plugin = path.resolve(uri.path());
+      }
       cmd = "phonegap local plugin add " + plugin + " " + (helpers.setVerbosity());
       return helpers.exec(cmd, fn);
     };
