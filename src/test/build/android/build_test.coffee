@@ -18,30 +18,3 @@ exports.phonegap =
     name = grunt.config.get('phonegap.config.config.data.name')
     test.ok grunt.file.isFile("test/phonegap/platforms/android/bin/#{name}-debug.apk"), 'debug apk should be created'
     test.done()
-
-  'versionCode in AndroidManifest.xml should match config.versionCode': (test) ->
-    test.expect 1
-    data = grunt.config.get 'phonegap.config.versionCode'
-    versionCode = data() if grunt.util.kindOf(data) == 'function'
-    xml = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
-    manifest = xmlParser.toJson xml, object: true
-    test.equal versionCode, manifest['manifest']['android:versionCode'], 'versionCode value should match'
-    test.done()
-
-  'targetSdkVersion in AndroidManifest.xml should match config.targetSdkVersion': (test) ->
-    test.expect 1
-    data = grunt.config.get 'phonegap.config.targetSdkVersion'
-    targetSdkVersion = data() if grunt.util.kindOf(data) == 'function'
-    xml = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
-    manifest = xmlParser.toJson xml, object: true
-    test.equal targetSdkVersion, manifest['manifest']['uses-sdk']['android:targetSdkVersion'], 'targetSdkVersion value should match'
-    test.done()
-
-  'minSdkVersion in AndroidManifest.xml should match config.minSdkVersion': (test) ->
-    test.expect 1
-    data = grunt.config.get 'phonegap.config.minSdkVersion'
-    minSdkVersion = data() if grunt.util.kindOf(data) == 'function'
-    xml = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
-    manifest = xmlParser.toJson xml, object: true
-    test.equal minSdkVersion, manifest['manifest']['uses-sdk']['android:minSdkVersion'], 'targetSdkVersion value should match'
-    test.done()

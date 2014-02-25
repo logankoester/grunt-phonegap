@@ -124,7 +124,11 @@ grunt.initConfig({
         username: 'your_username',
         password: 'your_password',
         platforms: ['android', 'blackberry', 'ios', 'symbian', 'webos', 'wp7']
-      }
+      },
+
+      // Set an explicit Android permissions list to override the automatic plugin defaults.
+      // In most cases, you should omit this setting. See 'Android Permissions' in README.md for details.
+      permissions: ['INTERNET', 'ACCESS_COURSE_LOCATION', '...']
     }
   }
 })
