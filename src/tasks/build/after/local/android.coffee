@@ -7,12 +7,14 @@ module.exports = android = (grunt) ->
     buildScreens: require('./android/screens')(grunt).build
     setMinSdkVersion: require('./android/sdk_version')(grunt).setMin
     setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget
+    setPermissions: require('./android/permissions')(grunt).set
 
   run: (fn) ->
     fluid(tasks)
       .repairVersionCode()
       .setMinSdkVersion()
       .setTargetSdkVersion()
+      .setPermissions()
       .buildIcons()
       .buildScreens()
       .go (err, result) ->

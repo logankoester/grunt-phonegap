@@ -87,6 +87,7 @@ module.exports = (grunt) ->
         versionCode: -> 2
         targetSdkVersion: -> 18
         minSdkVersion: -> 11
+        permissions: ['ACCESS_NETWORK_STATE']
 
     # Before generating any new files, remove any previously-created files.
     clean:
@@ -177,6 +178,7 @@ module.exports = (grunt) ->
           'features/app-icons.md': 'App Icons'
           'features/version-code.md': 'versionCode'
           'features/sdk-version.md': 'minSdkVersion and targetSdkVersion'
+          'features/permissions.md': 'Android Permissions'
           'features/phonegap-build.md': 'Phonegap Build'
           'tasks.md': 'Tasks'
           'test-suite.md': 'Running the test suite'

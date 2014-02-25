@@ -10,11 +10,12 @@
       buildIcons: require('./android/icons')(grunt).build,
       buildScreens: require('./android/screens')(grunt).build,
       setMinSdkVersion: require('./android/sdk_version')(grunt).setMin,
-      setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget
+      setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget,
+      setPermissions: require('./android/permissions')(grunt).set
     };
     return {
       run: function(fn) {
-        return fluid(tasks).repairVersionCode().setMinSdkVersion().setTargetSdkVersion().buildIcons().buildScreens().go(function(err, result) {
+        return fluid(tasks).repairVersionCode().setMinSdkVersion().setTargetSdkVersion().setPermissions().buildIcons().buildScreens().go(function(err, result) {
           if (err) {
             grunt.fatal(err);
           }
