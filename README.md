@@ -461,12 +461,11 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.10.1.md:
+### Latest changelog is from v0.11.0.md:
 
-#### v0.10.1
+#### v0.11.0
 
-* Switch to fork of grunt-readme-generator with a patched semver-based changelog sort
-* Resolves an issue that would result in early termination of the fluid task chain if one or more optional features were not enabled
+* Adds Feature: Explicit permissions list in AndroidManifest.xml (see [Android Permissions](https://github.com/logankoester/grunt-phonegap/blob/master/docs/features/permissions.md))
 
 
 ## License
