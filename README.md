@@ -471,11 +471,16 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.11.0.md:
+### Latest changelog is from v0.12.0.md:
 
-#### v0.11.0
+#### v0.12.0
 
-* Adds Feature: Explicit permissions list in AndroidManifest.xml (see [Android Permissions](https://github.com/logankoester/grunt-phonegap/blob/master/docs/features/permissions.md))
+If you have local plugins specified as relative paths from `phonegap.config.path`,
+you will need to change those paths - see [#56](https://github.com/logankoester/grunt-phonegap/pull/56) for details.
+
+* Adds feature: set <application android:name> attribute from grunt-phonegap config
+* Fixes an issue which causes user grunt configuration to be lost during release task
+* Resolve absolute plugin paths for local filesystem
 
 
 ## License
