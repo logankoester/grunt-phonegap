@@ -4,7 +4,6 @@
   path = require('path');
 
   module.exports = release = function(grunt) {
-    grunt = require('grunt');
     return {
       on: function(platform, fn) {
         var releaseAdapter;

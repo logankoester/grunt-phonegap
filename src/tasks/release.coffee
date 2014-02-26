@@ -1,7 +1,6 @@
 path = require 'path'
 
 module.exports = release = (grunt) ->
-  grunt = require 'grunt'
 
   on: (platform, fn) ->
     releaseAdapter = path.join __dirname, 'release', "#{platform}.js"
