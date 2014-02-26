@@ -7,11 +7,12 @@
     var tasks;
     tasks = {
       buildIcons: require('./ios/icons')(grunt).build,
-      buildScreens: require('./ios/screens')(grunt).build
+      buildScreens: require('./ios/screens')(grunt).build,
+      setWhiteStatusBar: require('./ios/plist')(grunt).setWhiteStatusBar
     };
     return {
       run: function(fn) {
-        return fluid(tasks).buildIcons().buildScreens().go(function(err, result) {
+        return fluid(tasks).buildIcons().buildScreens().setWhiteStatusBar().go(function(err, result) {
           if (err) {
             grunt.fatal(err);
           }
