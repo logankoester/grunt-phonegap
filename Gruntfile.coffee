@@ -88,6 +88,7 @@ module.exports = (grunt) ->
         targetSdkVersion: -> 18
         minSdkVersion: -> 11
         permissions: ['ACCESS_NETWORK_STATE']
+        androidApplicationName: 'com.phonegap.test_custom_app'
 
     # Before generating any new files, remove any previously-created files.
     clean:
@@ -179,6 +180,7 @@ module.exports = (grunt) ->
           'features/version-code.md': 'versionCode'
           'features/sdk-version.md': 'minSdkVersion and targetSdkVersion'
           'features/permissions.md': 'Android Permissions'
+          'features/application-name.md': 'Application Name'
           'features/phonegap-build.md': 'Phonegap Build'
           'tasks.md': 'Tasks'
           'test-suite.md': 'Running the test suite'
