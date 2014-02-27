@@ -2,7 +2,7 @@ _ = require 'lodash'
 grunt = require 'grunt'
 xmlParser = require 'xml2json'
 
-exports.phonegap = 
+exports.phonegap =
   'plist file should contain white status bar configuration': (test) ->
     test.expect 2
     appName = grunt.config.get 'phonegap.config.name'
