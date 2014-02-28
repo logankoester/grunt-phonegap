@@ -13,7 +13,6 @@
     addPlugin = function(plugin, fn) {
       var cmd, uri;
       uri = new URI(plugin);
-      console.log(uri, uri.path[0]);
       if (uri.protocol() === '' && (plugin.substr(0, 1) === '.' || plugin.substr(0, 1) === '/')) {
         plugin = path.resolve(uri.path());
       }
