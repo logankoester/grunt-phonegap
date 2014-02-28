@@ -19,7 +19,7 @@ module.exports = (grunt) ->
         name: 'TestFixtureApp'
         path: 'test/phonegap'
         plugins: ['test/fixtures/org.apache.cordova.core.device']
-        platforms: ['android', 'ios']
+        platforms: ['android']
 
         config:
           template: 'test/fixtures/www/custom_config.xml'
@@ -84,7 +84,7 @@ module.exports = (grunt) ->
             iphonePortraitx2: 'test/fixtures/www/screen-iphone-portrait-2x.png'
             iphone568hx2: 'test/fixtures/www/screen-iphone-568h-2x.png'
 
-        iosWhiteStatusBar: true
+        iosStatusBar: 'WhiteAndTransparent'
         versionCode: -> 2
         targetSdkVersion: -> 18
         minSdkVersion: -> 11

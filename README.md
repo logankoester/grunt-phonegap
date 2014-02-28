@@ -189,7 +189,7 @@ grunt.initConfig({
       targetSdkVersion: function(){ return(19) },
 
       // iOS7-only options that will make the status bar white and transparent
-      iosWhiteStatusBar: true,
+      iosStatusBar: 'WhiteAndTransparent',
 
       // If you want to use the Phonegap Build service to build one or more
       // of the platforms specified above, include these options.
