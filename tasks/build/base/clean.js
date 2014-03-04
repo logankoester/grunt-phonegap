@@ -8,6 +8,9 @@
       run: function(fn) {
         var path;
         path = helpers.config('path');
+        if (!grunt.file.exists(path)) {
+          grunt.file.mkdir(path);
+        }
         grunt.log.writeln("Cleaning " + path);
         helpers.clean(path);
         if (fn) {
