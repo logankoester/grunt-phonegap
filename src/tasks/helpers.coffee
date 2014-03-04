@@ -13,17 +13,17 @@ exec = require('child_process').exec
 # @return [Boolean] false When it is not possible to build from this environment from this environment.
 canBuild = (targetPlatform) ->
   compatibility = 
-    'amazon-fireos': ['darwin', 'Windows', 'Linux']
-    'android': ['darwin', 'Windows', 'Linux']
-    'blackberry10': ['darwin', 'Windows']
+    'amazon-fireos': ['darwin', 'windows', 'linux']
+    'android': ['darwin', 'windows', 'linux']
+    'blackberry10': ['darwin', 'windows']
     'ios': ['darwin']
-    'Ubuntu': ['Linux'] # Specifically Ubuntu
-    'wp7': ['Windows']
-    'wp8': ['Windows'] # Specifically Windows 8
-    'win8': ['Windows'] # Specifically Windows 8
+    'ubuntu': ['linux'] # Specifically Ubuntu
+    'wp7': ['windows']
+    'wp8': ['windows'] # Specifically Windows 8
+    'win8': ['windows'] # Specifically Windows 8
     'tizen': []
 
-  _.contains compatibility[targetPlatform], require('platform').os.family
+  _.contains compatibility[targetPlatform.toLowerCase()], require('platform').os.family.toLowerCase()
 
 module.exports = helpers = (grunt) ->
 
