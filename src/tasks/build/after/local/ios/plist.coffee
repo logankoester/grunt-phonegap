@@ -4,10 +4,10 @@ path = require 'path'
 module.exports = plist = (grunt) ->
   helpers = require('../../../../helpers')(grunt)
 
-  setWhiteStatusBar: (fn) ->
+  setStatusBar: (fn) ->
     dom = xmldom.DOMParser
-    statusBar = helpers.config 'iosWhiteStatusBar'
-    if statusBar
+    statusBar = helpers.config 'iosStatusBar'
+    if statusBar == 'WhiteAndTransparent'
       phonegapPath = helpers.config 'path'
       appName = helpers.config 'name'
 
@@ -22,7 +22,7 @@ module.exports = plist = (grunt) ->
       <key>UIViewControllerBasedStatusBarAppearance</key>
       <false/>', 'text/xml')
 
-      doc.getElementsByTagName('dict')[0].appendChild(newNodes);
+      doc.getElementsByTagName('dict')[0].appendChild(newNodes)
 
       grunt.file.write plistFile, doc
 
