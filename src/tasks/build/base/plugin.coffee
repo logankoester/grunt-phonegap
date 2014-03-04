@@ -10,7 +10,6 @@ module.exports = plugin = (grunt) ->
     # If plugin is on the local filesystem, resolve it's absolute
     # path from process.cwd()
     uri = new URI(plugin)
-    console.log uri, uri.path[0]
     if uri.protocol() == '' and (plugin.substr(0, 1) == '.' or plugin.substr(0, 1) == '/')
       plugin = path.resolve(uri.path())
 
