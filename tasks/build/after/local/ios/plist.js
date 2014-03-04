@@ -9,11 +9,11 @@
     var helpers;
     helpers = require('../../../../helpers')(grunt);
     return {
-      setWhiteStatusBar: function(fn) {
+      setStatusBar: function(fn) {
         var appName, doc, dom, newNodes, phonegapPath, plistFile, statusBar;
         dom = xmldom.DOMParser;
-        statusBar = helpers.config('iosWhiteStatusBar');
-        if (statusBar) {
+        statusBar = helpers.config('iosStatusBar');
+        if (statusBar === 'WhiteAndTransparent') {
           phonegapPath = helpers.config('path');
           appName = helpers.config('name');
           plistFile = path.join(phonegapPath, 'platforms', 'ios', appName, "" + appName + "-Info.plist");

@@ -1,6 +1,0 @@
-If 'phonegap.config.iosWhiteStatusBar' is set to true, then it will update the APP_NAME-Info.plist file to make white status bar transparent and white, adding the following configuration:
-
-    "Status bar style" = "Transparent black style (alpha of 0.5)"
-    "View controller-based status bar appearance" = "NO"
-
-Works only for iOS7.
