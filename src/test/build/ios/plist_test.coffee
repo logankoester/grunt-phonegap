@@ -1,11 +1,11 @@
 _ = require 'lodash'
 grunt = require 'grunt'
 xmlParser = require 'xml2json'
-platform = require 'platform'
+path = require 'path'
+helpers = require(path.join __dirname, '..', '..', '..', 'tasks', 'helpers')(grunt)
 
-unless platform.os.family == 'darwin'
-  console.log 'Skipping "iOS" status bar tests (not running on darwin)'
-else
+if helpers.canBuild 'ios'
+
   exports.phonegap =
     'plist file should contain white status bar configuration': (test) ->
       test.expect 2

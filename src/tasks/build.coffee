@@ -15,6 +15,7 @@ module.exports = build = (grunt) ->
   plugins = helpers.config 'plugins'
 
   run: (platforms, fn) ->
+    platforms = helpers.reducePlatforms(platforms)
     fluid(base)
       .clean()
       .createTree(platforms)

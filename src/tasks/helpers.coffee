@@ -1,6 +1,30 @@
 _ = require 'lodash'
 exec = require('child_process').exec
 
+# Check SDK compatibility for a target platform from the current environment.
+#
+# Note that this does not guarantee that the required SDK is installed on the system,
+# nor that any particular `grunt-phonegap` features support the platform.
+#
+# @see http://docs.phonegap.com/en/3.3.0/guide_support_index.md.html#Platform%20Support
+#
+# @param [String] targetPlatform The target mobile platform.
+# @return [Boolean] true When it is possible to build from this environment.
+# @return [Boolean] false When it is not possible to build from this environment from this environment.
+canBuild = (targetPlatform) ->
+  compatibility = 
+    'amazon-fireos': ['darwin', 'Windows', 'Linux']
+    'android': ['darwin', 'Windows', 'Linux']
+    'blackberry10': ['darwin', 'Windows']
+    'ios': ['darwin']
+    'Ubuntu': ['Linux'] # Specifically Ubuntu
+    'wp7': ['Windows']
+    'wp8': ['Windows'] # Specifically Windows 8
+    'win8': ['Windows'] # Specifically Windows 8
+    'tizen': []
+
+  _.contains compatibility[targetPlatform], require('platform').os.family
+
 module.exports = helpers = (grunt) ->
 
   # Merge a default config object into the grunt-phonegap configuration.
@@ -64,3 +88,17 @@ module.exports = helpers = (grunt) ->
       return value()
     else
       return value
+
+  canBuild: canBuild
+
+  # Reduce an array of platforms to a subset compatible with the current environment.
+  #
+  # Logs a message for each platform that is excluded.
+  #
+  # @param [Array] platforms An array of platforms.
+  # @return [Array] platforms A subset of the given array for which #canBuild(platform) is true.
+  reducePlatforms: (platforms) ->
+    _.filter platforms, (platform) ->
+      return true if canBuild(platform)
+      grunt.log.writeln "Skipping platform '#{platform}' (SDK not compatible)"
+      false
