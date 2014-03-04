@@ -477,16 +477,15 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.12.0.md:
+### Latest changelog is from v0.13.0.md:
 
-#### v0.12.0
+#### v0.13.0
 
-If you have local plugins specified as relative paths from `phonegap.config.path`,
-you will need to change those paths - see [#56](https://github.com/logankoester/grunt-phonegap/pull/56) for details.
-
-* Adds feature: set <application android:name> attribute from grunt-phonegap config
-* Fixes an issue which causes user grunt configuration to be lost during release task
-* Resolve absolute plugin paths for local filesystem
+* Platform SDK compatibility is now checked before attempting a local build
+* The directory specified at `phonegap.config.path` will now be created if it does not exist (thanks [@breandr](https://github.com/breandr)!)
+* Adds the option to make the iOS7 status bar white (thanks [@gabrielpoca](https://github.com/gabrielpoca)!)
+* Added missing icons for ios: 50/50@2x/60 (thanks [@bendi](https://github.com/bendi)!)
+* Allows plugman plugin name notation (thanks [@jsanchezpando](https://github.com/jsanchezpando)!)
 
 
 ## License
