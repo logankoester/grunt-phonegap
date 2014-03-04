@@ -3,32 +3,35 @@ xmldom = require 'xmldom'
 path = require 'path'
 _ = require 'lodash'
 dom = xmldom.DOMParser
+helpers = require(path.join __dirname, '..', '..', '..', 'tasks', 'helpers')(grunt)
 
-exports.phonegap =
-  'The INTERNET permission should be removed': (test) ->
-    test.expect 1
+if helpers.canBuild 'android'
 
-    manifest = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
-    doc = new dom().parseFromString manifest, 'text/xml'
-    permissions = doc.getElementsByTagName('uses-permission')
+  exports.phonegap =
+    'The INTERNET permission should be removed': (test) ->
+      test.expect 1
 
-    matches = _.find permissions, (permission) ->
-      permission.getAttribute('android:name') == 'android.permission.INTERNET'
-    test.equal matches, undefined
+      manifest = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
+      doc = new dom().parseFromString manifest, 'text/xml'
+      permissions = doc.getElementsByTagName('uses-permission')
 
-    test.done()
+      matches = _.find permissions, (permission) ->
+        permission.getAttribute('android:name') == 'android.permission.INTERNET'
+      test.equal matches, undefined
 
-  'The ACCESS_NETWORK_STATE permission should be added': (test) ->
-    test.expect 2
+      test.done()
 
-    manifest = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
-    doc = new dom().parseFromString manifest, 'text/xml'
-    permissions = doc.getElementsByTagName('uses-permission')
+    'The ACCESS_NETWORK_STATE permission should be added': (test) ->
+      test.expect 2
 
-    matches = _.find permissions, (permission) ->
-      permission.getAttribute('android:name') == 'android.permission.ACCESS_NETWORK_STATE'
-    test.ok matches
-    test.equal matches.nodeName, 'uses-permission'
+      manifest = grunt.file.read 'test/phonegap/platforms/android/AndroidManifest.xml'
+      doc = new dom().parseFromString manifest, 'text/xml'
+      permissions = doc.getElementsByTagName('uses-permission')
 
-    test.done()
+      matches = _.find permissions, (permission) ->
+        permission.getAttribute('android:name') == 'android.permission.ACCESS_NETWORK_STATE'
+      test.ok matches
+      test.equal matches.nodeName, 'uses-permission'
+
+      test.done()
 

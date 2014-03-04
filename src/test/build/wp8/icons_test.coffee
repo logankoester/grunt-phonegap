@@ -7,11 +7,10 @@
 grunt = require 'grunt'
 path = require 'path'
 hash_file = require 'hash_file'
-platform = require 'platform'
+helpers = require(path.join __dirname, '..', '..', '..', 'tasks', 'helpers')(grunt)
 
-unless platform.os.family == 'Windows'
-  console.log 'Skipping "wp8" icon tests (not running on Windows)'
-else
+if helpers.canBuild 'wp8'
+
   tests = {}
 
   orig = path.join 'test', 'fixtures', 'www'

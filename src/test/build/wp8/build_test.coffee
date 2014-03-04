@@ -6,7 +6,9 @@
 # @see http://docs.phonegap.com/en/edge/guide_platforms_wp8_index.md.html#Windows%20Phone%208%20Platform%20Guide
 # @see http://www.microsoft.com/en-us/download/details.aspx?id=35471
 
-platform = require 'platform'
+grunt = require 'grunt'
+path = require 'path'
+helpers = require(path.join __dirname, '..', '..', '..', 'tasks', 'helpers')(grunt)
 
-unless platform.os.family == 'Windows'
-  console.log 'Skipping "wp8" build tests (not running on Windows)'
+if helpers.canBuild 'wp8'
+  console.log 'No build tests for platform wp8 - add some!'

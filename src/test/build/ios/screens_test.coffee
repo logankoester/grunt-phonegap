@@ -4,12 +4,11 @@
 
 grunt = require 'grunt'
 path = require 'path'
-platform = require 'platform'
 hash_file = require 'hash_file'
+helpers = require(path.join __dirname, '..', '..', '..', 'tasks', 'helpers')(grunt)
 
-unless platform.os.family == 'darwin'
-  console.log 'Skipping "iOS" status bar tests (not running on darwin)'
-else
+if helpers.canBuild 'ios'
+
   tests = {}
 
   orig = path.join 'test', 'fixtures', 'www'

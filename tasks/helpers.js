@@ -1,10 +1,26 @@
 (function() {
-  var exec, helpers, _,
+  var canBuild, exec, helpers, _,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   _ = require('lodash');
 
   exec = require('child_process').exec;
+
+  canBuild = function(targetPlatform) {
+    var compatibility;
+    compatibility = {
+      'amazon-fireos': ['darwin', 'Windows', 'Linux'],
+      'android': ['darwin', 'Windows', 'Linux'],
+      'blackberry10': ['darwin', 'Windows'],
+      'ios': ['darwin'],
+      'Ubuntu': ['Linux'],
+      'wp7': ['Windows'],
+      'wp8': ['Windows'],
+      'win8': ['Windows'],
+      'tizen': []
+    };
+    return _.contains(compatibility[targetPlatform], require('platform').os.family);
+  };
 
   module.exports = helpers = function(grunt) {
     return {
@@ -82,6 +98,16 @@
         } else {
           return value;
         }
+      },
+      canBuild: canBuild,
+      reducePlatforms: function(platforms) {
+        return _.filter(platforms, function(platform) {
+          if (canBuild(platform)) {
+            return true;
+          }
+          grunt.log.writeln("Skipping platform '" + platform + "' (SDK not compatible)");
+          return false;
+        });
       }
     };
   };
