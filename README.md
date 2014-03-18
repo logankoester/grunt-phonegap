@@ -482,9 +482,9 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.13.1.md:
+### Latest changelog is from v0.13.3.md:
 
-#### v0.13.1
+#### v0.13.3
 
 * Updates Phonegap Build (remote build service) docs
 * iOS icon tests no longer fail due to missing icons in source directory
