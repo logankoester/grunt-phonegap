@@ -54,7 +54,7 @@
         })(this));
         return proc.stderr.on('data', (function(_this) {
           return function(err) {
-            return grunt.fatal(err);
+            return grunt.log.error(err);
           };
         })(this));
       },
