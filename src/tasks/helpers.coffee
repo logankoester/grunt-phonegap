@@ -54,7 +54,7 @@ module.exports = helpers = (grunt) ->
       fn(err) if fn
 
     proc.stdout.on 'data', (out) => grunt.log.write(out)
-    proc.stderr.on 'data', (err) => grunt.fatal(err)
+    proc.stderr.on 'data', (err) => grunt.log.error(err)
 
   # Delete a target file path if it exists.
   #
