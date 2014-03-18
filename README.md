@@ -482,15 +482,15 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.13.0.md:
+### Latest changelog is from v0.13.1.md:
 
-#### v0.13.0
+#### v0.13.1
 
-* Platform SDK compatibility is now checked before attempting a local build
-* The directory specified at `phonegap.config.path` will now be created if it does not exist (thanks [@breandr](https://github.com/breandr)!)
-* Adds the option to make the iOS7 status bar white (thanks [@gabrielpoca](https://github.com/gabrielpoca)!)
-* Added missing icons for ios: 50/50@2x/60 (thanks [@bendi](https://github.com/bendi)!)
-* Allows plugman plugin name notation (thanks [@jsanchezpando](https://github.com/jsanchezpando)!)
+* Updates Phonegap Build (remote build service) docs
+* iOS icon tests no longer fail due to missing icons in source directory
+* Execution will no longer stop when encountering stderr output
+* Removes unnecessary dependency on the "platform" npm module
+* win32 users will no longer be blocked from building for compatible platforms
 
 
 ## License
