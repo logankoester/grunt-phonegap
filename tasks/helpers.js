@@ -9,17 +9,17 @@
   canBuild = function(targetPlatform) {
     var compatibility;
     compatibility = {
-      'amazon-fireos': ['darwin', 'windows', 'linux'],
-      'android': ['darwin', 'windows', 'linux'],
-      'blackberry10': ['darwin', 'windows'],
+      'amazon-fireos': ['darwin', 'win32', 'linux'],
+      'android': ['darwin', 'win32', 'linux'],
+      'blackberry10': ['darwin', 'win32'],
       'ios': ['darwin'],
       'ubuntu': ['linux'],
-      'wp7': ['windows'],
-      'wp8': ['windows'],
-      'win8': ['windows'],
+      'wp7': ['win32'],
+      'wp8': ['win32'],
+      'win8': ['win32'],
       'tizen': []
     };
-    return _.contains(compatibility[targetPlatform.toLowerCase()], require('platform').os.family.toLowerCase());
+    return _.contains(compatibility[targetPlatform.toLowerCase()], process.platform.toLowerCase());
   };
 
   module.exports = helpers = function(grunt) {
