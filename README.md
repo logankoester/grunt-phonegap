@@ -544,13 +544,16 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.13.4.md:
+### Latest changelog is from v0.14.0.md:
 
-#### v0.13.4
+#### v0.14.0
 
-* Updates grunt-contrib-watch devDependency to latest stable version
-* Updates async dependency to latest stable version
-* Fixes example config object [#79](https://github.com/logankoester/grunt-phonegap/pull/79) (thanks [@disusered](https://github.com/disusered)!)
+* Adds `phonegap.config.debuggable` option (default false)
+* Android releases will now be created with `debuggable=false` by default [#85](https://github.com/logankoester/grunt-phonegap/pull/85)
+* Adds `phonegap:debug:android` task for creating an unsigned, debuggable apk [#83](https://github.com/logankoester/grunt-phonegap/pull/83) (thanks [@richardPFisk](https://github.com/richardPFisk)!)
+* Adds `phonegap.config.screenOrientation` option for Android [#84](https://github.com/logankoester/grunt-phonegap/pull/84) (thanks [@richardPFisk](https://github.com/richardPFisk)!)
+
+Please welcome [@richardPFisk](https://github.com/richardPFisk), our newest collaborator!
 
 
 ## License
