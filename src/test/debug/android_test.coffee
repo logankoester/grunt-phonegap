@@ -1,5 +1,7 @@
-# The `phonegap:debug:android` task will create a `releases/android` directory
-# containing a signed application package ready for distribution.
+# The `phonegap:debug:[:platform]` task will create a releases/debug directory
+# containing an application package with debugging enabled.
+#
+# Currently `android` is the only platform supported by this task.
 
 grunt = require 'grunt'
 pkg = grunt.file.readJSON 'package.json'
