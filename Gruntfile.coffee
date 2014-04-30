@@ -181,6 +181,7 @@ module.exports = (grunt) ->
           'features/dynamic-config.md': 'Dynamic config.xml'
           'features/app-icons.md': 'App Icons'
           'features/version-code.md': 'versionCode'
+          'features/debugging.md': 'Android Debugging'
           'features/sdk-version.md': 'minSdkVersion and targetSdkVersion'
           'features/permissions.md': 'Android Permissions'
           'features/screen-orientation.md': 'Android Screen Orientation'
