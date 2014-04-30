@@ -200,7 +200,7 @@ module.exports = (grunt) ->
   # Load this plugin's tasks (deferred until build is ready)
   grunt.registerTask 'test', ->
     grunt.loadTasks 'tasks'
-    grunt.task.run 'phonegap:build', 'phonegap:release:android', 'nodeunit'
+    grunt.task.run 'phonegap:build', 'phonegap:debug:android', 'phonegap:release:android', 'nodeunit'
 
   grunt.registerTask 'run', ->
     grunt.loadTasks 'tasks'

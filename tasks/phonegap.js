@@ -80,10 +80,10 @@
       });
     });
     grunt.registerTask('phonegap:debug', 'Create a debug release', function() {
-      var done, helpers, platform, release;
+      var debug, done, helpers, platform;
       helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
-      release = require('./debug')(grunt);
+      debug = require('./debug')(grunt);
       platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
       done = this.async();
       return debug.on(platform, function() {
