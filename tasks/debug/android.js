@@ -12,7 +12,7 @@
       srcDir = path.join(phonegapPath, 'platforms', 'android', 'bin');
       releaseName = helpers.config('releaseName');
       src = grunt.file.expand("" + srcDir + "/*-debug.apk")[0];
-      dest = path.join(helpers.config('releases'), 'android', "" + releaseName + ".apk");
+      dest = path.join(helpers.config('releases'), 'debug', 'android', "" + releaseName + ".apk");
       grunt.file.copy(src, dest, {
         encoding: null
       });
@@ -30,7 +30,7 @@
     createDebugPath = function(platform) {
       var releasesPath;
       releasesPath = helpers.config('releases');
-      return grunt.file.mkdir(path.join(releasesPath, platform));
+      return grunt.file.mkdir(path.join(releasesPath, 'debug', platform));
     };
     return {
       debug: function(fn) {

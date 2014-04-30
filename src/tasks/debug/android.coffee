@@ -8,7 +8,7 @@ module.exports = android = (grunt) ->
     srcDir = path.join phonegapPath, 'platforms', 'android', 'bin'
     releaseName = helpers.config 'releaseName'
     src = grunt.file.expand("#{srcDir}/*-debug.apk")[0]
-    dest = path.join helpers.config('releases'), 'android', "#{releaseName}.apk"
+    dest = path.join helpers.config('releases'), 'debug', 'android', "#{releaseName}.apk"
     grunt.file.copy src, dest, encoding: null
     fn() if fn
 
@@ -21,7 +21,7 @@ module.exports = android = (grunt) ->
 
   createDebugPath = (platform) ->
     releasesPath = helpers.config 'releases'
-    grunt.file.mkdir path.join(releasesPath, platform)
+    grunt.file.mkdir path.join(releasesPath, 'debug', platform)
 
   debug: (fn) ->
     grunt.log.writeln 'Creating debug build for \'android\' platform'
