@@ -79,6 +79,17 @@
         return done();
       });
     });
+    grunt.registerTask('phonegap:debug', 'Create a debug release', function() {
+      var done, helpers, platform, release;
+      helpers = require('./helpers')(grunt);
+      helpers.mergeConfig(defaults);
+      release = require('./debug')(grunt);
+      platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
+      done = this.async();
+      return debug.on(platform, function() {
+        return done();
+      });
+    });
     grunt.registerTask('phonegap:login', 'Log into the remote build service', function() {
       var cmd, done, helpers, password, username;
       helpers = require('./helpers')(grunt);
