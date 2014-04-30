@@ -53,7 +53,7 @@
   ],
   "dependencies": {
     "directory-copy": ">= 0.1.0",
-    "async": "~0.2.9",
+    "async": "~0.8.0",
     "cp": "~0.1.1",
     "xmldom": "~0.1.16",
     "lodash": "~2.4.1",
