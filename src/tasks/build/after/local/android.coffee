@@ -10,6 +10,7 @@ module.exports = android = (grunt) ->
     setPermissions: require('./android/permissions')(grunt).set
     setAndroidApplicationName: require('./android/application_name')(grunt).set
     setScreenOrientation: require('./android/screen_orientation')(grunt).set
+    setDebuggable: require('./android/debuggable')(grunt).set
 
   run: (fn) ->
     fluid(tasks)
@@ -21,6 +22,7 @@ module.exports = android = (grunt) ->
       .buildIcons()
       .buildScreens()
       .setScreenOrientation()
+      .setDebuggable()
       .go (err, result) ->
         if err then grunt.fatal err
         if fn then fn()

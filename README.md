@@ -98,6 +98,7 @@ grunt.initConfig({
         var pkg = grunt.file.readJSON('package.json');
         return(pkg.name + '-' + pkg.version);
       },
+      debuggable: false,
 
       // Must be set for ios to work.
       // Should return the app name.
