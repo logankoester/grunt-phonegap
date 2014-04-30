@@ -12,11 +12,12 @@
       setMinSdkVersion: require('./android/sdk_version')(grunt).setMin,
       setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget,
       setPermissions: require('./android/permissions')(grunt).set,
-      setAndroidApplicationName: require('./android/application_name')(grunt).set
+      setAndroidApplicationName: require('./android/application_name')(grunt).set,
+      setScreenOrientation: require('./android/screen_orientation')(grunt).set
     };
     return {
       run: function(fn) {
-        return fluid(tasks).repairVersionCode().setMinSdkVersion().setTargetSdkVersion().setPermissions().setAndroidApplicationName().buildIcons().buildScreens().go(function(err, result) {
+        return fluid(tasks).repairVersionCode().setMinSdkVersion().setTargetSdkVersion().setPermissions().setAndroidApplicationName().buildIcons().buildScreens().setScreenOrientation().go(function(err, result) {
           if (err) {
             grunt.fatal(err);
           }
