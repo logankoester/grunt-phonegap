@@ -482,15 +482,13 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.13.3.md:
+### Latest changelog is from v0.13.4.md:
 
-#### v0.13.3
+#### v0.13.4
 
-* Updates Phonegap Build (remote build service) docs
-* iOS icon tests no longer fail due to missing icons in source directory
-* Execution will no longer stop when encountering stderr output
-* Removes unnecessary dependency on the "platform" npm module
-* win32 users will no longer be blocked from building for compatible platforms
+* Updates grunt-contrib-watch devDependency to latest stable version
+* Updates async dependency to latest stable version
+* Fixes example config object [#79](https://github.com/logankoester/grunt-phonegap/pull/79) (thanks [@disusered](https://github.com/disusered)!)
 
 
 ## License
