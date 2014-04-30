@@ -81,16 +81,16 @@ grunt.initConfig({
       // Only works for Android and IOS
       screens: {
         android: {
-          ldpi: 'screen-ldpi-portrait.png'
+          ldpi: 'screen-ldpi-portrait.png',
           // landscape version
-          ldpiLand: 'screen-ldpi-landscape.png'
-          mdpi: 'screen-mdpi-portrait.png'
+          ldpiLand: 'screen-ldpi-landscape.png',
+          mdpi: 'screen-mdpi-portrait.png',
           // landscape version
-          mdpiLand: 'screen-mdpi-landscape.png'
-          hdpi: 'screen-hdpi-portrait.png'
+          mdpiLand: 'screen-mdpi-landscape.png',
+          hdpi: 'screen-hdpi-portrait.png',
           // landscape version
-          hdpiLand: 'screen-hdpi-landscape.png'
-          xhdpi: 'screen-xhdpi-portrait.png'
+          hdpiLand: 'screen-hdpi-landscape.png',
+          xhdpi: 'screen-xhdpi-portrait.png',
           // landscape version
           xhdpiLand: 'www/screen-xhdpi-landscape.png'
         },
