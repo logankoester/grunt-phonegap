@@ -90,6 +90,7 @@ module.exports = (grunt) ->
         minSdkVersion: -> 11
         permissions: ['ACCESS_NETWORK_STATE']
         androidApplicationName: 'com.phonegap.test_custom_app'
+        screenOrientation: 'portrait'
 
     # Before generating any new files, remove any previously-created files.
     clean:
