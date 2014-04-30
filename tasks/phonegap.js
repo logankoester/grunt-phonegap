@@ -40,6 +40,7 @@
       versionCode: function() {
         return 1;
       },
+      debuggable: false,
       remote: {}
     };
     grunt.registerTask('phonegap:build', 'Build as a Phonegap application', function(platform) {
