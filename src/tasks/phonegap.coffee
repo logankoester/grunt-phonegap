@@ -59,6 +59,15 @@ module.exports = (grunt) ->
     done = @async()
     release.on platform, -> done()
 
+  grunt.registerTask 'phonegap:debug', 'Create a debug release', ->
+    helpers = require('./helpers')(grunt)
+    helpers.mergeConfig defaults
+    debug = require('./debug')(grunt)
+
+    platform = @args[0] || _.first(grunt.config.get('phonegap.config.platforms'))
+    done = @async()
+    debug.on platform, -> done()
+
   grunt.registerTask 'phonegap:login', 'Log into the remote build service', ->
     helpers = require('./helpers')(grunt)
     helpers.mergeConfig defaults
