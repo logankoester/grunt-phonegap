@@ -1,7 +1,5 @@
 # The `phonegap:debug:android` task will create a `releases/android` directory
 # containing a signed application package ready for distribution.
-#
-# You will need to specify a keystore file at `phonegap.config.key.store`.
 
 grunt = require 'grunt'
 pkg = grunt.file.readJSON 'package.json'
