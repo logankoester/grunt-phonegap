@@ -438,6 +438,15 @@ a keystore file at `phonegap.config.key.store` like this:
 The keytool command will interactively ask you to set store and alias passwords, which must match
 the return value of `phonegap.config.key.aliasPassword` and `phonegap.config.key.storePassword` respectively.
 
+#### phonegap:debug[:platform]
+
+Creates a releases/debug directory containing an unsigned application package with debugging enabled.
+
+Currently `android` is the only platform supported by this task.
+
+By browsing to this APK asset from test hardware device, we can quickly install the APK output from our build.
+Then we use chrome://inspect to inspect the network traffic as an example - this is not possible using the signed APK.
+
 #### phonegap:login
 
 Log into the Phonegap Build service with the credentials specified at `phonegap.config.remote.username`
