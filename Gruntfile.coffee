@@ -182,6 +182,7 @@ module.exports = (grunt) ->
           'features/version-code.md': 'versionCode'
           'features/sdk-version.md': 'minSdkVersion and targetSdkVersion'
           'features/permissions.md': 'Android Permissions'
+          'features/screen-orientation.md': 'Android Screen Orientation'
           'features/application-name.md': 'Application Name'
           'features/phonegap-build.md': 'Phonegap Build'
           'tasks.md': 'Tasks'
