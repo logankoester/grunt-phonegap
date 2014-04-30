@@ -1,5 +1,5 @@
 # The `phonegap:debug:[:platform]` task will create a releases/ directory
-# containing a signed application package ready for distribution.
+# containing an application package with debugging enabled.
 #
 # Currently `android` is the only platform supported by this task.
 
