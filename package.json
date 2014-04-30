@@ -52,12 +52,12 @@
     "cordova"
   ],
   "dependencies": {
-    "directory-copy": ">= 0.1.0",
     "async": "~0.8.0",
     "cp": "~0.1.1",
     "xmldom": "~0.1.16",
     "lodash": "~2.4.1",
     "fluid": "~0.1.3",
-    "URIjs": "^1.12.0"
+    "URIjs": "^1.12.0",
+    "ncp": "^0.5.1"
   }
 }
