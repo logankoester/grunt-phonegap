@@ -4,7 +4,7 @@
   path = require('path');
 
   module.exports = android = function(grunt) {
-    var antDebug, copyApk, createDebugPath, helpers, platformPath;
+    var antDebug, copyApk, createDebugPath, helpers;
     helpers = require('../helpers')(grunt);
     copyApk = function(fn) {
       var dest, phonegapPath, releaseName, src, srcDir;
@@ -26,9 +26,6 @@
       cmd = 'ant debug';
       cwd = path.join(phonegapPath, 'platforms', 'android');
       return helpers.exec(cmd, fn, cwd);
-    };
-    platformPath = function(platform) {
-      return path.join(helpers.config('path'), 'platforms', 'android');
     };
     createDebugPath = function(platform) {
       var releasesPath;

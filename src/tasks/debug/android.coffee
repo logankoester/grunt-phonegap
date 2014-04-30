@@ -19,9 +19,6 @@ module.exports = android = (grunt) ->
     cwd = path.join phonegapPath, 'platforms', 'android'
     helpers.exec cmd, fn, cwd
 
-  platformPath = (platform) ->
-    path.join helpers.config('path'), 'platforms', 'android'
-
   createDebugPath = (platform) ->
     releasesPath = helpers.config 'releases'
     grunt.file.mkdir path.join(releasesPath, platform)
