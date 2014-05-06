@@ -11,7 +11,7 @@
     return {
       run: function(fn) {
         var html, phonegapPath;
-        grunt.log.writeln('fixing index.html');
+        grunt.log.writeln('Fixing index.html');
         html = helpers.config('html');
         phonegapPath = helpers.config('path');
         if (html) {
