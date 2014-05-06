@@ -1,9 +1,9 @@
 (function() {
-  var cloneCordova, copy, path;
+  var cloneCordova, ncp, path;
 
   path = require('path');
 
-  copy = require('directory-copy');
+  ncp = require('ncp').ncp;
 
   module.exports = cloneCordova = function(grunt) {
     var helpers;
@@ -14,9 +14,8 @@
         grunt.log.writeln('Cloning .cordova directory');
         cordovaPath = helpers.config('cordova');
         phonegapPath = helpers.config('path');
-        return copy({
-          src: cordovaPath,
-          dest: path.join(phonegapPath, '.cordova')
+        return ncp(cordovaPath, path.join(phonegapPath, '.cordova'), {
+          stopOnError: true
         }, (function(_this) {
           return function(err) {
             if (err) {

@@ -1,5 +1,5 @@
 path = require 'path'
-copy = require 'directory-copy'
+ncp = require('ncp').ncp
 
 module.exports = cloneRoot = (grunt) ->
   helpers = require('../../helpers')(grunt)
@@ -8,6 +8,6 @@ module.exports = cloneRoot = (grunt) ->
     rootPath = helpers.config 'root'
     phonegapPath = helpers.config 'path'
 
-    copy src: rootPath, dest: path.join(phonegapPath, 'www'), (err) =>
+    ncp rootPath, path.join(phonegapPath, 'www'), { stopOnError: true }, (err) =>
       if err then grunt.warn err
       if fn then fn err
