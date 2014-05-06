@@ -16,6 +16,7 @@ grunt.initConfig({
       root: 'www',
       config: 'www/config.xml',
       cordova: '.cordova',
+      html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],

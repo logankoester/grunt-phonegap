@@ -1,5 +1,5 @@
-# Grunt: Phonegap
-> A [Grunt](http://gruntjs.com/) plugin to provide build tasks for [Phonegap](http://phonegap.com/) applications
+# Grunt: Phonegap (+ index.html option)
+> A [Grunt](http://gruntjs.com/) plugin to provide build tasks for [Phonegap](http://phonegap.com/) applications **with the possibility to change index.html to any html**
 
 [![Build Status](http://ci.ldk.io/logankoester/grunt-phonegap/badge)](http://ci.ldk.io/logankoester/grunt-phonegap/)
 [![Dependency Status](https://david-dm.org/logankoester/grunt-phonegap.png)](https://david-dm.org/logankoester/grunt-phonegap)
@@ -89,6 +89,7 @@ grunt.initConfig({
       root: 'www',
       config: 'www/config.xml',
       cordova: '.cordova',
+      html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
