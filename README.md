@@ -545,16 +545,13 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.14.0.md:
+### Latest changelog is from v0.15.0.md:
 
-#### v0.14.0
+#### v0.15.0
 
-* Adds `phonegap.config.debuggable` option (default false)
-* Android releases will now be created with `debuggable=false` by default [#85](https://github.com/logankoester/grunt-phonegap/pull/85)
-* Adds `phonegap:debug:android` task for creating an unsigned, debuggable apk [#83](https://github.com/logankoester/grunt-phonegap/pull/83) (thanks [@richardPFisk](https://github.com/richardPFisk)!)
-* Adds `phonegap.config.screenOrientation` option for Android [#84](https://github.com/logankoester/grunt-phonegap/pull/84) (thanks [@richardPFisk](https://github.com/richardPFisk)!)
-
-Please welcome [@richardPFisk](https://github.com/richardPFisk), our newest collaborator!
+* Replaces [directory-copy](https://www.npmjs.org/package/directory-copy) with [ncp](https://www.npmjs.org/package/ncp) for better handling of directories with many files (thanks [@jrvidal](https://github.com/jrvidal)!) [#88](https://github.com/logankoester/grunt-phonegap/pull/88)
+* Adds the option to use any html file as your index.html (thanks [@pdelorme](https://github.com/pdelorme)!) [#89](https://github.com/logankoester/grunt-phonegap/pull/89)
+* Adds missing commas to the README (merged in a previous version but clobbered inadvertantly) (thanks again [@Odi55555](https://github.com/Odi55555)!)
 
 
 ## License
