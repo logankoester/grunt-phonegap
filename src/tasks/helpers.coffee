@@ -12,10 +12,11 @@ exec = require('child_process').exec
 # @return [Boolean] true When it is possible to build from this environment.
 # @return [Boolean] false When it is not possible to build from this environment from this environment.
 canBuild = (targetPlatform) ->
-  compatibility = 
+  compatibility =
     'amazon-fireos': ['darwin', 'win32', 'linux']
     'android': ['darwin', 'win32', 'linux']
     'blackberry10': ['darwin', 'win32']
+    'firefoxos': ['darwin', 'win32', 'linux']
     'ios': ['darwin']
     'ubuntu': ['linux'] # Specifically Ubuntu
     'wp7': ['win32']
