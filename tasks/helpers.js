@@ -12,6 +12,7 @@
       'amazon-fireos': ['darwin', 'win32', 'linux'],
       'android': ['darwin', 'win32', 'linux'],
       'blackberry10': ['darwin', 'win32'],
+      'firefoxos': ['darwin', 'win32', 'linux'],
       'ios': ['darwin'],
       'ubuntu': ['linux'],
       'wp7': ['win32'],
