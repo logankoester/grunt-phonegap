@@ -545,13 +545,11 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.15.0.md:
+### Latest changelog is from v0.15.1.md:
 
-#### v0.15.0
+#### v0.15.1
 
-* Replaces [directory-copy](https://www.npmjs.org/package/directory-copy) with [ncp](https://www.npmjs.org/package/ncp) for better handling of directories with many files (thanks [@jrvidal](https://github.com/jrvidal)!) [#88](https://github.com/logankoester/grunt-phonegap/pull/88)
-* Adds the option to use any html file as your index.html (thanks [@pdelorme](https://github.com/pdelorme)!) [#89](https://github.com/logankoester/grunt-phonegap/pull/89)
-* Adds missing commas to the README (merged in a previous version but clobbered inadvertantly) (thanks again [@Odi55555](https://github.com/Odi55555)!)
+* Adds firefoxos support to compatibility table (thanks [@sathvikp](https://github.com/sathvikp)!)
 
 
 ## License
