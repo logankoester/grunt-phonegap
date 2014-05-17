@@ -1,5 +1,7 @@
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
+![Demo](https://cloud.githubusercontent.com/assets/19319/3005347/d911f6c6-ddda-11e3-9c87-679ca82b5499.gif)
+
 ### For new apps
 
 The easiest way to start a new project is with the [grunt-init-phonega](https://github.com/logankoester/grunt-init-phonegap) template.
