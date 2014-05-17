@@ -4,7 +4,7 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 
 ### For new apps
 
-The easiest way to start a new project is with the [grunt-init-phonega](https://github.com/logankoester/grunt-init-phonegap) template.
+The easiest way to start a new project is with the [grunt-init-phonegap](https://github.com/logankoester/grunt-init-phonegap) template.
 
 It will ask you some basic questions and then generate a project skeleton in your current directory.
 
