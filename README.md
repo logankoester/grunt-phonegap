@@ -563,11 +563,12 @@ Please run `grunt build` before submitting a pull request. The build output shou
 
 You can find [all the changelogs here](/docs/releases).
 
-### Latest changelog is from v0.15.1.md:
+### Latest changelog is from v0.15.2.md:
 
-#### v0.15.1
+#### v0.15.2
 
-* Adds firefoxos support to compatibility table (thanks [@sathvikp](https://github.com/sathvikp)!)
+  * Adds [grunt-init-phonegap](https://github.com/logankoester/grunt-init-phonegap) project template to make it easier to start new projects
+  * Updates `async` and `grunt-contrib-nodeunit` dependencies
 
 
 ## License
