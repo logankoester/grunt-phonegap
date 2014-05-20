@@ -9,6 +9,7 @@ module.exports = android = (grunt) ->
     setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget
     setPermissions: require('./android/permissions')(grunt).set
     setAndroidApplicationName: require('./android/application_name')(grunt).set
+    setManfifestParams: require('./android/manifest_params')(grunt).set
     setScreenOrientation: require('./android/screen_orientation')(grunt).set
     setDebuggable: require('./android/debuggable')(grunt).set
 
@@ -19,6 +20,7 @@ module.exports = android = (grunt) ->
       .setTargetSdkVersion()
       .setPermissions()
       .setAndroidApplicationName()
+      .setManfifestParams()
       .buildIcons()
       .buildScreens()
       .setScreenOrientation()

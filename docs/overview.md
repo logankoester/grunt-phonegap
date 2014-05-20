@@ -28,7 +28,16 @@ grunt.initConfig({
         return(pkg.name + '-' + pkg.version);
       },
       debuggable: false,
-
+      // custom properties overriding AndroidManifest.xml
+      androidManifest: {
+        // properties added to <application>
+        application : {
+        },
+        // properties added to <activity>
+        activity : {
+          "android:launchMode":"singleTask" // This is necessary to force single app instance.
+        }
+      },
       // Must be set for ios to work.
       // Should return the app name.
       name: function(){
