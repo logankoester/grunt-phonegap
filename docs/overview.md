@@ -18,6 +18,7 @@ grunt.initConfig({
       cordova: '.cordova',
       html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
+      cleanBeforeBuild: true // when false the build path doesn't get regenerated
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
       maxBuffer: 200, // You may need to raise this for iOS.

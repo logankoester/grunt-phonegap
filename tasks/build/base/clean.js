@@ -6,13 +6,16 @@
     helpers = require('../../helpers')(grunt);
     return {
       run: function(fn) {
-        var path;
+        var cleanBeforeBuild, path;
         path = helpers.config('path');
+        cleanBeforeBuild = helpers.config('cleanBeforeBuild');
         if (!grunt.file.exists(path)) {
           grunt.file.mkdir(path);
         }
-        grunt.log.writeln("Cleaning " + path);
-        helpers.clean(path);
+        if (cleanBeforeBuild) {
+          grunt.log.writeln("Cleaning " + path);
+          helpers.clean(path);
+        }
         if (fn) {
           return fn();
         }
