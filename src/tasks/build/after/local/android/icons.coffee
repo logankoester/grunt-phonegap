@@ -29,6 +29,14 @@ module.exports = icons = (grunt) ->
       best = icons.android.xhdpi
       grunt.file.copy icons.android.xhdpi, path.join(res, 'drawable-xhdpi', 'icon.png'), encoding: null
 
+    if icons?.android?.xxhdpi
+      best = icons.android.xxhdpi
+      grunt.file.copy icons.android.xxhdpi, path.join(res, 'drawable-xxhdpi', 'icon.png'), encoding: null
+
+    if icons?.android?.xxxhdpi
+      best = icons.android.xxxhdpi
+      grunt.file.copy icons.android.xxxhdpi, path.join(res, 'drawable-xxxhdpi', 'icon.png'), encoding: null
+
     if best
       grunt.file.copy best, path.join(res, 'drawable', 'icon.png'), encoding: null
 

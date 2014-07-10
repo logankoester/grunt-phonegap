@@ -29,6 +29,8 @@ if helpers.canBuild 'ios'
     [ path.join(orig, 'icon72x2.png'), path.join(res, 'icon-72@2x.png') ],
     [ path.join(orig, 'icon76.png'), path.join(res, 'icon-76.png') ],
     [ path.join(orig, 'icon76x2.png'), path.join(res, 'icon-76@2x.png') ],
+    [ path.join(orig, 'icon512.png'), path.join(res, 'icon-512.png') ],
+    [ path.join(orig, 'icon512x2.png'), path.join(res, 'icon-512@2x.png') ]
   ]
 
   icons.forEach (pair) ->
