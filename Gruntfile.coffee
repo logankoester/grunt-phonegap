@@ -50,6 +50,8 @@ module.exports = (grunt) ->
             mdpi: 'test/fixtures/www/icon-48-mdpi.png'
             hdpi: 'test/fixtures/www/icon-72-hdpi.png'
             xhdpi: 'test/fixtures/www/icon-96-xhdpi.png'
+            xxhdpi: 'test/fixtures/www/icon-144-xxhdpi.png'
+            xxxhdpi: 'test/fixtures/www/icon-192-xxxhdpi.png'
           ios:
             icon29: 'test/fixtures/www/icon29.png'
             icon29x2: 'test/fixtures/www/icon29x2.png'
@@ -62,6 +64,8 @@ module.exports = (grunt) ->
             icon72x2: 'test/fixtures/www/icon72x2.png'
             icon76: 'test/fixtures/www/icon76.png'
             icon76x2: 'test/fixtures/www/icon76x2.png'
+            icon512: 'test/fixtures/www/icon512.png'
+            icon512x2: 'test/fixtures/www/icon512x2.png'
 
         screens:
           android:

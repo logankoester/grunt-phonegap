@@ -19,7 +19,9 @@ if helpers.canBuild 'android'
     [ path.join(orig, 'icon-36-ldpi.png'),  path.join(res, 'drawable-ldpi', 'icon.png') ],
     [ path.join(orig, 'icon-48-mdpi.png'),  path.join(res, 'drawable-mdpi', 'icon.png') ],
     [ path.join(orig, 'icon-72-hdpi.png'),  path.join(res, 'drawable-hdpi', 'icon.png') ],
-    [ path.join(orig, 'icon-96-xhdpi.png'), path.join(res, 'drawable-xhdpi', 'icon.png') ]
+    [ path.join(orig, 'icon-96-xhdpi.png'), path.join(res, 'drawable-xhdpi', 'icon.png') ],
+    [ path.join(orig, 'icon-144-xxhdpi.png'), path.join(res, 'drawable-xxhdpi', 'icon.png') ],
+    [ path.join(orig, 'icon-192-xxxhdpi.png'), path.join(res, 'drawable-xxxhdpi', 'icon.png') ]
   ]
 
   icons.forEach (pair) ->

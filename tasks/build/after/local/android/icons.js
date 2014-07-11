@@ -8,7 +8,7 @@
     helpers = require('../../../../helpers')(grunt);
     return {
       build: function(fn) {
-        var best, phonegapPath, res, _ref, _ref1, _ref2, _ref3;
+        var best, phonegapPath, res, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
         icons = helpers.config('icons');
         phonegapPath = helpers.config('path');
         res = path.join(phonegapPath, 'platforms', 'android', 'res');
@@ -38,6 +38,18 @@
         if (icons != null ? (_ref3 = icons.android) != null ? _ref3.xhdpi : void 0 : void 0) {
           best = icons.android.xhdpi;
           grunt.file.copy(icons.android.xhdpi, path.join(res, 'drawable-xhdpi', 'icon.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref4 = icons.android) != null ? _ref4.xxhdpi : void 0 : void 0) {
+          best = icons.android.xxhdpi;
+          grunt.file.copy(icons.android.xxhdpi, path.join(res, 'drawable-xxhdpi', 'icon.png'), {
+            encoding: null
+          });
+        }
+        if (icons != null ? (_ref5 = icons.android) != null ? _ref5.xxxhdpi : void 0 : void 0) {
+          best = icons.android.xxxhdpi;
+          grunt.file.copy(icons.android.xxxhdpi, path.join(res, 'drawable-xxxhdpi', 'icon.png'), {
             encoding: null
           });
         }
