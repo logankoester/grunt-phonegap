@@ -3,7 +3,9 @@ module.exports = clean = (grunt) ->
 
   run: (fn) ->
     path = helpers.config 'path'
+    cleanBeforeBuild = helpers.config 'cleanBeforeBuild'
     grunt.file.mkdir path unless grunt.file.exists path
-    grunt.log.writeln "Cleaning #{path}"
-    helpers.clean(path)
+    if cleanBeforeBuild
+      grunt.log.writeln "Cleaning #{path}"
+      helpers.clean(path)
     if fn then fn()

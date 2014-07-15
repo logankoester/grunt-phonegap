@@ -11,6 +11,7 @@
       root: 'www',
       config: 'www/config.xml',
       path: 'build',
+      cleanBeforeBuild: true,
       cordova: '.cordova',
       plugins: [],
       platforms: [],
