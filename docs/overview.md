@@ -104,6 +104,7 @@ grunt.initConfig({
           // landscape version
           xhdpiLand: 'www/screen-xhdpi-landscape.png'
         },
+        wp8: 'SplashScreenImage.jpg',
         ios: {
           // ipad landscape
           ipadLand: 'screen-ipad-landscape.png',
