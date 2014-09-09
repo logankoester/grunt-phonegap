@@ -1,7 +1,7 @@
 # Grunt: Phonegap
 > A [Grunt](http://gruntjs.com/) plugin to provide build tasks for [Phonegap](http://phonegap.com/) applications
 
-#### This is just release candidate of main barnch. I publiched it into npm to be able to use latest features before development team include my contribution to offical build.
+#### This is just release candidate of main barnch. I published it into npm to be able to use latest features before development team include my contribution to offical build.
 
 [![Build Status](http://ci.ldk.io/logankoester/grunt-phonegap/badge)](http://ci.ldk.io/logankoester/grunt-phonegap/)
 [![Dependency Status](https://david-dm.org/logankoester/grunt-phonegap.png)](https://david-dm.org/logankoester/grunt-phonegap)
