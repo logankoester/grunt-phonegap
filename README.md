@@ -210,6 +210,14 @@ grunt.initConfig({
         }
       },
 
+      // A list of resources to be copied.
+      resources : {
+        android : [{
+          from : 'phonegap/res/files/android', 
+          to   : 'res'}
+        ]
+      },
+
       // Android-only integer version to increase with each release.
       // See http://developer.android.com/tools/publishing/versioning.html
       versionCode: function(){ return(1) },

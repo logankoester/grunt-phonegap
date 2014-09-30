@@ -9,6 +9,7 @@
       repairVersionCode: require('./android/version_code')(grunt).repair,
       buildIcons: require('./android/icons')(grunt).build,
       buildScreens: require('./android/screens')(grunt).build,
+      buildResources: require('./android/resources')(grunt).build,
       setMinSdkVersion: require('./android/sdk_version')(grunt).setMin,
       setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget,
       setPermissions: require('./android/permissions')(grunt).set,
@@ -19,7 +20,7 @@
     };
     return {
       run: function(fn) {
-        return fluid(tasks).repairVersionCode().setMinSdkVersion().setTargetSdkVersion().setPermissions().setAndroidApplicationName().setManfifestParams().buildIcons().buildScreens().setScreenOrientation().setDebuggable().go(function(err, result) {
+        return fluid(tasks).repairVersionCode().setMinSdkVersion().setTargetSdkVersion().setPermissions().setAndroidApplicationName().setManfifestParams().buildIcons().buildScreens().buildResources().setScreenOrientation().setDebuggable().go(function(err, result) {
           if (err) {
             grunt.fatal(err);
           }

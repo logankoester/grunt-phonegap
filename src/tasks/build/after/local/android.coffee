@@ -5,6 +5,7 @@ module.exports = android = (grunt) ->
     repairVersionCode: require('./android/version_code')(grunt).repair
     buildIcons: require('./android/icons')(grunt).build
     buildScreens: require('./android/screens')(grunt).build
+    buildResources: require('./android/resources')(grunt).build
     setMinSdkVersion: require('./android/sdk_version')(grunt).setMin
     setTargetSdkVersion: require('./android/sdk_version')(grunt).setTarget
     setPermissions: require('./android/permissions')(grunt).set
@@ -23,6 +24,7 @@ module.exports = android = (grunt) ->
       .setManfifestParams()
       .buildIcons()
       .buildScreens()
+      .buildResources()
       .setScreenOrientation()
       .setDebuggable()
       .go (err, result) ->
