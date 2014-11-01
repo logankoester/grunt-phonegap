@@ -107,6 +107,7 @@ grunt.initConfig({
       root: 'www',
       config: 'www/config.xml',
       cordova: '.cordova',
+      cli: 'cordova', // (Optional) Default to `phonegap local`
       html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
@@ -230,7 +231,6 @@ grunt.initConfig({
   }
 })
 ```
-
 
 
 ## Dynamic config.xml
@@ -487,6 +487,8 @@ Running `phonegap:build` with no arguments will...
 
 If you pass a specific platform as an argument (eg `grunt phonegap:build:android`), the `phonegap.config.platforms` array will be
 ignored and only that specific platform will be built.
+
+Note that by default the project will be built with `phonegap local` but you can switch to `cordova`, by setting the `phonegap.config.cli` to `cordova`. But it won't let you remote build on phonegap build servers.
 
 #### phonegap:run[:platform][:device]
 
