@@ -160,9 +160,13 @@ grunt.initConfig({
           icon29x2: 'icon29x2.png',
           icon40: 'icon40.png',
           icon40x2: 'icon40x2.png',
+          icon50: "icon-50.png"
+          icon50x2: "icon-50x2.png"
           icon57: 'icon57.png',
           icon57x2: 'icon57x2.png',
-          icon60x2: 'icon60x2.png',
+          icon60: "icon-60.png"
+          icon60x2: "icon-60x2.png"
+          icon60x3: "icon-60x3.png"
           icon72: 'icon72.png',
           icon72x2: 'icon72x2.png',
           icon76: 'icon76.png',
@@ -198,6 +202,8 @@ grunt.initConfig({
           iphonePortrait: 'screen-iphone-portrait.png',
           iphonePortraitx2: 'screen-iphone-portrait-2x.png',
           iphone568hx2: 'screen-iphone-568h-2x.png'
+          iphone667hx2: 'splash-iphone-667h-2x.png'
+          iphone736hx3: 'splash-iphone-736h-3x.png'
         }
       },
 
