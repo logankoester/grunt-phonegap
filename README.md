@@ -343,7 +343,7 @@ Currently this feature supports Android, Windows Phone 8, and iOS.
 [[Back To Top]](#grunt-phonegap)
 
 The [config-xml](https://build.phonegap.com/docs/config-xml) documentation from Phonegap Build (the remote build service)
-indicate that you can set a **versionCode** for your `AndroidManifest.xml` file inside your `config.xml`. However, `phonegap local`
+indicate that you can set a **versionCode** for your `AndroidManifest.xml` file inside your `config.xml`. However, `phonegap`
 just ignores that property.
 
 [Google Play](http://developer.android.com/distribute/index.html) will not allow you to upload more than one APK with the same `versionCode`.

@@ -52,9 +52,15 @@
           grunt.file.copy(screens.ios.iphone667hx2, path.join(res, 'Default-667h@2x~iphone.png'), {
             encoding: null
           });
+          grunt.file.copy(screens.ios.iphone667hx2, path.join(res, 'Default-667h.png'), {
+            encoding: null
+          });
         }
         if ((screens != null ? (_ref6 = screens.ios) != null ? _ref6.iphone736hx3 : void 0 : void 0) != null) {
           grunt.file.copy(screens.ios.iphone736hx3, path.join(res, 'Default-736h@3x~iphone.png'), {
+            encoding: null
+          });
+          grunt.file.copy(screens.ios.iphone736hx3, path.join(res, 'Default-736h.png'), {
             encoding: null
           });
         }

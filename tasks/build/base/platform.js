@@ -12,7 +12,7 @@
       return helpers.exec("phonegap remote build " + platform + " " + (helpers.setVerbosity()), fn);
     };
     local = function(platform, fn) {
-      return helpers.exec("phonegap local build " + platform + " " + (helpers.setVerbosity()), fn);
+      return helpers.exec("phonegap build " + platform + " " + (helpers.setVerbosity()), fn);
     };
     runAfter = function(provider, platform, fn) {
       var adapter;
