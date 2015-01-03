@@ -17,6 +17,7 @@ grunt.initConfig({
       merges: 'merges', //(Optional) You may specify folder with your platform specific assets
       config: 'www/config.xml',
       cordova: '.cordova',
+      cli: 'cordova', // (Optional) Default to `phonegap local`
       html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
@@ -158,4 +159,3 @@ grunt.initConfig({
   }
 })
 ```
-

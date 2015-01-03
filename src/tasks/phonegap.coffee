@@ -4,6 +4,7 @@ async = require 'async'
 module.exports = (grunt) ->
 
   defaults =
+    cli: 'phonegap local'
     root: 'www'
     config: 'www/config.xml'
     path: 'build'
@@ -57,7 +58,7 @@ module.exports = (grunt) ->
     helpers.mergeConfig defaults
     release = require('./release')(grunt)
 
-    platform = @args[0] || _.first(grunt.config.get('phonegap.config.platforms'))
+    platform = @args[0] || _.first(grunt.config.get('phonegap.config.cli'))
     done = @async()
     release.on platform, -> done()
 
