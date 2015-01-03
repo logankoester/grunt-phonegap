@@ -14,6 +14,7 @@ grunt.initConfig({
   phonegap: {
     config: {
       root: 'www',
+      merges: 'merges', //(Optional) You may specify folder with your platform specific assets
       config: 'www/config.xml',
       cordova: '.cordova',
       html : 'index.html', // (Optional) You may change this to any other.html
