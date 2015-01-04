@@ -11,6 +11,7 @@
       cli: 'phonegap local',
       root: 'www',
       config: 'www/config.xml',
+      configXml: 'www/config.xml',
       path: 'build',
       cleanBeforeBuild: true,
       cordova: '.cordova',

@@ -1,5 +1,5 @@
 (function() {
-  var indexHtml, cp, path;
+  var cp, indexHtml, path;
 
   path = require('path');
 
@@ -10,19 +10,18 @@
     helpers = require('../../helpers')(grunt);
     return {
       run: function(fn) {
-          var phonegapPath;
-          phonegapPath = helpers.config('path');
-          grunt.log.writeln( 'Duplicating config.xml to path root' );
-          return cp( path.join( phonegapPath, 'www', 'config.xml' ), path.join( phonegapPath, 'config.xml' ), function ( err ) {
-              if ( err ) {
-                  grunt.warn( err );
-              }
-              if ( fn ) {
-                  return fn( err );
-              }
-          } );
+        var phonegapPath;
+        grunt.log.writeln('Duplicating config.xml to path root');
+        phonegapPath = helpers.config('path');
+        return cp(path.join(phonegapPath, 'www', 'config.xml'), path.join(phonegapPath, 'config.xml'), function(err) {
+          if (err) {
+            grunt.warn(err);
+          }
+          if (fn) {
+            return fn(err);
+          }
+        });
       }
-
     };
   };
 
