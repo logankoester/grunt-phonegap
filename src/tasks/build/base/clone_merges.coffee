@@ -9,7 +9,9 @@ module.exports = cloneRoot = (grunt) ->
       grunt.log.writeln mergesPath
       grunt.log.writeln 'Cloning root directory'
       phonegapPath = helpers.config 'path'
-
       ncp mergesPath, path.join(phonegapPath, 'merges'), { stopOnError: true }, (err) =>
         if err then grunt.warn err
         if fn then fn err
+
+    else
+      if fn then fn()

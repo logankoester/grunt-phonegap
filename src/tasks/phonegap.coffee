@@ -6,7 +6,8 @@ module.exports = (grunt) ->
   defaults =
     cli: 'phonegap local'
     root: 'www'
-    config: 'www/config.xml'
+    config: 'www/config.xml' #deprecated as was returning
+    configXml: 'www/config.xml'
     path: 'build'
     cleanBeforeBuild: true
     cordova: '.cordova'

@@ -28,6 +28,10 @@
               }
             };
           })(this));
+        } else {
+          if (fn) {
+            return fn();
+          }
         }
       }
     };

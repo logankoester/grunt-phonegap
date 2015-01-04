@@ -10,6 +10,7 @@ module.exports = build = (grunt) ->
     indexHtml: require('./build/base/index_html')(grunt).run
     cloneCordova: require('./build/base/clone_cordova')(grunt).run
     compileConfig: require('./build/base/compile_config')(grunt).run
+    copyConfig: require('./build/base/clone_cordova')(grunt).run
     addPlugins: require('./build/base/plugin')(grunt).add
     buildPlatforms: require('./build/base/platform')(grunt).build
 
@@ -26,6 +27,7 @@ module.exports = build = (grunt) ->
       .indexHtml()
       .cloneCordova()
       .compileConfig()
+      .copyConfig()
       .custom (done) ->
         base.addPlugins plugins, -> done()
       .custom (done) ->

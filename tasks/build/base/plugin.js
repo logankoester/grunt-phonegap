@@ -17,7 +17,6 @@
         plugin = path.resolve(uri.path());
       }
       cmd = grunt.config.get('phonegap.config.cli') + (" plugin add " + plugin + " " + (helpers.setVerbosity()));
-//      cmd = "phonegap plugin add " + plugin + " " + (helpers.setVerbosity());
       return helpers.exec(cmd, fn);
     };
     return {
