@@ -8,8 +8,10 @@
   module.exports = function(grunt) {
     var defaults;
     defaults = {
+      cli: 'phonegap local',
       root: 'www',
       config: 'www/config.xml',
+      configXml: 'www/config.xml',
       path: 'build',
       cleanBeforeBuild: true,
       cordova: '.cordova',
@@ -75,7 +77,7 @@
       helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
       release = require('./release')(grunt);
-      platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
+      platform = this.args[0] || _.first(grunt.config.get('phonegap.config.cli'));
       done = this.async();
       return release.on(platform, function() {
         return done();

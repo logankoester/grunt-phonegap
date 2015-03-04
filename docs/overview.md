@@ -14,8 +14,10 @@ grunt.initConfig({
   phonegap: {
     config: {
       root: 'www',
+      merges: 'merges', //(Optional) You may specify folder with your platform specific assets
       config: 'www/config.xml',
       cordova: '.cordova',
+      cli: 'cordova', // (Optional) Default to `phonegap local`
       html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
@@ -29,7 +31,16 @@ grunt.initConfig({
         return(pkg.name + '-' + pkg.version);
       },
       debuggable: false,
-
+      // custom properties overriding AndroidManifest.xml
+      androidManifest: {
+        // properties added to <application>
+        application : {
+        },
+        // properties added to <activity>
+        activity : {
+          "android:launchMode":"singleTask" // This is necessary to force single app instance.
+        }
+      },
       // Must be set for ios to work.
       // Should return the app name.
       name: function(){
@@ -96,6 +107,7 @@ grunt.initConfig({
           // landscape version
           xhdpiLand: 'www/screen-xhdpi-landscape.png'
         },
+        wp8: 'SplashScreenImage.jpg',
         ios: {
           // ipad landscape
           ipadLand: 'screen-ipad-landscape.png',
@@ -108,6 +120,14 @@ grunt.initConfig({
           iphonePortraitx2: 'screen-iphone-portrait-2x.png',
           iphone568hx2: 'screen-iphone-568h-2x.png'
         }
+      },
+
+      // A list of resources to be copied.
+      resources : {
+        android : [{
+          from : 'phonegap/res/files/android', 
+          to   : 'res'}
+        ]
       },
 
       // Android-only integer version to increase with each release.
@@ -139,4 +159,3 @@ grunt.initConfig({
   }
 })
 ```
-
