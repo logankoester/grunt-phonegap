@@ -40,6 +40,9 @@ module.exports = icons = (grunt) ->
     if icons?.ios?.icon60x2
       grunt.file.copy icons.ios.icon60x2, path.join(res, 'icon-60@2x.png'), encoding: null
 
+    if icons?.ios?.icon60x3
+      grunt.file.copy icons.ios.icon60x3, path.join(res, 'icon-60@3x.png'), encoding: null
+
     if icons?.ios?.icon72
       grunt.file.copy icons.ios.icon72, path.join(res, 'icon-72.png'), encoding: null
 
