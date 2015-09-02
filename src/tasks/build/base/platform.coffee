@@ -8,7 +8,7 @@ module.exports = platform = (grunt) ->
     helpers.exec "phonegap remote build #{platform} #{helpers.setVerbosity()}", fn
 
   local = (platform, fn) ->
-    helpers.exec "phonegap local build #{platform} #{helpers.setVerbosity()}", fn
+    helpers.exec "phonegap build #{platform} #{helpers.setVerbosity()}", fn
 
   runAfter = (provider, platform, fn) ->
     adapter = path.join __dirname, '..', 'after', provider, "#{platform}.js"
