@@ -72,6 +72,7 @@ grunt.initConfig({
           icon57: 'icon57.png',
           icon57x2: 'icon57x2.png',
           icon60x2: 'icon60x2.png',
+          icon60x3: 'icon60x3.png',
           icon72: 'icon72.png',
           icon72x2: 'icon72x2.png',
           icon76: 'icon76.png',

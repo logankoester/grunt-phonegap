@@ -25,6 +25,7 @@ if helpers.canBuild 'ios'
     [ path.join(orig, 'icon57x2.png'), path.join(res, 'icon@2x.png') ],
     [ path.join(orig, 'icon60.png'), path.join(res, 'icon-60.png') ],
     [ path.join(orig, 'icon60x2.png'), path.join(res, 'icon-60@2x.png') ],
+    [ path.join(orig, 'icon60x3.png'), path.join(res, 'icon-60@3x.png') ],
     [ path.join(orig, 'icon72.png'), path.join(res, 'icon-72.png') ],
     [ path.join(orig, 'icon72x2.png'), path.join(res, 'icon-72@2x.png') ],
     [ path.join(orig, 'icon76.png'), path.join(res, 'icon-76.png') ],
