@@ -1,7 +1,7 @@
 {
   "name": "grunt-phonegap",
   "description": "Local build tasks for Phonegap applications",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "homepage": "https://github.com/logankoester/grunt-phonegap",
   "author": {
     "name": "Logan Koester",
@@ -38,7 +38,7 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-bump": "git://github.com/logankoester/grunt-bump#gpg-sign",
-    "xml2json": "~0.4.0",
+    "xml2json": "~0.7.0",
     "lodash": "~2.4.0",
     "hash_file": "~0.1.1",
     "grunt-readme-generator": "git://github.com/logankoester/grunt-readme-generator#semver-sort"
