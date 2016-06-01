@@ -5,6 +5,8 @@
 
   ncp = require('ncp').ncp;
 
+  ncp.limit = 512;
+
   module.exports = cloneRoot = function(grunt) {
     var helpers;
     helpers = require('../../helpers')(grunt);
