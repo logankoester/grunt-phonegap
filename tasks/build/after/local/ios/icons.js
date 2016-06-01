@@ -64,7 +64,7 @@
           });
         }
         if (icons != null ? (_ref9 = icons.ios) != null ? _ref9.icon60x3 : void 0 : void 0) {
-          grunt.file.copy(icons.ios.icon60x3, path.join(res, 'icon-60@3x.png'), {
+          grunt.file.copy(icons.ios.icon60x2, path.join(res, 'icon-60@3x.png'), {
             encoding: null
           });
         }
