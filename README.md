@@ -19,7 +19,7 @@ subdirectory containing the Phonegap project, which gets regenerated every time 
 * [Requirements](#requirements)
 * [Getting Started](#getting-started)
 * [Overview](#overview)
-* [Dynamic config.xml](#dynamic-configxml)
+* [Dynamic config.xml](#dynamic-config.xml)
 * [App Icons](#app-icons)
 * [versionCode](#versioncode)
 * [Android Debugging](#android-debugging)
