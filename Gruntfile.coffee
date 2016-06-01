@@ -38,11 +38,7 @@ module.exports = (grunt) ->
         verbose: false
         releases: 'test/releases'
         releaseName: 'TestFixtureApp-0.0.0'
-        androidManifest: 
-          application:
-            'applicationKey' : 'applicationValue'
-          activity:
-            'activityKey' : 'activityValue'
+
         key:
           store: 'test/fixtures/release.keystore'
           alias: 'release'

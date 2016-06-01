@@ -19,7 +19,7 @@ subdirectory containing the Phonegap project, which gets regenerated every time 
 * [Requirements](#requirements)
 * [Getting Started](#getting-started)
 * [Overview](#overview)
-* [Dynamic config.xml](#dynamic-configxml)
+* [Dynamic config.xml](#dynamic-config.xml)
 * [App Icons](#app-icons)
 * [versionCode](#versioncode)
 * [Android Debugging](#android-debugging)
@@ -105,30 +105,12 @@ grunt.initConfig({
   phonegap: {
     config: {
       root: 'www',
-      merges: 'merges', //(Optional) You may specify folder with your platform specific assets
       config: 'www/config.xml',
       cordova: '.cordova',
-      cli: 'cordova', // (Optional) Default to `phonegap local`
       html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
-      plugins: [
-        '/local/path/to/plugin', 
-        'http://example.com/path/to/plugin.git',
-        {
-          id: 'git://example.com/example/repository',
-          variables: [
-            {
-              name: 'APP_ID',
-              value: 'EXAMPLE_ID'
-            },
-            {
-              name: 'CLIENT_KEY',
-              value: 'EXAMPLE_KEY'
-            }
-          ]
-        }
-      ],
+      plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
       maxBuffer: 200, // You may need to raise this for iOS.
       verbose: false,
@@ -138,16 +120,7 @@ grunt.initConfig({
         return(pkg.name + '-' + pkg.version);
       },
       debuggable: false,
-      // custom properties overriding AndroidManifest.xml
-      androidManifest: {
-        // properties added to <application>
-        application : {
-        },
-        // properties added to <activity>
-        activity : {
-          "android:launchMode":"singleTask" // This is necessary to force single app instance.
-        }
-      },
+
       // Must be set for ios to work.
       // Should return the app name.
       name: function(){
@@ -187,13 +160,13 @@ grunt.initConfig({
           icon29x2: 'icon29x2.png',
           icon40: 'icon40.png',
           icon40x2: 'icon40x2.png',
-          icon50: 'icon50.png',
-          icon50x2: 'icon50x2.png',
+          icon50: "icon-50.png"
+          icon50x2: "icon-50x2.png"
           icon57: 'icon57.png',
           icon57x2: 'icon57x2.png',
-          icon60: 'icon60.png',
-          icon60x2: 'icon60x2.png',
-          icon60x3: 'icon60x2.png',
+          icon60: "icon-60.png"
+          icon60x2: "icon-60x2.png"
+          icon60x3: "icon-60x3.png"
           icon72: 'icon72.png',
           icon72x2: 'icon72x2.png',
           icon76: 'icon76.png',
@@ -218,7 +191,6 @@ grunt.initConfig({
           // landscape version
           xhdpiLand: 'www/screen-xhdpi-landscape.png'
         },
-        wp8: 'SplashScreenImage.jpg',
         ios: {
           // ipad landscape
           ipadLand: 'screen-ipad-landscape.png',
@@ -229,18 +201,10 @@ grunt.initConfig({
           // iphone portrait
           iphonePortrait: 'screen-iphone-portrait.png',
           iphonePortraitx2: 'screen-iphone-portrait-2x.png',
-          iphone568hx2: 'screen-iphone-568h-2x.png',
-          iphone667h: 'screen-iphone-667h.png',
-          iphone736h: 'screen-iphone-736h.png'
+          iphone568hx2: 'screen-iphone-568h-2x.png'
+          iphone667hx2: 'splash-iphone-667h-2x.png'
+          iphone736hx3: 'splash-iphone-736h-3x.png'
         }
-      },
-
-      // A list of resources to be copied.
-      resources : {
-        android : [{
-          from : 'phonegap/res/files/android', 
-          to   : 'res'}
-        ]
       },
 
       // Android-only integer version to increase with each release.
@@ -272,6 +236,7 @@ grunt.initConfig({
   }
 })
 ```
+
 
 
 ## Dynamic config.xml
@@ -530,8 +495,6 @@ Running `phonegap:build` with no arguments will...
 If you pass a specific platform as an argument (eg `grunt phonegap:build:android`), the `phonegap.config.platforms` array will be
 ignored and only that specific platform will be built.
 
-Note that by default the project will be built with `phonegap local` but you can switch to `cordova`, by setting the `phonegap.config.cli` to `cordova`. But it won't let you remote build on phonegap build servers.
-
 #### phonegap:run[:platform][:device]
 
 After a build is complete, the `phonegap:run` grunt task can be used to launch your app
@@ -598,7 +561,7 @@ CoffeeScript files in `src/`, and will be overwritten if edited by hand.
 Likewise, `README.md` is the output of the `grunt docs` task, and will be overwritten. README updates should be made in
 the Markdown files under `docs/`.
 
-Before running the included test suite, you must first run `git submodule update --init` on your local clone (see above).
+Before running the included test suite, you must first run `git submodule update` on your local clone (see above).
 
 Please run `grunt build` before submitting a pull request. The build output should be included with your changes.
 

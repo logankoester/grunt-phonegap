@@ -6,7 +6,7 @@
     helpers = require('./helpers')(grunt);
     local = function(platform, device, fn) {
       var cmd;
-      cmd = grunt.config.get('phonegap.config.cli') + (" run " + platform + " " + (helpers.setVerbosity()));
+      cmd = "phonegap run " + platform + " " + (helpers.setVerbosity());
       if (device) {
         if (device === 'emulator') {
           cmd += ' --emulator';

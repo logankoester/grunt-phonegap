@@ -10,8 +10,6 @@ Running `phonegap:build` with no arguments will...
 If you pass a specific platform as an argument (eg `grunt phonegap:build:android`), the `phonegap.config.platforms` array will be
 ignored and only that specific platform will be built.
 
-Note that by default the project will be built with `phonegap local` but you can switch to `cordova`, by setting the `phonegap.config.cli` to `cordova`. But it won't let you remote build on phonegap build servers.
-
 #### phonegap:run[:platform][:device]
 
 After a build is complete, the `phonegap:run` grunt task can be used to launch your app

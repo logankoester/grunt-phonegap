@@ -14,30 +14,12 @@ grunt.initConfig({
   phonegap: {
     config: {
       root: 'www',
-      merges: 'merges', //(Optional) You may specify folder with your platform specific assets
       config: 'www/config.xml',
       cordova: '.cordova',
-      cli: 'cordova', // (Optional) Default to `phonegap local`
       html : 'index.html', // (Optional) You may change this to any other.html
       path: 'phonegap',
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
-      plugins: [
-        '/local/path/to/plugin', 
-        'http://example.com/path/to/plugin.git',
-        {
-          id: 'git://example.com/example/repository',
-          variables: [
-            {
-              name: 'APP_ID',
-              value: 'EXAMPLE_ID'
-            },
-            {
-              name: 'CLIENT_KEY',
-              value: 'EXAMPLE_KEY'
-            }
-          ]
-        }
-      ],
+      plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
       maxBuffer: 200, // You may need to raise this for iOS.
       verbose: false,
@@ -47,16 +29,7 @@ grunt.initConfig({
         return(pkg.name + '-' + pkg.version);
       },
       debuggable: false,
-      // custom properties overriding AndroidManifest.xml
-      androidManifest: {
-        // properties added to <application>
-        application : {
-        },
-        // properties added to <activity>
-        activity : {
-          "android:launchMode":"singleTask" // This is necessary to force single app instance.
-        }
-      },
+
       // Must be set for ios to work.
       // Should return the app name.
       name: function(){
@@ -96,11 +69,8 @@ grunt.initConfig({
           icon29x2: 'icon29x2.png',
           icon40: 'icon40.png',
           icon40x2: 'icon40x2.png',
-          icon50: 'icon50.png',
-          icon50x2: 'icon50x2.png',
           icon57: 'icon57.png',
           icon57x2: 'icon57x2.png',
-          icon60: 'icon60.png',
           icon60x2: 'icon60x2.png',
           icon60x3: 'icon60x3.png',
           icon72: 'icon72.png',
@@ -127,7 +97,6 @@ grunt.initConfig({
           // landscape version
           xhdpiLand: 'www/screen-xhdpi-landscape.png'
         },
-        wp8: 'SplashScreenImage.jpg',
         ios: {
           // ipad landscape
           ipadLand: 'screen-ipad-landscape.png',
@@ -138,18 +107,8 @@ grunt.initConfig({
           // iphone portrait
           iphonePortrait: 'screen-iphone-portrait.png',
           iphonePortraitx2: 'screen-iphone-portrait-2x.png',
-          iphone568hx2: 'screen-iphone-568h-2x.png',
-          iphone667h: 'screen-iphone-667h.png',
-          iphone736h: 'screen-iphone-736h.png'
+          iphone568hx2: 'screen-iphone-568h-2x.png'
         }
-      },
-
-      // A list of resources to be copied.
-      resources : {
-        android : [{
-          from : 'phonegap/res/files/android', 
-          to   : 'res'}
-        ]
       },
 
       // Android-only integer version to increase with each release.
@@ -181,3 +140,4 @@ grunt.initConfig({
   }
 })
 ```
+
