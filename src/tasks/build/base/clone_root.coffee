@@ -1,5 +1,6 @@
 path = require 'path'
 ncp = require('ncp').ncp
+ncp.limit = 512
 
 module.exports = cloneRoot = (grunt) ->
   helpers = require('../../helpers')(grunt)
