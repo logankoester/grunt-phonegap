@@ -44,7 +44,7 @@
     "grunt-readme-generator": "git://github.com/logankoester/grunt-readme-generator#semver-sort"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
