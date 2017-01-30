@@ -1,9 +1,11 @@
 (function() {
-  var async, path, platform;
+  var async, fs, path, platform;
 
   async = require('async');
 
   path = require('path');
+
+  fs = require('fs');
 
   module.exports = platform = function(grunt) {
     var addPlatform, buildPlatform, getArgs, helpers, local, remote, runAfter;
@@ -12,7 +14,7 @@
       args = grunt.config.get('phonegap.config.args');
       if (args) {
         return ' --' + args.map(function(arg) {
-          return arg.name + '=' + arg.value;
+          return arg.name + '="' + arg.value + '"';
         }).join(' --');
       } else {
         return '';

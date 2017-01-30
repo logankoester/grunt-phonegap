@@ -1,12 +1,13 @@
 async = require 'async'
 path = require 'path'
+fs = require 'fs'
 
 module.exports = platform = (grunt) ->
 
   getArgs = ->
     args = grunt.config.get('phonegap.config.args')
     if args
-      return ' --' + args.map((arg) -> arg.name + '=' + arg.value).join(' --')
+      return ' --' + args.map((arg) -> arg.name + '="' + arg.value + '"').join(' --')
     else
       return ''
 
