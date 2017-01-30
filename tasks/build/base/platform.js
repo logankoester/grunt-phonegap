@@ -38,6 +38,9 @@
       }
     };
     buildPlatform = function(platform, fn) {
+      if (grunt.config.get('phonegap.config.cli') === 'cordova') {
+        helpers.exec("cordova platform add " + platform);
+      }
       if (helpers.isRemote(platform)) {
         return remote(platform, function() {
           return runAfter('remote', platform, fn);
