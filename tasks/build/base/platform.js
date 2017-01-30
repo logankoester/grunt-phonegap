@@ -6,7 +6,7 @@
   path = require('path');
 
   module.exports = platform = function(grunt) {
-    var buildPlatform, getArgs, helpers, local, remote, runAfter;
+    var addPlatform, buildPlatform, getArgs, helpers, local, remote, runAfter;
     getArgs = function() {
       var args;
       args = grunt.config.get('phonegap.config.args');
@@ -38,9 +38,6 @@
       }
     };
     buildPlatform = function(platform, fn) {
-      if (grunt.config.get('phonegap.config.cli') === 'cordova') {
-        helpers.exec("cordova platform add " + platform);
-      }
       if (helpers.isRemote(platform)) {
         return remote(platform, function() {
           return runAfter('remote', platform, fn);
@@ -51,10 +48,23 @@
         });
       }
     };
+    addPlatform = function(platform, fn) {
+      if (grunt.config.get('phonegap.config.cli') === 'cordova') {
+        return helpers.exec("cordova platform add " + platform, function(err) {
+          if (err) {
+            return grunt.fatal(err);
+          } else {
+            return buildPlatform(platform, fn);
+          }
+        });
+      } else {
+        return buildPlatform(platform, fn);
+      }
+    };
     return {
       build: function(platforms, fn) {
         grunt.log.writeln('Building platforms');
-        return async.eachSeries(platforms, buildPlatform, function(err) {
+        return async.eachSeries(platforms, addPlatform, function(err) {
           if (fn) {
             return fn(err);
           }
