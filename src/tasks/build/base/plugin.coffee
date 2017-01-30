@@ -13,7 +13,7 @@ module.exports = plugin = (grunt) ->
     if uri.protocol() == '' and (plugin.substr(0, 1) == '.' or plugin.substr(0, 1) == '/')
       plugin = path.resolve(uri.path())
 
-    cmd = "phonegap plugin add #{plugin} #{helpers.setVerbosity()}"
+    cmd = grunt.config.get('phonegap.config.cli') + " plugin add #{plugin} #{helpers.setVerbosity()}"
     helpers.exec cmd, fn
 
   add: (plugins, fn) ->

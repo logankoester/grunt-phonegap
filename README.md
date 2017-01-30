@@ -112,6 +112,10 @@ grunt.initConfig({
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
+      args: [{
+        name: 'buildConfig',
+        value: 'build.json'
+      }],
       maxBuffer: 200, // You may need to raise this for iOS.
       verbose: false,
       releases: 'releases',
@@ -160,13 +164,9 @@ grunt.initConfig({
           icon29x2: 'icon29x2.png',
           icon40: 'icon40.png',
           icon40x2: 'icon40x2.png',
-          icon50: "icon-50.png"
-          icon50x2: "icon-50x2.png"
           icon57: 'icon57.png',
           icon57x2: 'icon57x2.png',
-          icon60: "icon-60.png"
-          icon60x2: "icon-60x2.png"
-          icon60x3: "icon-60x3.png"
+          icon60x2: 'icon60x2.png',
           icon72: 'icon72.png',
           icon72x2: 'icon72x2.png',
           icon76: 'icon76.png',
@@ -202,8 +202,6 @@ grunt.initConfig({
           iphonePortrait: 'screen-iphone-portrait.png',
           iphonePortraitx2: 'screen-iphone-portrait-2x.png',
           iphone568hx2: 'screen-iphone-568h-2x.png'
-          iphone667hx2: 'splash-iphone-667h-2x.png'
-          iphone736hx3: 'splash-iphone-736h-3x.png'
         }
       },
 
@@ -462,7 +460,7 @@ This option will be ignored for non-Android platforms or when using the remote b
 
 If `phonegap.config.androidApplicationName` is a string or function, then it will be applied to the `<application android:name />` attribute in your `AndroidManifest.xml`.
 
-This option should **almost always** be left `undefined`. You will only need to set this if you are implementing a base plugin 
+This option should **almost always** be left `undefined`. You will only need to set this if you are implementing a base plugin
 (a Java class extending from `android.app.Application`), for example to [implement crash reporting with ACRA](https://github.com/mWater/cordova-plugin-acra).
 
 
@@ -593,5 +591,3 @@ Released under the MIT license. See `LICENSE-MIT` for details.
 [![authors](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/badges/authors.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Total views](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/counters/views.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/counters/views-24h.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
-
-

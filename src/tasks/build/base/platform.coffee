@@ -1,14 +1,21 @@
 async = require 'async'
 path = require 'path'
 
+getArgs = ->
+  args = grunt.config.get('phonegap.config.args')
+  if args
+    return ' --' + args.map((arg) -> arg.name + '=' + arg.value).join(' --')
+  else
+    return ''
+
 module.exports = platform = (grunt) ->
   helpers = require('../../helpers')(grunt)
 
   remote = (platform, fn) ->
-    helpers.exec "phonegap remote build #{platform} #{helpers.setVerbosity()}", fn
+    helpers.exec grunt.config.get('phonegap.config.cli') + " remote build #{platform}#{getArgs()} #{helpers.setVerbosity()}", fn
 
   local = (platform, fn) ->
-    helpers.exec "phonegap build #{platform} #{helpers.setVerbosity()}", fn
+    helpers.exec grunt.config.get('phonegap.config.cli') + " build #{platform}#{getArgs()} #{helpers.setVerbosity()}", fn
 
   runAfter = (provider, platform, fn) ->
     adapter = path.join __dirname, '..', 'after', provider, "#{platform}.js"
