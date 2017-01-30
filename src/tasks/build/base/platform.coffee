@@ -27,7 +27,6 @@ module.exports = platform = (grunt) ->
       if fn then fn()
 
   buildPlatform = (platform, fn) ->
-    helpers.exec("cordova platform add #{platform}")  if grunt.config.get('phonegap.config.cli') is 'cordova'
     if helpers.isRemote(platform)
       remote platform, ->
         runAfter 'remote', platform, fn
@@ -35,7 +34,17 @@ module.exports = platform = (grunt) ->
       local platform, ->
         runAfter 'local', platform, fn
 
+  addPlatform = (platform, fn) ->
+    if grunt.config.get('phonegap.config.cli') is 'cordova'
+      helpers.exec "cordova platform add #{platform}", (err) ->
+        if err
+          grunt.fatal err
+        else
+          buildPlatform platform, fn
+    else
+      buildPlatform platform, fn
+
   build: (platforms, fn) ->
     grunt.log.writeln 'Building platforms'
-    async.eachSeries platforms, buildPlatform, (err) ->
+    async.eachSeries platforms, addPlatform, (err) ->
       if fn then fn err
