@@ -1,24 +1,23 @@
 (function() {
-  var async, getArgs, path, platform;
+  var async, path, platform;
 
   async = require('async');
 
   path = require('path');
 
-  getArgs = function() {
-    var args;
-    args = grunt.config.get('phonegap.config.args');
-    if (args) {
-      return ' --' + args.map(function(arg) {
-        return arg.name + '=' + arg.value;
-      }).join(' --');
-    } else {
-      return '';
-    }
-  };
-
   module.exports = platform = function(grunt) {
-    var buildPlatform, helpers, local, remote, runAfter;
+    var buildPlatform, getArgs, helpers, local, remote, runAfter;
+    getArgs = function() {
+      var args;
+      args = grunt.config.get('phonegap.config.args');
+      if (args) {
+        return ' --' + args.map(function(arg) {
+          return arg.name + '=' + arg.value;
+        }).join(' --');
+      } else {
+        return '';
+      }
+    };
     helpers = require('../../helpers')(grunt);
     remote = function(platform, fn) {
       return helpers.exec(grunt.config.get('phonegap.config.cli') + (" remote build " + platform + (getArgs()) + " " + (helpers.setVerbosity())), fn);

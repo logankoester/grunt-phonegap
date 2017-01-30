@@ -1,14 +1,15 @@
 async = require 'async'
 path = require 'path'
 
-getArgs = ->
-  args = grunt.config.get('phonegap.config.args')
-  if args
-    return ' --' + args.map((arg) -> arg.name + '=' + arg.value).join(' --')
-  else
-    return ''
-
 module.exports = platform = (grunt) ->
+
+  getArgs = ->
+    args = grunt.config.get('phonegap.config.args')
+    if args
+      return ' --' + args.map((arg) -> arg.name + '=' + arg.value).join(' --')
+    else
+      return ''
+
   helpers = require('../../helpers')(grunt)
 
   remote = (platform, fn) ->
