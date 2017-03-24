@@ -1,4 +1,4 @@
-Beginning with **v0.4.1**, `phonegap.config.config` may be either a string or an object.
+Beginning with **v0.4.1**, `phonegap.config` may be either a string or an object.
 
 As a string, the file is copied directly, as with previous versions.
 
@@ -15,13 +15,11 @@ be processed using [grunt.template](http://gruntjs.com/api/grunt.template).
   // ...
   phonegap: {
     config: {
-      config: {
-        template: '_myConfig.xml',
-        data: {
-          id: 'com.grunt-phonegap.example'
-          version: grunt.pkg.version
-          name: grunt.pkg.name
-        }
+      template: '_myConfig.xml',
+      data: {
+        id: 'com.grunt-phonegap.example'
+        version: grunt.pkg.version
+        name: grunt.pkg.name
       }
   // ...
 ```
