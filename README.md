@@ -112,10 +112,6 @@ grunt.initConfig({
       cleanBeforeBuild: true // when false the build path doesn't get regenerated
       plugins: ['/local/path/to/plugin', 'http://example.com/path/to/plugin.git'],
       platforms: ['android'],
-      args: [{
-        name: 'buildConfig',
-        value: 'build.json'
-      }],
       maxBuffer: 200, // You may need to raise this for iOS.
       verbose: false,
       releases: 'releases',
@@ -460,7 +456,7 @@ This option will be ignored for non-Android platforms or when using the remote b
 
 If `phonegap.config.androidApplicationName` is a string or function, then it will be applied to the `<application android:name />` attribute in your `AndroidManifest.xml`.
 
-This option should **almost always** be left `undefined`. You will only need to set this if you are implementing a base plugin
+This option should **almost always** be left `undefined`. You will only need to set this if you are implementing a base plugin 
 (a Java class extending from `android.app.Application`), for example to [implement crash reporting with ACRA](https://github.com/mWater/cordova-plugin-acra).
 
 
@@ -591,3 +587,5 @@ Released under the MIT license. See `LICENSE-MIT` for details.
 [![authors](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/badges/authors.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Total views](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/counters/views.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
 [![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/logankoester/grunt-phonegap/counters/views-24h.png)](https://sourcegraph.com/github.com/logankoester/grunt-phonegap)
+
+

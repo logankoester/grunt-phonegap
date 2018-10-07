@@ -13,7 +13,7 @@
           grunt.file.mkdir(path);
         }
         if (cleanBeforeBuild) {
-          grunt.log.writeln("Cleaning " + path);
+          grunt.log.writeln(`Cleaning ${path}`);
           helpers.clean(path);
         }
         if (fn) {

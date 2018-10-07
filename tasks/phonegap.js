@@ -1,5 +1,5 @@
 (function() {
-  var async, _;
+  var _, async;
 
   _ = require('lodash');
 
@@ -26,7 +26,7 @@
       releaseName: function() {
         var pkg;
         pkg = grunt.file.readJSON('package.json');
-        return "" + pkg.name + "-" + pkg.version;
+        return `${pkg.name}-${pkg.version}`;
       },
       key: {
         store: 'release.keystore',
@@ -101,7 +101,7 @@
       username = grunt.config.get('phonegap.config.remote.username');
       password = grunt.config.get('phonegap.config.remote.password');
       done = this.async();
-      cmd = "phonegap remote login --username " + username + " --password " + password;
+      cmd = `phonegap remote login --username ${username} --password ${password}`;
       return helpers.exec(cmd, function() {
         return done();
       });

@@ -18,16 +18,14 @@
         phonegapPath = helpers.config('path');
         return ncp(rootPath, path.join(phonegapPath, 'www'), {
           stopOnError: true
-        }, (function(_this) {
-          return function(err) {
-            if (err) {
-              grunt.warn(err);
-            }
-            if (fn) {
-              return fn(err);
-            }
-          };
-        })(this));
+        }, (err) => {
+          if (err) {
+            grunt.warn(err);
+          }
+          if (fn) {
+            return fn(err);
+          }
+        });
       }
     };
   };

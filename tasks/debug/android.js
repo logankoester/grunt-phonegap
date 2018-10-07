@@ -11,8 +11,8 @@
       phonegapPath = helpers.config('path');
       srcDir = path.join(phonegapPath, 'platforms', 'android', 'bin');
       releaseName = helpers.config('releaseName');
-      src = grunt.file.expand("" + srcDir + "/*-debug.apk")[0];
-      dest = path.join(helpers.config('releases'), 'debug', 'android', "" + releaseName + ".apk");
+      src = grunt.file.expand(`${srcDir}/*-debug.apk`)[0];
+      dest = path.join(helpers.config('releases'), 'debug', 'android', `${releaseName}.apk`);
       grunt.file.copy(src, dest, {
         encoding: null
       });

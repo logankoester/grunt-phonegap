@@ -16,14 +16,14 @@
         configXml = helpers.config('config');
         dest = path.join(phonegapPath, 'www', 'config.xml');
         if (grunt.util.kindOf(configXml) === 'string') {
-          grunt.log.writeln("Copying static " + configXml);
+          grunt.log.writeln(`Copying static ${configXml}`);
           return cp(configXml, dest, function(err) {
             if (fn) {
               return fn(err);
             }
           });
         } else {
-          grunt.log.writeln("Compiling template " + configXml.template);
+          grunt.log.writeln(`Compiling template ${configXml.template}`);
           template = grunt.file.read(configXml.template);
           compiled = grunt.template.process(template, {
             data: configXml.data
