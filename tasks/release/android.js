@@ -11,8 +11,8 @@
       phonegapPath = helpers.config('path');
       srcDir = path.join(phonegapPath, 'platforms', 'android', 'bin');
       releaseName = helpers.config('releaseName');
-      src = grunt.file.expand("" + srcDir + "/*-release.apk")[0];
-      dest = path.join(helpers.config('releases'), 'android', "" + releaseName + ".apk");
+      src = grunt.file.expand(`${srcDir}/*-release.apk`)[0];
+      dest = path.join(helpers.config('releases'), 'android', `${releaseName}.apk`);
       grunt.file.copy(src, dest, {
         encoding: null
       });
@@ -25,12 +25,13 @@
       key = helpers.config('key');
       keyStorePath = path.relative(platformPath('android'), key.store);
       properties = [];
-      properties.push("key.store=" + keyStorePath);
-      properties.push("key.store=" + (path.sep === '\\' ? keyStorePath.replace(/\\/g, '\\\\') : keyStorePath));
-      properties.push("key.alias=" + key.alias);
+      properties.push(`key.store=${keyStorePath}`);
+      properties.push(`key.store=${(path.sep === '\\' ? keyStorePath.replace(/\\/g, '\\\\') : keyStorePath) // Path must be escaped in the file as well
+}`);
+      properties.push(`key.alias=${key.alias}`);
       if (includePasswords) {
-        properties.push("key.store.password=" + (key.storePassword()));
-        properties.push("key.alias.password=" + (key.aliasPassword()));
+        properties.push(`key.store.password=${key.storePassword()}`);
+        properties.push(`key.alias.password=${key.aliasPassword()}`);
       }
       return grunt.file.write(antPropertiesFile(), properties.join("\n"));
     };
@@ -61,7 +62,7 @@
         setAntProperties(true);
         return antRelease(function() {
           return copyApk(function() {
-            setAntProperties(false);
+            setAntProperties(false); // Scrub passwords
             return fn();
           });
         });

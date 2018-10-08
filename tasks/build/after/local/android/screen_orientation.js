@@ -17,7 +17,7 @@
           phonegapPath = helpers.config('path');
           manifestPath = path.join(phonegapPath, 'platforms', 'android', 'AndroidManifest.xml');
           manifest = grunt.file.read(manifestPath);
-          grunt.log.writeln("Setting screenOrientation to " + screenOrientation + " in " + manifestPath);
+          grunt.log.writeln(`Setting screenOrientation to ${screenOrientation} in ${manifestPath}`);
           doc = new dom().parseFromString(manifest, 'text/xml');
           activity = doc.getElementsByTagName('activity')[0];
           activity.setAttribute('android:screenOrientation', screenOrientation);

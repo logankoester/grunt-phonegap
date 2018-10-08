@@ -1,5 +1,5 @@
 (function() {
-  var path, permissions, xmldom, _;
+  var _, path, permissions, xmldom;
 
   _ = require('lodash');
 
@@ -19,8 +19,10 @@
           phonegapPath = helpers.config('path');
           manifestPath = path.join(phonegapPath, 'platforms', 'android', 'AndroidManifest.xml');
           manifest = grunt.file.read(manifestPath);
-          grunt.log.writeln("Adding permissions to '" + manifestPath + "'");
+          grunt.log.writeln(`Adding permissions to '${manifestPath}'`);
           doc = new dom().parseFromString(manifest, 'text/xml');
+          // Remove existing permissions (added by Cordova + plugins). You should add these
+          // back in your grunt-phonegap config, unless you are absolutely sure you want to remove them.
           _.each(doc.getElementsByTagName('uses-permission'), function(el) {
             return el.parentNode.removeChild(el);
           });
@@ -28,7 +30,7 @@
           _.each(permissions, function(permission) {
             var p;
             p = doc.createElement('uses-permission');
-            p.setAttribute('android:name', "android.permission." + permission);
+            p.setAttribute('android:name', `android.permission.${permission}`);
             return manifestElement.appendChild(p);
           });
           grunt.file.write(manifestPath, doc);

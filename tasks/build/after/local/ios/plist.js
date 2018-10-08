@@ -16,7 +16,7 @@
         if (statusBar === 'WhiteAndTransparent') {
           phonegapPath = helpers.config('path');
           appName = helpers.config('name');
-          plistFile = path.join(phonegapPath, 'platforms', 'ios', appName, "" + appName + "-Info.plist");
+          plistFile = path.join(phonegapPath, 'platforms', 'ios', appName, `${appName}-Info.plist`);
           plist = grunt.file.read(plistFile);
           grunt.log.writeln("Adding ios white status bar configuration to plist");
           doc = new dom().parseFromString(plist, 'text/xml');

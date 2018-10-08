@@ -16,16 +16,14 @@
         phonegapPath = helpers.config('path');
         return ncp(cordovaPath, path.join(phonegapPath, '.cordova'), {
           stopOnError: true
-        }, (function(_this) {
-          return function(err) {
-            if (err) {
-              grunt.warn(err);
-            }
-            if (fn) {
-              return fn(err);
-            }
-          };
-        })(this));
+        }, (err) => {
+          if (err) {
+            grunt.warn(err);
+          }
+          if (fn) {
+            return fn(err);
+          }
+        });
       }
     };
   };

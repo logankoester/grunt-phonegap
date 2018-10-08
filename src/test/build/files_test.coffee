@@ -17,8 +17,7 @@ exports.phonegap =
     test.done()
 
   'files should be copied': (test) ->
-    test.expect 3
+    test.expect 2
     test.ok grunt.file.isFile('test/phonegap/www/config.xml'), 'should copy files from root'
     test.ok grunt.file.isFile('test/phonegap/.cordova/config.json'), 'should copy files from cordova'
-    test.ok grunt.file.isFile('test/phonegap/config.xml'), 'should copy config.xml to root'
     test.done()

@@ -1,5 +1,5 @@
 (function() {
-  var async, _;
+  var _, async;
 
   _ = require('lodash');
 
@@ -8,10 +8,8 @@
   module.exports = function(grunt) {
     var defaults;
     defaults = {
-      cli: 'phonegap local',
       root: 'www',
       config: 'www/config.xml',
-      configXml: 'www/config.xml',
       path: 'build',
       cleanBeforeBuild: true,
       cordova: '.cordova',
@@ -28,7 +26,7 @@
       releaseName: function() {
         var pkg;
         pkg = grunt.file.readJSON('package.json');
-        return "" + pkg.name + "-" + pkg.version;
+        return `${pkg.name}-${pkg.version}`;
       },
       key: {
         store: 'release.keystore',
@@ -77,7 +75,7 @@
       helpers = require('./helpers')(grunt);
       helpers.mergeConfig(defaults);
       release = require('./release')(grunt);
-      platform = this.args[0] || _.first(grunt.config.get('phonegap.config.cli'));
+      platform = this.args[0] || _.first(grunt.config.get('phonegap.config.platforms'));
       done = this.async();
       return release.on(platform, function() {
         return done();
@@ -103,7 +101,7 @@
       username = grunt.config.get('phonegap.config.remote.username');
       password = grunt.config.get('phonegap.config.remote.password');
       done = this.async();
-      cmd = "phonegap remote login --username " + username + " --password " + password;
+      cmd = `phonegap remote login --username ${username} --password ${password}`;
       return helpers.exec(cmd, function() {
         return done();
       });

@@ -1,5 +1,5 @@
 (function() {
-  var createTree, path, _;
+  var _, createTree, path;
 
   path = require('path');
 
@@ -16,11 +16,9 @@
         _.each(['plugins', 'platforms', 'www', '.cordova'], function(dir) {
           return grunt.file.mkdir(path.join(phonegapPath, dir));
         });
-        _.each(platforms, (function(_this) {
-          return function(platform) {
-            return grunt.file.mkdir(path.join(phonegapPath, 'merges', platform));
-          };
-        })(this));
+        _.each(platforms, (platform) => {
+          return grunt.file.mkdir(path.join(phonegapPath, 'merges', platform));
+        });
         if (fn) {
           return fn();
         }
